@@ -1,0 +1,42 @@
+.btn-custom {
+    background-color: #b96c7b !important;
+    border: none !important;
+  border-radius: 50% !important;
+  margin: 2px;
+  }
+  .custom-table {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    background-color: white;
+    border-radius: 10px; /* Adjust the value to control the roundness of the corners */
+  overflow: hidden;
+    
+  }
+.custom-table th,
+.custom-table td {
+  border: none;
+  
+}
+.custom-table th{
+ height: 45px;
+}
+.custom-table thead {
+ border-bottom: 2px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) inset;
+ border-top: 0px !important;
+ border-color: #b96c7b !important;
+}
+
+
+ th{
+  background-color: #b96c7b!important;
+  height: 60px !important;
+  color: white !important;
+  font-size: large !important;
+  text-transform: uppercase !important;
+  font-weight: 600;
+  /* border-radius: 50%; */
+ }
+
+ .with-border-radius {
+  border-radius: 50% !important;
+}
