@@ -74,7 +74,7 @@ import ContactUs from 'pages/contactUs/contactUs';
 import Home from 'pages/home/draft/Home';
 
 function App() {
-  const loggedIn = window.sessionStorage.getItem('isloggedIn');
+  const loggedIn = window.localStorage.getItem('isloggedIn'  || false);
   const {pathname} = window.location.pathname;
   console.log(pathname);
   const [stripeApiKey, setStripeApiKey] = useState('');

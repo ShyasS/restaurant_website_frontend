@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-unused-vars */
@@ -11,31 +12,95 @@ import Navbar from 'react-bootstrap/Navbar';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavDropdown } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { logout } from '../redux-toolkit/actions/auth';
 import './header.css';
 import logo from '../assets/img/grandIndiaLogo1.png';
 
 const Header = () => {
-  const { isAuthenticated } = useSelector((state) => state.authState);
+  // const { isAuthenticated } = useSelector((state) => state.authState);
   const pathname1 = window.location.pathname;
-  console.log(pathname1);
+  // console.log(pathname1);
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const isloggedIn = localStorage.getItem('isloggedIn' || false);
+  // const user = JSON.parse(localStorage.getItem('user'));
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [nav, setNav] = useState(false);
+
+  // const changeBackground = () => {
+  //   if (window.scrollY >= 50) {
+  //     setNav(true);
+  //   } else {
+  //     setNav(false);
+  //   }
+  // };
+
+  // window.addEventListener('scroll', changeBackground);
+
+  // const handleLogout = () => {
+  //   dispatch(logout);
+  //   document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+  //   document.cookie = 'user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('user');
+  //   localStorage.removeItem('user');
+  //   localStorage.clear();
+  //   window.localStorage.setItem('isloggedIn', false);
+  //   toast.success('Logout successful!', {
+  //     position: 'top-right',
+  //     autoClose: 3000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true
+  //   });
+  //   setIsLoggedIn(false);
+  //   navigate('/login');
+  // };
+
+  // const getUserRole = () => {
+  //   const userString = localStorage.getItem('user');
+  //   if (userString) {
+  //     const user = JSON.parse(userString);
+  //     return user.role;
+  //   }
+  //   return null;
+  // };
+
+  // const role = getUserRole();
+  // const [items, setItems] = useState(0);
+
+  // useEffect(() => {
+  //   const handleStorage = () => {
+  //     const items = JSON.parse(sessionStorage.getItem('cartItems'));
+  //     console.log(items);
+  //     if (items) {
+  //       setItems(items.length);
+  //       console.log(items);
+  //     }
+  //   };
+
+  //   window.addEventListener('storage', handleStorage());
+  //   return () => window.removeEventListener('storage', handleStorage());
+  // }, []);
+  const { isAuthenticated } = useSelector((state) => state.authState);
+  const [navbarExpanded, setNavbarExpanded] = useState(false);
+  const cartItemsFromStorage =
+    JSON.parse(localStorage.getItem('cartItems')) || [];
+  const [cartItems, setCartItems] = useState(cartItemsFromStorage);
+
   const dispatch = useDispatch();
+  const { token } = useParams();
   const navigate = useNavigate();
   const isloggedIn = localStorage.getItem('isloggedIn' || false);
   const user = JSON.parse(localStorage.getItem('user'));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [nav, setNav] = useState(false);
 
-  const changeBackground = () => {
-    if (window.scrollY >= 50) {
-      setNav(true);
-    } else {
-      setNav(false);
-    }
+  const handleNavbarToggle = () => {
+    setNavbarExpanded(!navbarExpanded);
   };
-
-  window.addEventListener('scroll', changeBackground);
 
   const handleLogout = () => {
     dispatch(logout);
@@ -45,6 +110,8 @@ const Header = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('user');
     localStorage.clear();
+    localStorage.clear();
+    window.localStorage.setItem('isloggedIn', false);
     window.localStorage.setItem('isloggedIn', false);
     toast.success('Logout successful!', {
       position: 'top-right',
@@ -68,25 +135,22 @@ const Header = () => {
   };
 
   const role = getUserRole();
-  const [items, setItems] = useState(0);
-
   useEffect(() => {
-    const handleStorage = () => {
-      const items = JSON.parse(sessionStorage.getItem('cartItems'));
-      console.log(items);
-      if (items) {
-        setItems(items.length);
-        console.log(items);
-      }
-    };
-
-    window.addEventListener('storage', handleStorage());
-    return () => window.removeEventListener('storage', handleStorage());
-  }, []);
-
+    setNavbarExpanded(false);
+  }, [navigate, token]);
   return (
-    <Navbar expand="lg" className="header-custom custom-navbar">
-      {pathname1 === '/login' || pathname1 === '/signup' ? (
+    <Navbar
+      expand="lg"
+      className="header-custom custom-navbar"
+      id="header"
+      expanded={navbarExpanded}
+    >
+      {pathname1 === '/login' ||
+      pathname1 === '/signup' ||
+      pathname1 === '/password/forgot' ||
+      pathname1 === '/login/otp' ||
+      pathname1 === '/loginWithOtp' ||
+      pathname1 === `/api/password/reset/:${token}` ? (
         <></>
       ) : (
         <>
@@ -95,6 +159,7 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
+            onClick={handleNavbarToggle}
             style={{ border: '2px solid #8D4527' }}
           />
           <Navbar.Collapse id="basic-navbar-nav">
