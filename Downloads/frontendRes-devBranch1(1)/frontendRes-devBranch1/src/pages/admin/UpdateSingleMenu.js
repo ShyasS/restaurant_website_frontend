@@ -15,6 +15,10 @@ const UpdateProduct = () => {
   const [dietaryPreferenceCategory, setDietaryPreferenceCategory] =
     useState('');
   const [mealTypeCategory, setMealTypeCategory] = useState('');
+  const [defaultDietaryCategory, setDefaultDietaryCategory] = useState('');
+  const [defaultMealCategory, setDefaultMealCategory] = useState('');
+  const [dietaryCategories, setDietaryCategories] = useState([]);
+  const [mealCategories, setMealCategories] = useState([]);
   const [restaurantId, setRestaurantId] = useState('');
   const [restaurantBranch, setRestaurantBranch] = useState('');
   const [isAvailable, setIsAvailable] = useState(false);
@@ -22,24 +26,6 @@ const UpdateProduct = () => {
   const [imagesCleared, setImagesCleared] = useState(false);
   const [imagesPreview, setImagesPreview] = useState([]);
   const { id: productId } = useParams();
-
-  const dietaryCategory = [
-    'Vegetarian',
-    'Non-vegetarian',
-    'Vegan',
-    'Gluten-Free',
-    'Halal',
-    'Other'
-  ];
-  const mealCategory = [
-    'Appetizers',
-    'Main Course',
-    'Desserts',
-    'Beverages',
-    'Other'
-  ];
-
-  // const navigate = useNavigate();
 
   const onImagesChange = (e) => {
     const files = Array.from(e.target.files);
@@ -49,8 +35,8 @@ const UpdateProduct = () => {
 
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setImagesPreview((oldArray) => [...oldArray, reader.result]);
-          setImages((oldArray) => [...oldArray, file]);
+          setImagesPreview(() => [reader.result]);
+          setImages(() => [file]);
         }
       };
 
@@ -128,167 +114,254 @@ const UpdateProduct = () => {
 
     getProductDetails();
   }, [productId]);
+  useEffect(() => {
+    // Fetch dietary categories from API
+    axios
+      .get('/api/dietary-preferences')
+      .then((response) => {
+        setDietaryCategories(response.data.data);
+
+        // Set default dietary category
+        if (response.data.data.length > 0) {
+          setDefaultDietaryCategory(
+            response.data.data[0].dietaryPreferenceCategory
+          );
+        }
+      })
+      .catch((error) =>
+        console.error('Error fetching dietary categories:', error)
+      );
+
+    // Fetch meal categories from API
+    axios
+      .get('/api/meal-types')
+      .then((response) => {
+        setMealCategories(response.data.data);
+
+        // Set default meal category
+        if (response.data.data.length > 0) {
+          setDefaultMealCategory(response.data.data[0].mealTypeCategory);
+        }
+      })
+      .catch((error) =>
+        console.error('Error fetching meal categories:', error)
+      );
+  }, []);
 
   return (
-    <div className="row">
-      <div className="col-12 col-md-10">
-        <div className="wrapper my-5">
-          <form
-            onSubmit={submitHandler}
-            className="shadow-lg"
-            encType="multipart/form-data"
-          >
-            <h1 className="mb-4">Update Product</h1>
+    <div className="col-6">
+      <div className="wrapper my-5">
+        <form
+          onSubmit={submitHandler}
+          className="address-container"
+          encType="multipart/form-data"
+        >
+          <h1 className="mb-4">Update Product</h1>
 
-            <div className="form-group">
-              <label htmlFor="name_field">Name</label>
-              <input
-                type="text"
-                id="name_field"
-                className="form-control"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="name_field">
+              Name
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              id="name_field"
+              className="form-control"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              required
+              placeholder="Field is required"
+            />
+          </div>
 
-            <div className="form-group">
-              <label htmlFor="price_field">Price</label>
-              <input
-                type="text"
-                id="price_field"
-                className="form-control"
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="price_field">
+              Price
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              id="price_field"
+              className="form-control"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+              required
+              placeholder="Field is required"
+            />
+          </div>
 
-            <div className="form-group">
-              <label htmlFor="description_field">Description</label>
-              <textarea
-                className="form-control"
-                id="description_field"
-                rows="8"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="description_field">
+              Description
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <textarea
+              className="form-control"
+              id="description_field"
+              rows="2"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+              required
+              placeholder="Field is required"
+            />
+          </div>
 
-            <div className="form-group">
-              <label htmlFor="category_field">
-                Dietary Preference Category
-              </label>
-              <select
-                value={dietaryPreferenceCategory}
-                onChange={(e) => setDietaryPreferenceCategory(e.target.value)}
-                className="form-control"
-                id="category_field"
-              >
-                <option value="">Select</option>
-                {dietaryCategory.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="form-group">
-              <label htmlFor="category_field">Meal Type Category</label>
-              <select
-                value={mealTypeCategory}
-                onChange={(e) => setDietaryPreferenceCategory(e.target.value)}
-                className="form-control"
-                id="category_field"
-              >
-                <option value="">Select</option>
-                {mealCategory.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="form-group">
-              <label htmlFor="stock_field">Is Available</label>
-              <input
-                type="checkbox"
-                id="stock_field"
-                className="form-check-input"
-                onChange={onIsAvailableChange}
-                checked={isAvailable}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="seller_field">Restaurant Id</label>
-              <input
-                type="text"
-                id="seller_field"
-                className="form-control"
-                readOnly
-                onChange={(e) => setRestaurantId(e.target.value)}
-                value={restaurantId}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="seller_field">Restaurant Branch</label>
-              <input
-                type="text"
-                id="seller_field"
-                className="form-control"
-                readOnly
-                onChange={(e) => setRestaurantBranch(e.target.value)}
-                value={restaurantBranch}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Images</label>
-
-              <div className="custom-file">
-                <input
-                  type="file"
-                  name="product_images"
-                  className="custom-file-input"
-                  id="customFile"
-                  multiple
-                  onChange={onImagesChange}
-                />
-
-                <label className="custom-file-label" htmlFor="customFile">
-                  Choose Images
-                </label>
-              </div>
-
-              {imagesPreview.length > 0 && (
-                <span
-                  className="mr-2"
-                  onClick={clearImagesHandler}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <i className="fa fa-trash" />
-                </span>
-              )}
-              {imagesPreview.map((image) => (
-                <img
-                  className="mt-3 mr-2"
-                  key={image}
-                  src={image}
-                  alt="Image Preview"
-                  width="55"
-                  height="52"
-                />
-              ))}
-            </div>
-
-            <button
-              id="login_button"
-              type="submit"
-              className="btn btn-block py-3"
+          <div className="mb-4">
+            <label htmlFor="category_field">
+              Meal Category
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <select
+              onChange={(e) => setMealTypeCategory(e.target.value)}
+              className="form-control"
+              id="category_field"
+              value={mealTypeCategory || defaultMealCategory}
+              required
+              placeholder="Field is required"
             >
-              UPDATE
-            </button>
-          </form>
-        </div>
+              <option value="">Select</option>
+              {mealCategories.map((mealType) => (
+                <option
+                  key={mealType.mealTypeCategory}
+                  value={mealType.mealTypeCategory}
+                >
+                  {mealType.mealTypeCategory}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="category_field">
+              Dietary Category
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <select
+              onChange={(e) => setDietaryPreferenceCategory(e.target.value)}
+              className="form-control"
+              id="category_field"
+              value={dietaryPreferenceCategory || defaultDietaryCategory}
+              required
+              placeholder="Field is required"
+            >
+              <option value="">Select</option>
+              {dietaryCategories.map((mealType) => (
+                <option
+                  key={mealType.dietaryPreferenceCategory}
+                  value={mealType.dietaryPreferenceCategory}
+                >
+                  {mealType.dietaryPreferenceCategory}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="stock_field">Is Available</label>
+            <input
+              type="checkbox"
+              id="stock_field"
+              className="form-check-input"
+              onChange={onIsAvailableChange}
+              checked={isAvailable}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="seller_field">
+              Restaurant Id
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              id="seller_field"
+              className="form-control"
+              readOnly
+              onChange={(e) => setRestaurantId(e.target.value)}
+              value={restaurantId}
+              required
+              placeholder="Field is required"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="seller_field">
+              Restaurant Branch
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              id="seller_field"
+              className="form-control"
+              readOnly
+              onChange={(e) => setRestaurantBranch(e.target.value)}
+              value={restaurantBranch}
+              required
+              placeholder="Field is required"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label>Images</label>
+
+            <div className="custom-file">
+              <input
+                type="file"
+                name="product_images"
+                className="custom-file-input"
+                id="customFile"
+                multiple
+                onChange={onImagesChange}
+              />
+
+              <label className="custom-file-label" htmlFor="customFile">
+                Choose Images
+              </label>
+            </div>
+
+            {imagesPreview.length > 0 && (
+              <span
+                className="mr-2"
+                onClick={clearImagesHandler}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fa fa-trash" />
+              </span>
+            )}
+            {imagesPreview.map((image) => (
+              <img
+                className="mt-3 mr-2"
+                key={image}
+                src={image}
+                alt="Image Preview"
+                width="55"
+                height="52"
+              />
+            ))}
+          </div>
+
+          <button id="login_button" type="submit" className="btn btn-block ">
+            UPDATE
+          </button>
+        </form>
       </div>
     </div>
   );

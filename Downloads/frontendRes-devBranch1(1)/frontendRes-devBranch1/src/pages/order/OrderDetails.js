@@ -206,20 +206,22 @@ const OrderDetails = () => {
                 {orderDetails?.shipping.address.country || ''},
                 {orderDetails?.shipping.address.postalCode || ''}
               </p>
-              <p
-                style={{
-                  display: 'flex',
-                  marginBottom: '1rem',
-                  marginLeft: '7px'
-                }}
-              >
-                <b className="">Delivery Address:</b>{' '}
-                {orderDetails?.delivery?.line1 || ''},{' '}
-                {orderDetails?.delivery?.city || ''},{' '}
-                {orderDetails?.delivery?.state || ''},{' '}
-                {orderDetails?.delivery?.country || ''},
-                {orderDetails?.delivery?.postalCode || ''}
-              </p>
+              {orderDetails?.delivery && (
+                <p
+                  style={{
+                    display: 'flex',
+                    marginBottom: '1rem',
+                    marginLeft: '7px'
+                  }}
+                >
+                  <b className="">Delivery Address:</b>{' '}
+                  {orderDetails?.delivery?.line1 || ''},{' '}
+                  {orderDetails?.delivery?.city || ''},{' '}
+                  {orderDetails?.delivery?.state || ''},{' '}
+                  {orderDetails?.delivery?.country || ''},
+                  {orderDetails?.delivery?.postalCode || ''}
+                </p>
+              )}
               <p style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Restaurant:</b>{' '}
                 {orderDetails?.restaurantBranch || 'not found'}

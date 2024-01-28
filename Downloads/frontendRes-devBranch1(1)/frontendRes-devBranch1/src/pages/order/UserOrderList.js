@@ -52,28 +52,43 @@ const OrdersTable = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  const noCurrentOrders = currentOrders.length === 0;
+  const noDeliveredOrders = deliveredOrders.length === 0;
+
+  if (noCurrentOrders && noDeliveredOrders) {
+    // Optionally, you can render a message or hide the component entirely
+    return <div>No orders available.</div>;
+  }
 
   return (
     <div className="container col-lg-8 custom-table my-5">
       <div className="row">
         <div className="col my-5">
-          <h2>Current Orders</h2>
-          <ReusableTable
-            data={currentOrders}
-            headers={headers}
-            onViewDetails={handleView}
-          />
+          {!noCurrentOrders && (
+            <>
+              <h2>Current Orders</h2>
+              <ReusableTable
+                data={currentOrders}
+                headers={headers}
+                onViewDetails={handleView}
+              />
+            </>
+          )}
         </div>
       </div>
 
       <div className="row">
         <div className="col my-5">
-          <h2>Delivered Orders</h2>
-          <ReusableTable
-            data={deliveredOrders}
-            headers={headers}
-            onViewDetails={handleView}
-          />
+          {!noDeliveredOrders && (
+            <>
+              <h2>Delivered Orders</h2>
+              <ReusableTable
+                data={deliveredOrders}
+                headers={headers}
+                onViewDetails={handleView}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

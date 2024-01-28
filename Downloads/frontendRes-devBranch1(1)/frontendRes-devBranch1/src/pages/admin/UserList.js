@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -6,7 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -24,7 +25,8 @@ const UsersList = () => {
   const [assignBranch, setAssignBranch] = useState('');
   const [assignBranchId, setAssignBranchId] = useState('');
   const [allUsers, setAllUsers] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  // const [searchInput, setSearchInput] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [searchResult, setSearchResult] = useState([]);
   const [selectedRoleFilter, setSelectedRoleFilter] = useState('');
   const navigate = useNavigate();
@@ -101,19 +103,19 @@ const UsersList = () => {
     }
   };
 
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/api/myprofile/${searchInput}`
-      );
-      const { user } = response.data.data;
-      console.log('User details:', user);
-      setSearchResult([user]);
-    } catch (error) {
-      console.error('Error fetching user details:', error);
-      setSearchResult([]);
-    }
-  };
+  // const handleSearch = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `http://localhost:8000/api/myprofile/${searchInput}`
+  //     );
+  //     const { user } = response.data.data;
+  //     console.log('User details:', user);
+  //     setSearchResult([user]);
+  //   } catch (error) {
+  //     console.error('Error fetching user details:', error);
+  //     setSearchResult([]);
+  //   }
+  // };
 
   const handleDelete = async (userId) => {
     try {
@@ -158,13 +160,13 @@ const UsersList = () => {
                 onChange={handleRoleFilterChange}
                 className="form-control"
               >
-                <option value="">All</option>
-                <option value="superAdmin">Super Admin</option>
+                {/* <option value="">All</option> */}
                 <option value="admin">Admin</option>
+                <option value="superAdmin">Super Admin</option>
               </select>
             </div>
           </div>
-          <div style={{ display: 'flex' }}>
+          {/* <div style={{ display: 'flex' }}>
             <div>
               <input
                 type="text"
@@ -186,6 +188,15 @@ const UsersList = () => {
                 Search
               </button>
             </div>
+          </div> */}
+          <div>
+            <Link
+              className="btn"
+              style={{ background: '#51bc8fb5' }}
+              to="/admin/customer/list"
+            >
+              View Customers
+            </Link>
           </div>
           <div>
             <button
@@ -205,12 +216,12 @@ const UsersList = () => {
               role: getRoleDisplayName(user.role),
               actions: (
                 <div style={{ display: 'flex' }}>
-                  <Button
+                  {/* <Button
                     className="btn-custom with-border-radius"
                     onClick={() => handleShowEditModal(user)}
                   >
                     <FontAwesomeIcon icon={faEdit} />
-                  </Button>{' '}
+                  </Button>{' '} */}
                   <Button
                     className="btn-custom with-border-radius"
                     onClick={() => handleDelete(user._id)}

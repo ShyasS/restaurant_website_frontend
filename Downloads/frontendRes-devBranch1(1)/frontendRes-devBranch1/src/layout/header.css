@@ -7,14 +7,14 @@
   background-color: #ffa500 !important;
   border: none !important;
 border-radius: 0 !important;
-margin: 2px;
+/* margin: 2px; */
   /* Add other styles as needed */
 }
 .header-custom {
   background-color: #94a9bd !important;
 }
 .nav-link{
-  margin: 2%;
+  /* margin: 2%; */
  inline-size: min-content;
 }
 .nav-link span:after {
@@ -48,12 +48,12 @@ margin: 2px;
 
 
 .App {
-  margin-top: 5px;
+  /* margin-top: 5px; */
   cursor: pointer;
 }
 .navbar-nav{
   margin: 0px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .navlinkleft{
   color: #bbb!important;

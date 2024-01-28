@@ -72,6 +72,8 @@ import RegistrationSuccess from 'pages/auth/register/RegistrationSuccess';
 import LocationComponent from 'pages/location/Location';
 import ContactUs from 'pages/contactUs/contactUs';
 import Home from 'pages/home/draft/Home';
+import UpdateProfile from 'pages/user/UpdateProfile';
+import CustomerList from 'pages/admin/CustomerList';
 
 function App() {
   const loggedIn = window.localStorage.getItem('isloggedIn'  || false);
@@ -178,6 +180,14 @@ function App() {
                 element={
                   // <ProtectedRoute>
                   <Profile />
+                  // </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/updateProfile/:id"
+                element={
+                  // <ProtectedRoute isAdmin>
+                  <UpdateProfile />
                   // </ProtectedRoute>
                 }
               />
@@ -306,6 +316,14 @@ function App() {
                 element={
                   // <ProtectedRoute isAdmin>
                   <CreateMenu />
+                  // </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/customer/list"
+                element={
+                  // <ProtectedRoute isAdmin>
+                  <CustomerList />
                   // </ProtectedRoute>
                 }
               />

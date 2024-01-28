@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/img-redundant-alt */
@@ -7,6 +9,11 @@ import { useEffect, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Button, Form, Modal } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import CategoryList from './CategoryList';
+import CategoryList1 from './CategoryList1';
 // import Sidebar from './Sidebar';
 
 export default function CreateMenu() {
@@ -16,34 +23,28 @@ export default function CreateMenu() {
   const [dietaryPreferenceCategory, setDietaryPreferenceCategory] =
     useState('');
   const [mealTypeCategory, setMealTypeCategory] = useState('');
-  // const [itemQuantity, setItemQuantity] = useState(0);
+  const [dietaryCategories, setDietaryCategories] = useState([]);
+  const [mealCategories, setMealCategories] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [restaurantId, setRestaurantId] = useState('');
-  const [restaurantBranch, setRestaurantBranch] = useState('');
+  const [restaurantBranch, setRestaurantBranch] = useState([]);
   const [isAvailable, setIsAvailable] = useState(false);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+  const [selectedBranch, setSelectedBranch] = useState('');
+  const [selectedRestaurantId, setSelectedRestaurantId] = useState('');
   const [loading, setLoading] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState('');
+  const [newMealCategoryName, setNewMealCategoryName] = useState('');
+  const [isAddMealCategoryModalOpen, setAddMealCategoryModalOpen] =
+    useState(false);
+  const [categories, setCategories] = useState([]);
+  const [isAddCategoryModalOpen, setAddCategoryModalOpen] = useState(false);
+  const [viewCategoryModalOpen, setViewCategoryModalOpen] = useState(false);
+  const [viewCategoryModalOpen1, setViewCategoryModalOpen1] = useState(false);
   const [error, setError] = useState(null);
-  const user = JSON.parse(sessionStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
   const { role } = user;
-
-  const dietaryCategory = [
-    'Vegetarian',
-    'Non-vegetarian',
-    'Vegan',
-    'Gluten-Free',
-    'Halal',
-    'Other'
-  ];
-  const mealCategory = [
-    'Appetizers',
-    'Main Course',
-    'Desserts',
-    'Beverages',
-    'Other'
-  ];
-
-  // const navigate = useNavigate();
 
   const onImagesChange = (e) => {
     const files = Array.from(e.target.files);
@@ -64,6 +65,151 @@ export default function CreateMenu() {
   const handleCheckboxChange = () => {
     setIsAvailable(!isAvailable); // Toggle the checkbox value
   };
+  const handleAddMealCategoryClick = () => {
+    setAddMealCategoryModalOpen(!isAddMealCategoryModalOpen);
+  };
+  const fetchDietaryCategories = async () => {
+    await axios
+      .get('/api/dietary-preferences')
+      .then((response) => setDietaryCategories(response.data.data))
+      .catch((error) =>
+        console.error('Error fetching dietary categories:', error)
+      );
+  };
+  const fetchMealCategories1 = async () => {
+    await axios
+      .get('/api/meal-types')
+      .then((response) => setMealCategories(response.data.data))
+      .catch((error) =>
+        console.error('Error fetching meal categories:', error)
+      );
+  };
+  const handleSaveMealCategory = async () => {
+    try {
+      // Make an Axios POST request to save the new meal category
+      await axios.post('/api/meal-types', {
+        mealTypeCategory: newMealCategoryName
+      });
+      fetchMealCategories1();
+
+      // Handle success, e.g., show a success message
+      toast('Meal Category Added Successfully!', {
+        type: 'success',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+
+      // Optionally, perform any other actions after successful category addition
+
+      // Close the modal after successful addition
+      setAddMealCategoryModalOpen(false);
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      toast(error.message || 'An error occurred', {
+        type: 'error',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    }
+  };
+
+  const handleAddCategoryClick = () => {
+    console.log('handleAddCategoryClick called');
+    setAddCategoryModalOpen(!isAddCategoryModalOpen);
+  };
+  const handleSaveCategory = async () => {
+    try {
+      // Make an Axios POST request to save the new category
+      await axios.post('/api/dietary-preferences', {
+        dietaryPreferenceCategory: newCategoryName
+      });
+
+      // Handle success, e.g., show a success message
+      toast('Category Added Successfully!', {
+        type: 'success',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+
+      // Optionally, perform any other actions after successful category addition
+      fetchDietaryCategories();
+      // Close the modal after successful addition
+      setAddCategoryModalOpen(false);
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      toast(error.message || 'An error occurred', {
+        type: 'error',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    }
+  };
+  const fetchCategories = () => {
+    // Fetch dietary categories from API
+    axios
+      .get('/api/dietary-preferences')
+      .then((response) => setCategories(response.data.data))
+      .catch((error) =>
+        console.error('Error fetching dietary categories:', error)
+      );
+  };
+  const fetchMealCategories = () => {
+    // Fetch dietary categories from API
+    axios
+      .get('/api/meal-types')
+      .then((response) => setCategories(response.data.data))
+      .catch((error) =>
+        console.error('Error fetching dietary categories:', error)
+      );
+  };
+
+  const handleViewAllCategories = () => {
+    // Fetch and display all categories when "View all Category" is clicked
+    setViewCategoryModalOpen1(true);
+    fetchCategories();
+  };
+  const handleViewAllCategories1 = () => {
+    // Fetch and display all categories when "View all Category" is clicked
+    setViewCategoryModalOpen(true);
+    fetchMealCategories();
+  };
+
+  const handleDeleteCategory = async (categoryId) => {
+    try {
+      // Make an Axios DELETE request to remove the category
+      await axios.delete(`/api/dietary-preferences/${categoryId}`);
+      fetchCategories();
+      fetchDietaryCategories();
+      // Handle success, e.g., show a success message
+      toast('Category Deleted Successfully!', {
+        type: 'success',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+
+      // Fetch updated categories after deleting a category
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      toast(error.message || 'An error occurred', {
+        type: 'error',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    }
+  };
+  const handleDeleteCategory1 = async (categoryId) => {
+    try {
+      // Make an Axios DELETE request to remove the category
+      await axios.delete(`/api/meal-types/${categoryId}`);
+      // Handle success, e.g., show a success message
+      toast('Category Deleted Successfully!', {
+        type: 'success',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+
+      // Fetch updated categories after deleting a category
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      toast(error.message || 'An error occurred', {
+        type: 'error',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    }
+  };
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -72,13 +218,17 @@ export default function CreateMenu() {
       const formData = new FormData();
       formData.append('name', name);
       formData.append('price', price);
-      // formData.append('itemQuantity', itemQuantity);
       formData.append('description', description);
-      formData.append('restaurantId', restaurantId);
-      formData.append('restaurantBranch', restaurantBranch);
       formData.append('dietaryPreferenceCategory', dietaryPreferenceCategory);
       formData.append('mealTypeCategory', mealTypeCategory);
       formData.append('isAvailable', isAvailable);
+      if (role === 'superAdmin') {
+        formData.append('restaurantBranch', selectedBranch);
+        formData.append('restaurantId', selectedRestaurantId);
+      } else {
+        formData.append('restaurantBranch', restaurantBranch);
+        formData.append('restaurantId', restaurantId);
+      }
 
       images.forEach((image) => {
         formData.append('images', image);
@@ -101,10 +251,12 @@ export default function CreateMenu() {
   };
 
   useEffect(() => {
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'));
     const { restaurantId, restaurantBranch } = user;
-    setRestaurantId(restaurantId);
-    setRestaurantBranch(restaurantBranch);
+    if (role !== 'superAdmin') {
+      setRestaurantId(restaurantId);
+      setRestaurantBranch(restaurantBranch);
+    }
     if (error) {
       toast(error, {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -112,156 +264,403 @@ export default function CreateMenu() {
       });
     }
   }, [error]);
+  useEffect(() => {
+    fetchDietaryCategories();
+    fetchMealCategories1();
+    fetchCategories();
+    if (role === 'superAdmin') {
+      axios
+        .get('/api/restaurant/get')
+        .then((response) => setRestaurantBranch(response.data.data))
+        .catch((error) =>
+          console.error('Error fetching restaurant branches:', error)
+        );
+    }
+  }, []);
+  useEffect(() => {
+    // Update selected restaurantId based on the selectedBranch
+    const selectedBranchObject = restaurantBranch.find(
+      (branch) => branch.restaurantBranch === selectedBranch
+    );
+    if (selectedBranchObject) {
+      setSelectedRestaurantId(selectedBranchObject.restaurantId);
+    }
+  }, [selectedBranch, restaurantBranch]);
 
   return (
-    <div className="row">
-      <div className="col-12 col-md-10">
-        <>
-          <div className="wrapper my-5">
-            <form
-              onSubmit={submitHandler}
-              className="shadow-lg"
-              encType="multipart/form-data"
-            >
-              <h1 className="mb-4">New Product</h1>
+    <div className="container-fluid col-lg-10">
+      <>
+        <div className="wrapper my-5">
+          <form
+            onSubmit={submitHandler}
+            className="address-container shadow-lg "
+            encType="multipart/form-data"
+          >
+            <h3 className="my-5 pt-4">Create Menu Item</h3>
+            <div className="row">
+              <div className="col-6">
+                <div className="mb-4 mx-5">
+                  <label htmlFor="name_field">
+                    Name
+                    <span className="text-danger">
+                      {' '}
+                      <b>*</b>
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name_field"
+                    className="form-control"
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    required
+                    placeholder="Field is required"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="name_field">Name</label>
-                <input
-                  type="text"
-                  id="name_field"
-                  className="form-control"
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
-                />
-              </div>
+                <div className="mb-4 mx-5">
+                  <label htmlFor="price_field">
+                    Price
+                    <span className="text-danger">
+                      {' '}
+                      <b>*</b>
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    id="price_field"
+                    required
+                    placeholder="Field is required"
+                    className={`form-control `}
+                    onChange={(e) => setPrice(e.target.value)}
+                    value={price}
+                  />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="price_field">Price</label>
-                <input
-                  type="text"
-                  id="price_field"
-                  className="form-control"
-                  onChange={(e) => setPrice(e.target.value)}
-                  value={price}
-                />
+                <div className="mb-4 mx-5">
+                  <label htmlFor="description_field">
+                    Description
+                    <span className="text-danger">
+                      {' '}
+                      <b>*</b>
+                    </span>
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="description_field"
+                    rows="2"
+                    onChange={(e) => setDescription(e.target.value)}
+                    value={description}
+                    required
+                    placeholder="Field is required"
+                  />
+                </div>
+                <div className="mb-4 mx-5">
+                  <label htmlFor="category_field">
+                    Meal Category
+                    <span className="text-danger">
+                      {' '}
+                      <b>*</b>
+                    </span>
+                    <span onClick={handleAddMealCategoryClick}>
+                      (Add Category)
+                      <FontAwesomeIcon
+                        icon={faPencilAlt}
+                        style={{ marginRight: '5px' }}
+                      />
+                    </span>
+                  </label>
+                  <select
+                    onChange={(e) => setMealTypeCategory(e.target.value)}
+                    className="form-control"
+                    id="category_field"
+                    required
+                  >
+                    <option value="">Select</option>
+                    {mealCategories.map((mealType) => (
+                      <option
+                        key={mealType.mealTypeCategory}
+                        value={mealType.mealTypeCategory}
+                      >
+                        {mealType.mealTypeCategory}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-4 mx-5">
+                  <label htmlFor="dietary_category_field">
+                    Dietary Category
+                    <span className="text-danger">
+                      {' '}
+                      <b>*</b>
+                    </span>
+                    <span onClick={handleAddCategoryClick}>
+                      (Add Category)
+                      <FontAwesomeIcon
+                        icon={faPencilAlt}
+                        style={{ marginRight: '5px' }}
+                      />
+                    </span>
+                  </label>
+                  <select
+                    onChange={(e) =>
+                      setDietaryPreferenceCategory(e.target.value)
+                    }
+                    className="form-control"
+                    id="dietary_category_field"
+                    required
+                  >
+                    <option value="">Select</option>
+                    {dietaryCategories.map((mealType) => (
+                      <option
+                        key={mealType.dietaryPreferenceCategory}
+                        value={mealType.dietaryPreferenceCategory}
+                      >
+                        {mealType.dietaryPreferenceCategory}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
-
-              <div className="form-group">
-                <label htmlFor="description_field">Description</label>
-                <textarea
-                  className="form-control"
-                  id="description_field"
-                  rows="8"
-                  onChange={(e) => setDescription(e.target.value)}
-                  value={description}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="category_field">Meal Category</label>
-                <select
-                  onChange={(e) => setMealTypeCategory(e.target.value)}
-                  className="form-control"
-                  id="category_field"
-                >
-                  <option value="">Select</option>
-                  {mealCategory.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="category_field">Dietary Category</label>
-                <select
-                  onChange={(e) => setDietaryPreferenceCategory(e.target.value)}
-                  className="form-control"
-                  id="category_field"
-                >
-                  <option value="">Select</option>
-                  {dietaryCategory.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {role === 'superAdmin' && (
+              <div className="col-6">
                 <>
-                  <div className="form-group">
-                    <label htmlFor="seller_field">Restaurant Id</label>
+                  {role === 'superAdmin' && Array.isArray(restaurantBranch) && (
+                    <div className="mb-4 mx-5">
+                      <label htmlFor="seller_field">
+                        Restaurant Branch
+                        <span className="text-danger">
+                          {' '}
+                          <b>*</b>
+                        </span>
+                      </label>
+                      <select
+                        id="seller_field"
+                        className="form-control"
+                        value={selectedBranch} // Use a separate state for selected value
+                        onChange={(e) => setSelectedBranch(e.target.value)}
+                        required
+                      >
+                        <option value="">Select</option>
+                        {restaurantBranch.map((branch) => (
+                          <option
+                            key={branch.restaurantBranch}
+                            value={branch.restaurantBranch}
+                          >
+                            {branch.restaurantBranch}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+                  <div className="mb-4 mx-5 d-none">
+                    <label htmlFor="id_field">
+                      Restaurant Id
+                      <span className="text-danger">
+                        {' '}
+                        <b>*</b>
+                      </span>
+                    </label>
                     <input
                       type="text"
-                      id="seller_field"
+                      id="id_field"
                       className="form-control"
-                      onChange={(e) => setRestaurantId(e.target.value)}
-                      value={restaurantId}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="seller_field">Restaurant Branch</label>
-                    <input
-                      type="text"
-                      id="seller_field"
-                      className="form-control"
-                      onChange={(e) => setRestaurantBranch(e.target.value)}
-                      value={restaurantBranch}
+                      // onChange={(e) => setRestaurantId(selectedRestaurantId)}
+                      value={selectedRestaurantId}
+                      required
+                      placeholder="Field is required"
                     />
                   </div>
                 </>
-              )}
-              <div className="form-group">
-                <label>Images</label>
 
-                <div className="custom-file">
-                  <input
-                    type="file"
-                    name="product_images"
-                    className="custom-file-input"
-                    id="customFile"
-                    multiple
-                    onChange={onImagesChange}
-                  />
+                <div className="mb-4 mx-5">
+                  <label htmlFor="customFile">Images</label>
 
-                  <label className="custom-file-label" htmlFor="customFile">
-                    Choose Images
-                  </label>
+                  <div className="custom-file">
+                    <input
+                      type="file"
+                      name="product_images"
+                      className="form-control"
+                      id="customFile"
+                      multiple
+                      onChange={onImagesChange}
+                    />
+
+                    <label className="custom-file-label" htmlFor="customFile">
+                      Chosen Image
+                    </label>
+                  </div>
+
+                  <div className="image-preview mt-3">
+                    {imagesPreview.map((image, index) => (
+                      <img
+                        className="mr-2 mb-2"
+                        key={index}
+                        src={image}
+                        alt={`Image Preview ${index + 1}`}
+                        width="55"
+                        height="52"
+                      />
+                    ))}
+                  </div>
                 </div>
-                {imagesPreview.map((image, index) => (
-                  <img
-                    className="mt-3 mr-2"
-                    key={index}
-                    src={image}
-                    alt={`Image Preview ${index + 1}`}
-                    width="55"
-                    height="52"
-                  />
-                ))}
-              </div>
-              <div className="form-group">
-                <label htmlFor="vegetarian_checkbox">Is Available</label>
-                <input
-                  type="checkbox"
-                  id="vegetarian_checkbox"
-                  checked={isAvailable}
-                  onChange={handleCheckboxChange}
-                />
-              </div>
 
-              <button
-                id="login_button"
-                type="submit"
-                disabled={loading}
-                className="btn btn-block py-3"
-              >
-                CREATE
-              </button>
-            </form>
-          </div>
-        </>
-      </div>
+                <div className="mb-4 mx-5">
+                  <label htmlFor="vegetarian_checkbox">Is Available</label>
+                  <div className="my-2">
+                    <input
+                      type="checkbox"
+                      id="vegetarian_checkbox"
+                      checked={isAvailable}
+                      onChange={handleCheckboxChange}
+                      className="custom-checkbox form-control"
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <button
+                    id="login_button"
+                    type="submit"
+                    disabled={loading}
+                    className="btn btn-block my-5"
+                  >
+                    CREATE
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          {isAddMealCategoryModalOpen && (
+            <Modal
+              show={isAddMealCategoryModalOpen}
+              onHide={() => setAddMealCategoryModalOpen(false)}
+              className="my-5"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Add Meal Category</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {/* Your Add Meal Category form or content goes here */}
+                <Form>
+                  <Form.Group controlId="newMealCategoryName">
+                    <Form.Label>New Meal Category Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter meal category name"
+                      value={newMealCategoryName}
+                      onChange={(e) => setNewMealCategoryName(e.target.value)}
+                    />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  variant="secondary"
+                  onClick={() => setAddMealCategoryModalOpen(false)}
+                >
+                  Close
+                </Button>
+                <Button variant="secondary" onClick={handleViewAllCategories1}>
+                  View all Category
+                </Button>
+                <Button variant="primary" onClick={handleSaveMealCategory}>
+                  Save
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          )}
+
+          {isAddCategoryModalOpen && (
+            <Modal
+              show={isAddCategoryModalOpen}
+              onHide={() => setAddCategoryModalOpen(false)}
+              className="my-5"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Add Dietary Category</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {/* Your Add Category form or content goes here */}
+                <Form>
+                  <Form.Group controlId="newCategoryName">
+                    <Form.Label>New Category Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter category name"
+                      value={newCategoryName}
+                      onChange={(e) => setNewCategoryName(e.target.value)}
+                    />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  variant="secondary"
+                  onClick={() => setAddCategoryModalOpen(false)}
+                >
+                  Close
+                </Button>
+                <Button variant="secondary" onClick={handleViewAllCategories}>
+                  View all Category
+                </Button>
+                <Button variant="primary" onClick={handleSaveCategory}>
+                  Save
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          )}
+          {viewCategoryModalOpen && (
+            <Modal
+              show={viewCategoryModalOpen}
+              onHide={() => setViewCategoryModalOpen(false)}
+              className="my-5"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>All Meal Categories</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <CategoryList1
+                  categories={categories}
+                  onDeleteCategory1={handleDeleteCategory1}
+                />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  variant="secondary"
+                  onClick={() => setViewCategoryModalOpen(false)}
+                >
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          )}
+          {viewCategoryModalOpen1 && (
+            <Modal
+              show={viewCategoryModalOpen1}
+              onHide={() => setViewCategoryModalOpen1(false)}
+              className="my-5"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>All Dietary Categories</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <CategoryList
+                  categories={categories}
+                  onDeleteCategory={handleDeleteCategory}
+                />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  variant="secondary"
+                  onClick={() => setViewCategoryModalOpen1(false)}
+                >
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          )}
+        </div>
+      </>
     </div>
   );
 }

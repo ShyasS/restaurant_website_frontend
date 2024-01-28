@@ -233,9 +233,12 @@ const ReusableTable = ({
   const renderTableData = () => {
     const sortedData = data.slice().sort((a, b) => {
       if (sortedColumn === 'name') {
+        const fullNameA = `${a.name} ${a.lastName}`;
+        const fullNameB = `${b.name} ${b.lastName}`;
+
         return sortOrder === 'asc'
-          ? a.name.localeCompare(b.name)
-          : b.name.localeCompare(a.name);
+          ? fullNameA.localeCompare(fullNameB)
+          : fullNameB.localeCompare(fullNameA);
       }
       if (sortedColumn === 'price') {
         return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
@@ -325,6 +328,12 @@ const ReusableTable = ({
           if (header === 'Order Date') {
             return <td key={header}>{item.createdAt}</td>;
           }
+          if (header === 'Phone No') {
+            return <td key={header}>{item.shipping.phone}</td>;
+          }
+          if (header === 'Email Address') {
+            return <td key={header}>{item.shipping.email}</td>;
+          }
           if (header === 'Category') {
             return (
               <td key={header}>
@@ -350,7 +359,7 @@ const ReusableTable = ({
           if (header === 'Name') {
             return (
               <td key={header} onClick={() => handleSort('name')}>
-                {item.name}{' '}
+                {item.name} {item.lastName}
                 {/* {sortedColumn === 'name' && sortOrder === 'asc' ? ' ↑' : ' ↓'} */}
               </td>
             );

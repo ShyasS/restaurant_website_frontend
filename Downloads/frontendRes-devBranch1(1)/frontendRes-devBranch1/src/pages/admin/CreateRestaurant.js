@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const CreateRestaurant = () => {
   const [formData, setFormData] = useState({
@@ -47,9 +48,17 @@ const CreateRestaurant = () => {
     try {
       await axios.post('/api/restaurant/create', formData);
       console.log('Restaurant created successfully!');
+      toast('Restaurant created Successfully!', {
+        type: 'success',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
       // You can add redirect or toast notification here
     } catch (error) {
       console.error('Error creating restaurant:', error);
+      toast('Error creating restaurant!', {
+        type: 'error',
+        position: toast.POSITION.BOTTOM_CENTER
+      });
       // Handle error (e.g., show a toast)
     }
   };

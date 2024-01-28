@@ -106,8 +106,8 @@ const ConfirmOrder = () => {
   return (
     <div>
       <div>
-        <div className="row d-flex justify-content-between">
-          <div className=" order-confirm">
+        <div className="row d-flex justify-content-between ">
+          <div className=" order-confirm ">
             <h1 className="mb-3">Shipping Info</h1>
             <p>
               <b>Name:</b> {localData.name}{' '}
@@ -201,7 +201,7 @@ const ConfirmOrder = () => {
               <button
                 type="submit"
                 id="checkout_btn"
-                className="btn btn-block"
+                className="btn btn-block mb-5"
                 style={{ backgroundColor: '#ffa500' }}
                 onClick={processPayment}
               >

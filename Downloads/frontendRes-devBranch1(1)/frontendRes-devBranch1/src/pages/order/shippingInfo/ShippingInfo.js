@@ -536,11 +536,13 @@ const ShippingInfo1 = () => {
         } else {
           if (orderType === 'Delivery') {
             toast.error('Please check delivery address!', {
-              position: toast.POSITION.BOTTOM_CENTER
+              position: toast.POSITION.TOP_CENTER
+              // bodyClassName: 'toast-fixed'
             });
           } else {
             toast.error('Please check address!', {
-              position: toast.POSITION.BOTTOM_CENTER
+              position: toast.POSITION.TOP_CENTER
+              // bodyClassName: 'toast-fixed'
             });
           }
         }

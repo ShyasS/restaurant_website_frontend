@@ -201,7 +201,7 @@ const OrderSuccess = () => {
   return (
     <div>
       <div className="row justify-content-center">
-        <div className="col-6 mt-5 text-center">
+        <div className="col-12 mt-5 text-center">
           <img
             className="my-5 img-fluid d-block mx-auto"
             src="https://static.vecteezy.com/system/resources/thumbnails/001/622/545/original/success-check-mark-icon-animation-video.jpg"
@@ -210,7 +210,7 @@ const OrderSuccess = () => {
             height="200"
           />
 
-          <h2>Your Order has been placed successfully.</h2>
+          <h4>Your Order has been placed successfully.</h4>
           <div>
             <Link to="/">
               <Button>Go to home</Button>{' '}

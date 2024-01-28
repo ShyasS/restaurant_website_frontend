@@ -1,30 +1,81 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
+// export default OrdersTable;
+/* eslint-disable no-plusplus */
+/* eslint-disable import/order */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-undef */
 /* eslint-disable no-shadow */
 /* eslint-disable no-underscore-dangle */
 
 import React, { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 // import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import ReusableTable from '../../components/ReusableTable';
 import './index.css';
+import { Button } from 'react-bootstrap';
 // import Sidebar from './Sidebar';
 
 const OrdersTable = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(sessionStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
   const { restaurantId } = user;
   const { role } = user;
   const [orders, setOrders] = useState([]);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const pageSize = 30;
+  const [restaurant, setRestaurant] = useState([]);
+  const [orderType, setSelectedOrderType] = useState('all');
+  const [selectedOrderStatus, setSelectedOrderStatus] = useState('');
   const [selectedBranch, setSelectedBranch] = useState(restaurantId || 'all');
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+    return `${month}/${day}`;
+  });
+  const generateDates = (numDays) => {
+    const dates = [];
+    const today = new Date();
+
+    for (let i = 0; i < numDays; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      const formattedDate = `${date.getMonth() + 1}/${date.getDate()}`;
+      dates.push(formattedDate);
+    }
+
+    return dates;
+  };
+
+  const availableDates = generateDates(7);
   const headers = [
     'Sl No',
     'Order ID',
     'Customer',
     'Restaurant Branch',
+    'Pickup/Delivery Time',
     'Status'
   ];
   const handleBranchChange = (e) => {
     setSelectedBranch(e.target.value);
+  };
+  const handleOrderTypeChange = (orderType) => {
+    setSelectedOrderType(orderType);
+  };
+  const handleClear = () => {
+    setSelectedOrderType('all');
+  };
+  const formatAddress = (address) => {
+    return `${address.line1}, ${address.city}, ${address.state} - ${address.postalCode}, ${address.country}`;
+  };
+  const handleDateSelection = (date) => {
+    setSelectedDate(date);
+    console.log(`selected date - ${selectedDate}`);
   };
 
   const fetchOrders = async () => {
@@ -32,64 +83,203 @@ const OrdersTable = () => {
       let response;
 
       if (selectedBranch === 'all') {
-        response = await axios.get('/api/admin/orders/active');
+        response = await axios.get(
+          `/api/admin/orders/active?restaurantId=${selectedBranch}&selectedDate=${selectedDate}&page=${
+            page + 1
+          }&pageSize=${pageSize}`
+        );
       } else {
-        const restaurantId = { restaurantId: selectedBranch };
-        response = await axios.post(
-          '/api/admin/orderHistory-active',
-          restaurantId
+        // const requestData = {
+        //   restaurantId: selectedBranch
+        // };
+        response = await axios.get(
+          `/api/admin/order/active?restaurantId=${selectedBranch}&selectedDate=${selectedDate}&page=${
+            page + 1
+          }&pageSize=${pageSize}`
+          // requestData
         );
       }
 
-      // Extract the orders array from the response, handling both object and array responses
-      const orders = Array.isArray(response.data)
+      let orders = Array.isArray(response.data)
         ? response.data
         : response.data.orders;
 
+      // Filter orders based on orderType
+      if (orderType !== 'all') {
+        orders = orders.filter((order) => order.orderType === orderType);
+      }
+      orders.sort((a, b) => {
+        const dateA = new Date(`1970-01-01T${a.selectedTimeSlot}:00`);
+        const dateB = new Date(`1970-01-01T${b.selectedTimeSlot}:00`);
+
+        return dateA - dateB;
+      });
+
       setOrders(orders || []);
+      setTotalPages(Math.ceil(response.headers['x-total-count'] / pageSize));
     } catch (error) {
       console.error('Error fetching orders:', error);
     }
   };
-
+  const handlePageClick = (selectedPage) => {
+    setPage(selectedPage.selected);
+  };
   const handleEdit = (orderId) => {
     navigate(`/admin/order/${orderId}`);
     console.log(`Edit order with ID ${orderId}`);
   };
+  const handleUpdateOrder = async (orderId) => {
+    const response = await axios.put(`/api/admin/order/${orderId}`, {
+      orderStatus: selectedOrderStatus
+    });
+
+    if (response.status === 200) {
+      console.log('Order status updated successfully');
+      // Optionally, you can refetch the order details to reflect the updated status
+      fetchOrders(orderId);
+    } else {
+      console.error('Failed to update order status');
+    }
+  };
 
   useEffect(() => {
     fetchOrders();
-  }, [selectedBranch]);
+  }, [selectedBranch, orderType, selectedDate, page, pageSize]);
+  useEffect(() => {
+    // Fetch time slots from the API
+    const fetchRestaurants = async () => {
+      try {
+        const response = await axios.get('/api/restaurant/get');
+        const restaurant = response.data.data;
+        // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
+        console.log(restaurant);
+        setRestaurant(restaurant);
+      } catch (error) {
+        console.error('Error fetching time slots:', error.message);
+      }
+    };
+
+    fetchRestaurants();
+  }, []);
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col">
-          <div className="col-12 col-lg-3 mt-5">
-            <div className="form-group">
-              {role !== 'admin' && (
+    <div className="container">
+      <h4 className=" mt-3" style={{ fontWeight: 'bold' }}>
+        CURRENT ORDERS
+      </h4>
+      <div
+        className="row"
+        style={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <div
+          className="col-12 mt-3"
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <div className="form-group">
+            {role !== 'admin' && (
+              <>
+                <h5 className="my-4 mt-3">Select Branch</h5>
                 <select
                   className="form-control"
                   name="status"
                   value={selectedBranch}
                   onChange={handleBranchChange}
                 >
-                  <h4 className="my-4">Select branch</h4>
                   <option value="all">All</option>
-                  <option value="1000010">Branch-A</option>
-                  <option value="1000011">Branch-B</option>
-                  <option value="1000012">Branch-C</option>
+                  {restaurant &&
+                    restaurant.map((restaurant) => (
+                      <option
+                        key={restaurant._id}
+                        value={restaurant.restaurantId}
+                      >
+                        {restaurant.restaurantBranch} -{' '}
+                        {formatAddress(restaurant.address)}
+                      </option>
+                    ))}
                 </select>
-              )}
-            </div>
-            {/* Remove the Submit button as it's no longer needed */}
+              </>
+            )}
           </div>
-          <ReusableTable
-            data={orders}
-            headers={headers}
-            onEdit={(orderId) => handleEdit(orderId)}
-          />
+          <>
+            <div>
+              <h5 className="mt-3">Select order type</h5>
+              <label>
+                <input
+                  id="pickup"
+                  type="radio"
+                  name="orderType"
+                  value="Pickup"
+                  checked={orderType === 'Pickup'}
+                  onChange={() => handleOrderTypeChange('Pickup')}
+                />{' '}
+                Pickup
+              </label>{' '}
+              <label>
+                <input
+                  id="delivery"
+                  type="radio"
+                  name="orderType"
+                  value="Delivery"
+                  checked={orderType === 'Delivery'}
+                  onChange={() => handleOrderTypeChange('Delivery')}
+                />{' '}
+                Delivery
+              </label>{' '}
+              <button className=" btn mb-2" onClick={handleClear}>
+                clear
+              </button>
+            </div>
+            <div />
+            <div>
+              <h5>Update order</h5>
+              <select
+                className="form-control mb-2"
+                value={selectedOrderStatus}
+                required
+                onChange={(e) => setSelectedOrderStatus(e.target.value)}
+              >
+                <option>Select Order Status</option>
+                <option value="Preparing">Preparing</option>
+                <option value="Out For Delivery">Out for Delivery</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+          </>
         </div>
+        <div className="col mt-4">
+          <div className="date-buttons mb-4">
+            {availableDates.map((date) => (
+              <Button
+                key={date}
+                value={date}
+                onClick={() => handleDateSelection(date)}
+                style={{
+                  backgroundColor: selectedDate === date ? 'danger' : 'inherit',
+                  border:
+                    selectedDate === date ? '2px solid black' : '1px solid #ccc'
+                  // For example, padding, border, etc.
+                }}
+              >
+                {date}
+              </Button>
+            ))}
+          </div>
+        </div>
+        <ReusableTable
+          data={orders}
+          headers={headers}
+          update={handleUpdateOrder}
+          onEdit={handleEdit}
+        />
+        <ReactPaginate
+          className="pagination"
+          pageCount={totalPages}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName="pagination"
+          activeClassName="active"
+        />
       </div>
     </div>
   );

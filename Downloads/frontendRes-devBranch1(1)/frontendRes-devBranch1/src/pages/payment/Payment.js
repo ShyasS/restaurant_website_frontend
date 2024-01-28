@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 
 import {
@@ -8,7 +9,7 @@ import {
   CardCvcElement
 } from '@stripe/react-stripe-js';
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -21,15 +22,16 @@ const Payment = () => {
 
   const confirmOrderData = JSON.parse(localStorage.getItem('confirmOrder'));
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
-  // const user = JSON.parse(localStorage.getItem('user'));
-  const shippingInfo = JSON.parse(localStorage.getItem('shippingInfo'));
+  const user = JSON.parse(localStorage.getItem('user'));
+  // const shippingInfo = JSON.parse(localStorage.getItem('shippingInfo'));
   const billingAddress = JSON.parse(localStorage.getItem('billingAddress'));
+  const [error, setError] = useState(null);
 
   const paymentData = {
     amount: Math.round(confirmOrderData.orderSummary.total),
     shipping: {
-      name: `${shippingInfo.name} ${shippingInfo.lastName}`,
-      phone: shippingInfo.mobileNumber || emailOrMobile,
+      name: `${user.name} ${user.lastName}`,
+      phone: user.phone || emailOrMobile,
       address: {
         line1: billingAddress?.streetAddress,
         line2: null,
@@ -53,8 +55,8 @@ const Payment = () => {
         payment_method: {
           card: cardNumberElement,
           billing_details: {
-            name: `${shippingInfo.name} ${shippingInfo.lastName}`,
-            email: shippingInfo.email
+            name: `${user.name} ${user.lastName}`,
+            email: user.email || emailOrMobile
           }
         }
       });
@@ -87,6 +89,9 @@ const Payment = () => {
       console.error('Error processing payment:', error.message);
     }
   };
+  useEffect(() => {
+    setError(null);
+  }, [error]);
 
   return (
     <ErrorBoundary>

@@ -39,8 +39,8 @@ const PersonalDetails = ({
   // };
 
   return (
-    <div style={{ margin: '10%' }}>
-      <h3>Personal Details</h3>
+    <>
+      <h2>Personal Details</h2>
       <div className="mb-3 address-container">
         <label htmlFor="userName" className="form-label">
           First Name{' '}
@@ -128,7 +128,7 @@ const PersonalDetails = ({
           </button>
         </>
       )}
-    </div>
+    </>
   );
 };
 

@@ -130,81 +130,92 @@ const RestaurantSelection = () => {
     }
   }, [restaurantId]);
   return (
-    <Card className="col-11 mx-auto mt-5">
-      <Card.Body>
-        <div className="d-flex justify-content-start">
-          <button onClick={handleGoBack} className="btn" type="button">
-            <FaArrowLeft /> Back
+    <div>
+      <Card className="col-11 mx-auto mt-5">
+        <Card.Body>
+          <div className="d-flex justify-content-start">
+            <button onClick={handleGoBack} className="btn" type="button">
+              <FaArrowLeft /> Back
+            </button>
+          </div>
+          <Card.Title>Select Restaurant</Card.Title>
+          <Form className="container">
+            <Form.Group controlId="formrestaurantId">
+              <Form.Select
+                value={restaurantId}
+                className="container"
+                onChange={handleRestaurantIdChange}
+                aria-label="Select ZIP Code"
+              >
+                <option className="container" value="">
+                  Select a RestaurantBranch
+                </option>
+                {restaurant &&
+                  restaurant.map((restaurant) => (
+                    <option
+                      className="container"
+                      key={restaurant._id}
+                      value={restaurant.restaurantId}
+                    >
+                      {restaurant.restaurantBranch} -{' '}
+                      {formatAddress(restaurant.address)}
+                    </option>
+                  ))}
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Card.Body>
+        <Card.Body>
+          <div className="modal-body">
+            <Card.Title>Order Date</Card.Title>
+            {/* You would generate the following buttons dynamically based on available dates */}
+            <div className="date-buttons">
+              {availableDates.map((date) => (
+                <Button
+                  key={date}
+                  onClick={() => handleDateSelection(date)}
+                  variant="outline-danger"
+                  style={{
+                    backgroundColor:
+                      selectedDate === date ? 'green' : 'transparent',
+                    color: selectedDate === date ? 'white' : 'black',
+                    border:
+                      selectedDate === date
+                        ? '2px solid black'
+                        : '1px solid #ccc'
+                  }}
+                >
+                  {date}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </Card.Body>
+        <Card.Body>
+          <div className="modal-body">
+            <Card.Title>Order Time</Card.Title>
+            <Form.Select
+              value={selectedTimeSlot}
+              onChange={(e) => setSelectedTimeSlot(e.target.value)}
+            >
+              <option value="" disabled>
+                Select a time
+              </option>
+              {timeSlots.map((slot) => (
+                <option key={slot._id} value={slot.slot}>
+                  {slot.slot}
+                </option>
+              ))}
+            </Form.Select>
+          </div>
+        </Card.Body>
+        <div className="modal-footer">
+          <button className="btn" onClick={handleContinue}>
+            Continue
           </button>
         </div>
-        <Card.Title>Select Restaurant</Card.Title>
-        <Form className="container">
-          <Form.Group controlId="formrestaurantId">
-            <Form.Select
-              value={restaurantId}
-              className="container"
-              onChange={handleRestaurantIdChange}
-              aria-label="Select ZIP Code"
-            >
-              <option className="container" value="">
-                Select a RestaurantBranch
-              </option>
-              {restaurant &&
-                restaurant.map((restaurant) => (
-                  <option
-                    className="container"
-                    key={restaurant._id}
-                    value={restaurant.restaurantId}
-                  >
-                    {restaurant.restaurantBranch} -{' '}
-                    {formatAddress(restaurant.address)}
-                  </option>
-                ))}
-            </Form.Select>
-          </Form.Group>
-        </Form>
-      </Card.Body>
-      <Card.Body>
-        <div className="modal-body">
-          <Card.Title>Order Date</Card.Title>
-          {/* You would generate the following buttons dynamically based on available dates */}
-          <div className="date-buttons">
-            {availableDates.map((date) => (
-              <Button
-                variant={selectedDate === date ? 'success' : 'default'}
-                key={date}
-                onClick={() => handleDateSelection(date)}
-              >
-                {date}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </Card.Body>
-      <Card.Body>
-        <div className="modal-body">
-          <Card.Title>Order Time</Card.Title>
-          <Form.Select
-            value={selectedTimeSlot}
-            onChange={(e) => setSelectedTimeSlot(e.target.value)}
-          >
-            <option value="" disabled>
-              Select a time
-            </option>
-            {timeSlots.map((slot) => (
-              <option key={slot._id} value={slot.slot}>
-                {slot.slot}
-              </option>
-            ))}
-          </Form.Select>
-        </div>
-      </Card.Body>
-      <div className="modal-footer">
-        <button className="btn" onClick={handleContinue}>
-          Continue
-        </button>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
 
