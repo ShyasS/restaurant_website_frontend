@@ -33,7 +33,7 @@ export const login = (email, password) => async (dispatch) => {
       email,
       password
     });
-    console.log(response); // Log the entire response object for debugging purposes
+    // console.log(response); // Log the entire response object for debugging purposes
     dispatch(loginSuccess(response.data));
     window.localStorage.setItem('user', JSON.stringify(response.data.user));
     sessionStorage.setItem('user', JSON.stringify(response.data.user));

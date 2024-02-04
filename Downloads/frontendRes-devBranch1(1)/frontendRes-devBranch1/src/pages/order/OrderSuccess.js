@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // /* eslint-disable no-unused-vars */
 // /* eslint-disable prefer-destructuring */
 // /* eslint-disable no-underscore-dangle */
@@ -106,6 +107,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 const OrderSuccess = () => {
   // const [cartItems, setCartItems] = useState([]);
@@ -183,7 +185,7 @@ const OrderSuccess = () => {
         selectedTimeSlot: `${time}` // [${date}] ${selectedTimeSlot} - ()
       });
 
-      console.log('Order created successfully:', response.data.order);
+      // console.log('Order created successfully:', response.data.order);
       localStorage.removeItem('cartItems');
       for (const key in localStorage) {
         if (key !== 'user' && key !== 'isloggedIn') {
@@ -191,7 +193,8 @@ const OrderSuccess = () => {
         }
       }
     } catch (error) {
-      console.error('Error creating order:', error.message);
+      // console.error('Error creating order:', error.message);
+      toast.error('Error creating order');
     }
   };
   useEffect(() => {

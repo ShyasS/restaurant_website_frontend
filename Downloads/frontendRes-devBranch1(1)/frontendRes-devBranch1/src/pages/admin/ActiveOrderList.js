@@ -75,7 +75,7 @@ const OrdersTable = () => {
   };
   const handleDateSelection = (date) => {
     setSelectedDate(date);
-    console.log(`selected date - ${selectedDate}`);
+    // console.log(`selected date - ${selectedDate}`);
   };
 
   const fetchOrders = async () => {
@@ -126,7 +126,7 @@ const OrdersTable = () => {
   };
   const handleEdit = (orderId) => {
     navigate(`/admin/order/${orderId}`);
-    console.log(`Edit order with ID ${orderId}`);
+    // console.log(`Edit order with ID ${orderId}`);
   };
   const handleUpdateOrder = async (orderId) => {
     const response = await axios.put(`/api/admin/order/${orderId}`, {
@@ -134,7 +134,7 @@ const OrdersTable = () => {
     });
 
     if (response.status === 200) {
-      console.log('Order status updated successfully');
+      // console.log('Order status updated successfully');
       // Optionally, you can refetch the order details to reflect the updated status
       fetchOrders(orderId);
     } else {
@@ -152,7 +152,7 @@ const OrdersTable = () => {
         const response = await axios.get('/api/restaurant/get');
         const restaurant = response.data.data;
         // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
-        console.log(restaurant);
+        // console.log(restaurant);
         setRestaurant(restaurant);
       } catch (error) {
         console.error('Error fetching time slots:', error.message);

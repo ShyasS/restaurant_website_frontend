@@ -23,15 +23,18 @@ const Payment = () => {
   const confirmOrderData = JSON.parse(localStorage.getItem('confirmOrder'));
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
   const user = JSON.parse(localStorage.getItem('user'));
-  // const shippingInfo = JSON.parse(localStorage.getItem('shippingInfo'));
+  const shippingInfo = JSON.parse(localStorage.getItem('shippingInfo'));
   const billingAddress = JSON.parse(localStorage.getItem('billingAddress'));
   const [error, setError] = useState(null);
 
   const paymentData = {
     amount: Math.round(confirmOrderData.orderSummary.total),
     shipping: {
-      name: `${user.name} ${user.lastName}`,
-      phone: user.phone || emailOrMobile,
+      // name: `${user.name} ${user.lastName}`,
+      name: `${user?.name || shippingInfo.name} ${
+        user?.lastName || shippingInfo.lastName
+      }`,
+      phone: user?.phone || emailOrMobile,
       address: {
         line1: billingAddress?.streetAddress,
         line2: null,
@@ -55,8 +58,10 @@ const Payment = () => {
         payment_method: {
           card: cardNumberElement,
           billing_details: {
-            name: `${user.name} ${user.lastName}`,
-            email: user.email || emailOrMobile
+            name: `${user?.name || shippingInfo.name} ${
+              user?.lastName || shippingInfo.lastName
+            }`,
+            email: user?.email || emailOrMobile
           }
         }
       });

@@ -43,7 +43,7 @@ const LoginWithOtp = () => {
           navigate('/');
         }
       } catch (error) {
-        console.error('Login failed:', error.message);
+        // console.error('Login failed:', error.message);
         toast.error('Login failed. Please try again.', {
           position: toast.POSITION.BOTTOM_CENTER
         });

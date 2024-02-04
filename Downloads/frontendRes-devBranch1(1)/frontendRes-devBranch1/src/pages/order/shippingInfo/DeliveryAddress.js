@@ -10,6 +10,7 @@ import './index.css';
 // import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import BillingAddress from './BillingAddress';
 
 const DeliveryAddress = ({
@@ -91,7 +92,8 @@ const DeliveryAddress = ({
 
         return { latitude: lat, longitude: lon };
       } catch (error) {
-        console.error('Error geocoding billing address:', error.message);
+        // console.error('Error geocoding billing address:', error.message);
+        toast.error('Error geocoding billing address');
         throw error;
       }
     };
@@ -103,7 +105,8 @@ const DeliveryAddress = ({
       setBillingCoordinates(billingCoordinates);
       setBillingVerified(true);
     } catch (error) {
-      console.error('Error getting billing coordinates:', error.message);
+      // console.error('Error getting billing coordinates:', error.message);
+      toast.error('Error getting billing coordinates');
       // Handle errors for billing address coordinates
     }
   };
@@ -134,13 +137,13 @@ const DeliveryAddress = ({
     billingCountry
   ]);
   useEffect(() => {
-    console.log('Billing Address Props:', {
-      streetAddress,
-      postalCode,
-      city,
-      state,
-      country
-    });
+    // console.log('Billing Address Props:', {
+    //   streetAddress,
+    //   postalCode,
+    //   city,
+    //   state,
+    //   country
+    // });
     localStorage.setItem(
       'deliveryAddress',
       JSON.stringify({
@@ -153,7 +156,7 @@ const DeliveryAddress = ({
     );
   }, [streetAddress, postalCode, city, state, country]);
   useEffect(() => {
-    console.log('sameAsDelivery changed:', sameAsDelivery);
+    // console.log('sameAsDelivery changed:', sameAsDelivery);
     if (sameAsDelivery) {
       if (!useCurrentLocation) {
         setBillingStreetAddress(streetAddress);

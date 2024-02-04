@@ -48,10 +48,10 @@ const Home = () => {
   useEffect(() => {
     const handleStorage = () => {
       const items = JSON.parse(localStorage.getItem('cartItems'));
-      console.log(items);
+      // console.log(items);
       if (items) {
         setItems(items.length);
-        console.log(items);
+        // console.log(items);
       }
     };
 
@@ -62,7 +62,7 @@ const Home = () => {
   const handleAddToCart = (menuItem) => {
     // Check if menuItem is defined and has an _id property
     if (!menuItem || !menuItem._id) {
-      console.error('Invalid menuItem:', menuItem);
+      // console.error('Invalid menuItem:', menuItem);
       return;
     }
 
@@ -120,12 +120,12 @@ const Home = () => {
       setResPerPage(response.data.resPerPage);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching menus:', error);
+      // console.error('Error fetching menus:', error);
       setLoading(false);
-      toast.warning('No menus available!', {
-        position: toast.POSITION.BOTTOM_CENTER,
-        autoClose: 3000
-      });
+      // toast.warning('No menus available!', {
+      //   position: toast.POSITION.BOTTOM_CENTER,
+      //   autoClose: 3000
+      // });
       setMealTypeCategory(null);
       setDietaryPreferenceCategory(null);
     }
@@ -224,7 +224,8 @@ const Home = () => {
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
       }
     } catch (error) {
-      console.error('Error deleting item:', error.message);
+      // console.error('Error deleting item:', error.message);
+      toast.error('Error deleting item');
     }
   };
   const checkoutHandler = () => {
@@ -232,7 +233,7 @@ const Home = () => {
       const quantity = item.quantity || 1; // Use item.quantity directly
       const price = Number(item.price);
       const subtotal = quantity * price;
-      console.log(`Item: ${item._id}, Subtotal: ${subtotal}`);
+      // console.log(`Item: ${item._id}, Subtotal: ${subtotal}`);
       return acc + subtotal;
     }, 0);
 
@@ -270,14 +271,16 @@ const Home = () => {
       .get('/api/dietary-preferences')
       .then((response) => setDietaryCategories(response.data.data))
       .catch((error) =>
-        console.error('Error fetching dietary categories:', error)
+        // console.error('Error fetching dietary categories:', error)
+        toast.error('Error fetching dietary categories')
       );
 
     axios
       .get('/api/meal-types')
       .then((response) => setMealCategories(response.data.data))
       .catch((error) =>
-        console.error('Error fetching meal categories:', error)
+        // console.error('Error fetching meal categories:', error)
+        toast.error('Error fetching meal categories')
       );
   }, []);
 
@@ -312,22 +315,39 @@ const Home = () => {
               handleClearFilter={handleClearFilter}
             />
           </Col>
-          <Col xs={12} md={7} lg={10}>
-            <MenuList
-              menus={menus}
-              handleViewDetails={handleViewDetails}
-              handleAddToCart={handleAddToCart}
-              handleSearchChange={handleSearchChange}
-              handleSearchSubmit={handleSearchSubmit}
-              handlePageChange={handlePageChange}
-              searchTerm={searchTerm}
-              handleCloseModal={handleCloseModal}
-              showModal={showModal}
-              show={showModal}
-              onHide={handleCloseModal}
-              selectedMenuItem={selectedMenuItem}
-            />
-          </Col>
+          {menus.length === 0 ? (
+            <div
+              style={{
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: '999',
+                padding: '20px',
+                textAlign: 'center',
+                display: menus.length === 0 ? 'block' : 'none'
+              }}
+            >
+              No menus found
+            </div>
+          ) : (
+            <Col xs={12} md={7} lg={10}>
+              <MenuList
+                menus={menus}
+                handleViewDetails={handleViewDetails}
+                handleAddToCart={handleAddToCart}
+                handleSearchChange={handleSearchChange}
+                handleSearchSubmit={handleSearchSubmit}
+                handlePageChange={handlePageChange}
+                searchTerm={searchTerm}
+                handleCloseModal={handleCloseModal}
+                showModal={showModal}
+                show={showModal}
+                onHide={handleCloseModal}
+                selectedMenuItem={selectedMenuItem}
+              />
+            </Col>
+          )}
           {/* <Col xs={2} md={1} lg={1}>
   <CartSummary
     branch={branch}

@@ -16,7 +16,7 @@ const DashboardPage = () => {
                 <div className="card-body">
                   <div className="text-center card-font-size">
                     Total Amount
-                    <br /> <b>$3425</b>
+                    {/* <br /> <b>$3425</b> */}
                   </div>
                 </div>
               </div>
@@ -32,7 +32,7 @@ const DashboardPage = () => {
                 <div className="card-body">
                   <div className="text-center card-font-size">
                     Menus
-                    <br /> <b>23</b>
+                    {/* <br /> <b>23</b> */}
                   </div>
                 </div>
                 <Link
@@ -55,7 +55,7 @@ const DashboardPage = () => {
                 <div className="card-body">
                   <div className="text-center card-font-size">
                     Orders
-                    <br /> <b>345</b>
+                    {/* <br /> <b>345</b> */}
                   </div>
                 </div>
                 <Link
@@ -78,7 +78,7 @@ const DashboardPage = () => {
                 <div className="card-body">
                   <div className="text-center card-font-size">
                     Users
-                    <br /> <b>55</b>
+                    {/* <br /> <b>55</b> */}
                   </div>
                 </div>
                 <Link
@@ -100,7 +100,7 @@ const DashboardPage = () => {
                 <div className="card-body">
                   <div className="text-center card-font-size">
                     Restaurants
-                    <br /> <b>5</b>
+                    {/* <br /> <b>5</b> */}
                   </div>
                 </div>
                 <Link

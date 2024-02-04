@@ -109,7 +109,8 @@ const Cart = () => {
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
       }
     } catch (error) {
-      console.error('Error deleting item:', error.message);
+      // console.error('Error deleting item:', error.message);
+      toast.error('Error deleting item');
     }
   };
   const checkoutHandler = () => {
@@ -117,7 +118,7 @@ const Cart = () => {
       const quantity = item.quantity || 1; // Use item.quantity directly
       const price = Number(item.price);
       const subtotal = quantity * price;
-      console.log(`Item: ${item._id}, Subtotal: ${subtotal}`);
+      // console.log(`Item: ${item._id}, Subtotal: ${subtotal}`);
       return acc + subtotal;
     }, 0);
 

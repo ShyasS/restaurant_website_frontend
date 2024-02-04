@@ -156,7 +156,7 @@ const UpdateProduct = () => {
           className="address-container"
           encType="multipart/form-data"
         >
-          <h1 className="mb-4">Update Product</h1>
+          <h4 className="mb-4">Update Menu</h4>
 
           <div className="mb-4">
             <label htmlFor="name_field">

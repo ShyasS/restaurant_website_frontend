@@ -177,7 +177,7 @@ const LoginPage = () => {
       localStorage.setItem('user', JSON.stringify(user));
     }
     if (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error, {
         position: toast.POSITION.BOTTOM_FULL_WIDTH,
         onClose: () => {
@@ -189,24 +189,24 @@ const LoginPage = () => {
       const user = JSON.parse(localStorage.getItem('user'));
       // const user = JSON.parse(localStorage.getItem('user'));
       if (user && user.role !== 'user') {
-        toast.success('Login successful!', {
-          position: toast.POSITION.BOTTOM_FULL_WIDTH,
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true
-        });
+        // toast.success('Login successful!', {
+        //   position: toast.POSITION.BOTTOM_FULL_WIDTH,
+        //   autoClose: 3000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true
+        // });
         navigate('/admin/dashboard');
       } else {
-        toast.success('Login successful!', {
-          position: toast.POSITION.BOTTOM_FULL_WIDTH,
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true
-        });
+        // toast.success('Login successful!', {
+        //   position: toast.POSITION.BOTTOM_FULL_WIDTH,
+        //   autoClose: 3000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true
+        // });
         navigate('/');
       }
     }

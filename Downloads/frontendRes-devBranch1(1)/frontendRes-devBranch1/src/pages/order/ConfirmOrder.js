@@ -7,6 +7,7 @@ import axios from 'axios';
 import Cart from 'pages/home/draft/cartSummary';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
@@ -49,13 +50,14 @@ const ConfirmOrder = () => {
         }
       });
       setRestaurantBranch(response.data.restaurant.restaurantBranch);
-      console.log(response.data.restaurant.restaurantBranch);
+      // console.log(response.data.restaurant.restaurantBranch);
       localStorage.setItem(
         'restaurantBranch',
         JSON.stringify(restaurantBranch)
       );
     } catch (error) {
-      console.error('Error fetching restaurant details:', error.message);
+      // console.error('Error fetching restaurant details:', error.message);
+      toast.error('Error fetching restaurant details');
     }
   };
   useEffect(() => {

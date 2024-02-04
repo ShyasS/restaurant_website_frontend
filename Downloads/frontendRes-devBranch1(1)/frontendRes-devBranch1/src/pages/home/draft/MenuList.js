@@ -42,7 +42,7 @@ const MenuList = ({
 
       <div style={{ margin: '2%' }} className="borderUp">
         {menus.map((menuItem) => (
-          <div className="row" style={{ margin: '2%' }}>
+          <div key={menuItem._id} className="row" style={{ margin: '2%' }}>
             {/* <div
               key={menuItem._id}
               className="col-sm-12 col-md-6 col-lg-4 my-3"

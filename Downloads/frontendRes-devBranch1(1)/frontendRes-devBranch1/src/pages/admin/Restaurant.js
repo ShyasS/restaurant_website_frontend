@@ -23,9 +23,28 @@ const RestaurantTable = () => {
   };
 
   const onEdit = (id) => {
-    console.log(`Edit restaurant with ID ${id}`);
+    // console.log(`Edit restaurant with ID ${id}`);
     // navigate(`/admin/updateRestaurant/${id}`);
     navigate(`/admin/updateRestaurant/${id}`);
+  };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        'http://localhost:8000/api/restaurant/get'
+      );
+      const { data } = response;
+
+      // Check if the response is successful and contains the expected structure
+      if (data.success && Array.isArray(data.data)) {
+        setRestaurants(data.data);
+      } else {
+        console.error('Invalid data format:', data);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onDelete = async (menuId) => {
@@ -38,6 +57,7 @@ const RestaurantTable = () => {
         type: 'success',
         position: toast.POSITION.BOTTOM_CENTER
       });
+      fetchData();
 
       // Optionally, navigate to another page after successful deletion
       // history.push('/some-other-page');
@@ -51,26 +71,6 @@ const RestaurantTable = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'http://localhost:8000/api/restaurant/get'
-        );
-        const { data } = response;
-
-        // Check if the response is successful and contains the expected structure
-        if (data.success && Array.isArray(data.data)) {
-          setRestaurants(data.data);
-        } else {
-          console.error('Invalid data format:', data);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchData();
   }, []);
 

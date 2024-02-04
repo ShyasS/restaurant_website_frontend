@@ -31,7 +31,7 @@ const HomePage = () => {
     } catch (error) {
       if (error.response && error.response.status === 400) {
         // Handle 400 Bad Request error
-        console.error('Bad Request:', error.response.data);
+        // console.error('Bad Request:', error.response.data);
         // Optionally, you can display a toast message here
         toast.error(`Bad Request: ${error.response.data}`, {
           position: toast.POSITION.BOTTOM_CENTER
@@ -39,7 +39,7 @@ const HomePage = () => {
       } else {
         setError('Error fetching data');
         // Display a toast message or log the error to the console
-        console.error('Error fetching data:', error);
+        // console.error('Error fetching data:', error);
       }
     } finally {
       setLoading(false);

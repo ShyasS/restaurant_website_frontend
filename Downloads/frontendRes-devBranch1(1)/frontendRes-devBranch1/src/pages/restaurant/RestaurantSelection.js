@@ -63,7 +63,7 @@ const RestaurantSelection = () => {
 
   const handleDateSelection = (date) => {
     setSelectedDate(date);
-    console.log(setSelectedDate);
+    // console.log(setSelectedDate);
   };
   const handleGoBack = () => {
     navigate(-1);
@@ -104,10 +104,11 @@ const RestaurantSelection = () => {
         const response = await axios.get('/api/restaurant/get');
         const restaurant = response.data.data;
         // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
-        console.log(restaurant);
+        // console.log(restaurant);
         setRestaurant(restaurant);
       } catch (error) {
-        console.error('Error fetching time slots:', error.message);
+        // console.error('Error fetching time slots:', error.message);
+        toast.error('Error fetching time slots');
       }
     };
 
@@ -121,7 +122,8 @@ const RestaurantSelection = () => {
         const timeSlotsData = response.data.timeSlots;
         setTimeSlots(timeSlotsData);
       } catch (error) {
-        console.error('Error fetching time slots:', error.message);
+        // console.error('Error fetching time slots:', error.message);
+        toast.error('Error fetching time slots');
       }
     };
 

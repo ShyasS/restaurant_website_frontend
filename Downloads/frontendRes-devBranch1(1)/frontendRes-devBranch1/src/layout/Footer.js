@@ -85,13 +85,13 @@ export default function Footer() {
         </section>
 
         <section className="">
-          <form action="">
-            <MDBRow style={{ marginLeft: '46%', width: '100%' }}>
-              <MDBCol size="auto">
-                <ContactUs />
-              </MDBCol>
-            </MDBRow>
-          </form>
+          {/* <form action=""> */}
+          <MDBRow style={{ marginLeft: '46%', width: '100%' }}>
+            <MDBCol size="auto">
+              <ContactUs />
+            </MDBCol>
+          </MDBRow>
+          {/* </form> */}
         </section>
 
         <section className="mb-4">

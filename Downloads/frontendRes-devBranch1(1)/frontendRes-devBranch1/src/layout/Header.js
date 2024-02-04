@@ -113,14 +113,14 @@ const Header = () => {
     localStorage.clear();
     window.localStorage.setItem('isloggedIn', false);
     window.localStorage.setItem('isloggedIn', false);
-    toast.success('Logout successful!', {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true
-    });
+    // toast.success('Logout successful!', {
+    //   position: 'top-right',
+    //   autoClose: 3000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true
+    // });
     setIsLoggedIn(false);
     navigate('/login');
   };
@@ -164,7 +164,7 @@ const Header = () => {
           />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto custom-navbar">
-              {isAuthenticated || isloggedIn === 'true' ? (
+              {isloggedIn === 'true' ? (
                 <>
                   {/* <Nav.Link as={Link} to="/cart">
               Cart

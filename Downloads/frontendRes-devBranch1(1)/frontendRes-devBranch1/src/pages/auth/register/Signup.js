@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -7,13 +8,16 @@ import './SignUpForm.css';
 
 const SignUpForm = () => {
   // const navigate = useNavigate();
+  const defaultAvatarImage =
+    'https://th.bing.com/th/id/OIP.QTPhxyhDQjv4eE1mA4ulLAHaJs?w=168&h=220&c=7&r=0&o=5&dpr=1.3&pid=1.7';
   const [formData, setFormData] = useState({
-    firstName: '',
+    name: '',
     lastName: '',
     password: '',
     confirmPassword: '',
     email: '',
-    confirmEmail: '',
+    avatar: defaultAvatarImage,
+    // confirmEmail: '',
     phone: ''
   });
 
@@ -32,7 +36,7 @@ const SignUpForm = () => {
       const response = await axios.post('/api/register', formData);
 
       // Handle success, for example, show a success message or redirect
-      console.log('Register successful', response.data);
+      // console.log('Register successful', response.data);
 
       // Show success toast
       toast.success('Registration link has sent to your email successfully!', {
@@ -46,13 +50,26 @@ const SignUpForm = () => {
       // navigate('/');
     } catch (error) {
       // Handle error
-      console.error('error', error.response.data.message);
+      // console.error('error', error.response.data.message);
 
       // Show error toast
       toast.error(`${error.response.data.message}`, {
         position: toast.POSITION.BOTTOM_CENTER
       });
     }
+  };
+  const defaultAvatarStyle = {
+    display: formData.avatar === defaultAvatarImage ? 'block' : 'none',
+    maxWidth: '100px' // Adjust the size as needed
+  };
+
+  const customAvatarStyle = {
+    display: formData.avatar !== defaultAvatarImage ? 'block' : 'none',
+    maxWidth: '100px' // Adjust the size as needed
+    // Add additional styles for custom avatar if needed
+  };
+  const avatarContainerStyle = {
+    textAlign: 'center'
   };
 
   return (
@@ -94,7 +111,7 @@ const SignUpForm = () => {
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="name">
+                <label htmlFor="lastName">
                   Last name:
                   <span className="text-danger">
                     {' '}
@@ -104,7 +121,7 @@ const SignUpForm = () => {
                 <div>
                   <input
                     type="text"
-                    id="name"
+                    id="lastName"
                     name="lastName"
                     placeholder="Field is required"
                     value={formData.lastName}
@@ -117,7 +134,7 @@ const SignUpForm = () => {
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="email">
+                <label htmlFor="email1">
                   Email:{' '}
                   <span className="text-danger">
                     {' '}
@@ -127,7 +144,7 @@ const SignUpForm = () => {
                 <div>
                   <input
                     type="email"
-                    id="email"
+                    id="email1"
                     name="email"
                     placeholder="Field is required"
                     value={formData.email}
@@ -145,6 +162,9 @@ const SignUpForm = () => {
                   <span className="text-danger">
                     {' '}
                     <b>*</b>
+                    <span>
+                      <p>At least 8 characters</p>
+                    </span>
                   </span>
                 </label>
                 <div>
@@ -184,6 +204,32 @@ const SignUpForm = () => {
                 </div>
               </div>
             </div>
+            <div style={{ textAlign: 'center', display: 'none' }}>
+              <label htmlFor="avatar">Avatar Image:</label>
+              <div style={avatarContainerStyle}>
+                <img
+                  src={formData.avatar}
+                  alt="User Avatar"
+                  style={{ ...defaultAvatarStyle, marginBottom: '10px' }}
+                />
+                <img
+                  src={formData.avatar}
+                  alt="User Avatar"
+                  style={customAvatarStyle}
+                />
+              </div>
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/*"
+                onChange={(e) =>
+                  setFormData({ ...formData, avatar: e.target.files[0] })
+                }
+                style={{ width: '100%' }}
+              />
+            </div>
+
             <div className="my-3">
               <button type="submit">Sign up</button>
             </div>

@@ -78,20 +78,23 @@ import CustomerList from 'pages/admin/CustomerList';
 function App() {
   const loggedIn = window.localStorage.getItem('isloggedIn'  || false);
   const {pathname} = window.location.pathname;
-  console.log(pathname);
+  // console.log(pathname);
   const [stripeApiKey, setStripeApiKey] = useState('');
   // const [notification, setNotification] = useState('');
   useEffect(() => {
-    store.dispatch(loadUser);
+    // store.dispatch(loadUser);
     async function getStripeApiKey() {
       try {
         const { data } = await axios.get('/api/stripeapi');
         setStripeApiKey(data.stripeApiKey);
       } catch (error) {
         if (error.response && error.response.status === 400) {
-          console.error('Bad Request:', error.response.data.message);
+          toast.error(`Bad Request: ${error.response.data.message}`, {
+            position: toast.POSITION.BOTTOM_CENTER
+          });
+          // console.error('Bad Request:', error.response.data.message);
         } else {
-          console.error('Error fetching Stripe API key:', error);
+          // console.error('Error fetching Stripe API key:', error);
           toast.error('Error fetching Stripe API key', {
             position: toast.POSITION.BOTTOM_CENTER
           });

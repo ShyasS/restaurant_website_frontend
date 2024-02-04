@@ -143,7 +143,7 @@ const CustomerList = () => {
                 type="text"
                 className={`form-control `}
                 style={{ display: 'flex' }}
-                placeholder="Enter User ID"
+                placeholder="Search user"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />

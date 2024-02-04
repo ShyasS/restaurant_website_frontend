@@ -171,20 +171,20 @@ const OrderDetails = () => {
               <h4 className="my-4">
                 <b>Order Info</b>
               </h4>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                <p className="mx-2">
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                <div className="mx-2">
                   <b>Order Id:</b>
-                </p>
+                </div>
                 {orderDetails?._id}
-              </p>
+              </div>
 
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Name:</b>
                 {`${orderDetails?.shipping.name} ${
                   orderDetails?.shipping.lastName || ''
                 }`}
-              </p>
-              <p
+              </div>
+              <div
                 style={{
                   display: 'flex',
                   marginBottom: '1rem'
@@ -192,8 +192,8 @@ const OrderDetails = () => {
               >
                 <b className="mx-2">Phone:</b>{' '}
                 {orderDetails?.shipping.phone || 'not found'}
-              </p>
-              <p
+              </div>
+              <div
                 style={{
                   display: 'flex',
                   marginBottom: '1rem'
@@ -205,9 +205,9 @@ const OrderDetails = () => {
                 {orderDetails?.shipping.address.state || ''},{' '}
                 {orderDetails?.shipping.address.country || ''},
                 {orderDetails?.shipping.address.postalCode || ''}
-              </p>
+              </div>
               {orderDetails?.delivery && (
-                <p
+                <div
                   style={{
                     display: 'flex',
                     marginBottom: '1rem',
@@ -220,39 +220,39 @@ const OrderDetails = () => {
                   {orderDetails?.delivery?.state || ''},{' '}
                   {orderDetails?.delivery?.country || ''},
                   {orderDetails?.delivery?.postalCode || ''}
-                </p>
+                </div>
               )}
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Restaurant:</b>{' '}
                 {orderDetails?.restaurantBranch || 'not found'}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Selected time:</b>{' '}
                 {orderDetails?.selectedTimeSlot || 'not found'}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Selected Date:</b>{' '}
                 {orderDetails?.orderDate || 'not found'}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Order Type:</b>{' '}
                 {orderDetails?.orderType || 'not found'}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Total Amount:</b> $
                 {orderDetails?.totalPrice}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Payment:</b> {orderDetails?.paymentStatus}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Payment Id:</b> {orderDetails?.paymentInfo}
-              </p>
+              </div>
               <div />
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Paid at:</b> {orderDetails?.paidAt}
-              </p>
-              <p
+              </div>
+              <div
                 style={{ display: 'flex', marginBottom: '1rem' }}
                 className={`my-4 ${
                   orderDetails?.orderStatus === 'Delivered'
@@ -262,15 +262,15 @@ const OrderDetails = () => {
               >
                 <b className="mx-2">Order Status:</b>{' '}
                 {orderDetails?.orderStatus}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Order Instruction:</b>{' '}
                 {orderDetails?.orderInstruction || '-'}
-              </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              </div>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Delivery Instruction :</b>{' '}
                 {orderDetails?.deliveryInstruction || '-'}
-              </p>
+              </div>
               <div />
             </div>
 

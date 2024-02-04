@@ -78,7 +78,7 @@ const Menus = ({ branch, onAddToCart }) => {
       setResPerPage(response.data.resPerPage);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching menus:', error);
+      // console.error('Error fetching menus:', error);
       setLoading(false);
       //    toast.warning('No menus available!', {
       //     position: toast.POSITION.BOTTOM_CENTER,
@@ -132,7 +132,8 @@ const Menus = ({ branch, onAddToCart }) => {
       .get('/api/dietary-preferences')
       .then((response) => setDietaryCategories(response.data.data))
       .catch((error) =>
-        console.error('Error fetching dietary categories:', error)
+        // console.error('Error fetching dietary categories:', error)
+        toast.error('Error fetching dietary categories')
       );
 
     // Fetch meal categories from API
@@ -140,7 +141,8 @@ const Menus = ({ branch, onAddToCart }) => {
       .get('/api/meal-types')
       .then((response) => setMealCategories(response.data.data))
       .catch((error) =>
-        console.error('Error fetching meal categories:', error)
+        // console.error('Error fetching meal categories:', error)
+        toast.error('Error fetching meal categories')
       );
   }, []);
   return (

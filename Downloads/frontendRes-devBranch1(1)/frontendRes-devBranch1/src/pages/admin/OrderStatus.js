@@ -42,7 +42,7 @@ const OrderStatus = () => {
         );
 
         if (response.status === 200) {
-          console.log('Order status updated successfully');
+          // console.log('Order status updated successfully');
           // Optionally, you can refetch the order details to reflect the updated status
           fetchOrderDetails(id);
         } else {
@@ -70,12 +70,12 @@ const OrderStatus = () => {
           </h4>
           <div className="row d-flex justify-content-around">
             <div className="col-12 col-lg-4 order-details">
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <p className="mx-2">
                   <b>Order Id:</b>
                 </p>
                 {orderDetails?._id}
-              </p>
+              </div>
 
               <p style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Name:</b>

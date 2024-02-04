@@ -279,11 +279,14 @@ export default function CreateMenu() {
   }, []);
   useEffect(() => {
     // Update selected restaurantId based on the selectedBranch
-    const selectedBranchObject = restaurantBranch.find(
-      (branch) => branch.restaurantBranch === selectedBranch
-    );
-    if (selectedBranchObject) {
-      setSelectedRestaurantId(selectedBranchObject.restaurantId);
+    if (role === 'superAdmin') {
+      const selectedBranchObject = restaurantBranch.find(
+        (branch) => branch.restaurantBranch === selectedBranch
+      );
+
+      if (selectedBranchObject) {
+        setSelectedRestaurantId(selectedBranchObject.restaurantId);
+      }
     }
   }, [selectedBranch, restaurantBranch]);
 
@@ -464,9 +467,9 @@ export default function CreateMenu() {
                       type="text"
                       id="id_field"
                       className="form-control"
-                      // onChange={(e) => setRestaurantId(selectedRestaurantId)}
-                      value={selectedRestaurantId}
-                      required
+                      // onChange={() => setRestaurantId(selectedRestaurantId)}
+                      // value={selectedRestaurantId}
+                      // required
                       placeholder="Field is required"
                     />
                   </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -7,14 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const CreateAdmin = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
+    name: '',
     lastName: '',
     password: '',
     confirmPassword: '',
     email: '',
     role: '',
     confirmEmail: '',
-    phone: ''
+    phone: '',
+    restaurantBranch: '',
+    restaurantId: ''
   });
   const [restaurantBranches, setRestaurantBranches] = useState([]); // Updated
   const [restaurantIds, setRestaurantIds] = useState([]); // Updated
@@ -45,7 +48,7 @@ const CreateAdmin = () => {
       const response = await axios.post('/api/register', formData);
 
       // Handle success, for example, show a success message or redirect
-      console.log('Register successful', response.data);
+      // console.log('Register successful', response.data);
 
       // Show success toast
       toast.success('Registration successful!', {
@@ -143,7 +146,7 @@ const CreateAdmin = () => {
           <input
             type="email"
             className={`form-control `}
-            id="email"
+            id="email1"
             name="email"
             placeholder="Field is required"
             value={formData.email}

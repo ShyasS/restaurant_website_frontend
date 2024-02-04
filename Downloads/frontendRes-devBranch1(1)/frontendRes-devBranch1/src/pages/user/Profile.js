@@ -166,7 +166,7 @@
 /* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../App.css';
 import { toast } from 'react-toastify';
@@ -191,12 +191,12 @@ export default function Profile() {
 
   const handleShowEditModal = () => setShowEditModal(true);
   const handleCloseEditModal = () => setShowEditModal(false);
-  const { id } = useParams();
+  // const { id } = useParams();
   const user = JSON.parse(localStorage.getItem('user'));
   const userId = user._id;
 
   const handleEdit = () => {
-    console.log('profile edit');
+    // console.log('profile edit');
     navigate(`/updateProfile/${userId}`);
   };
 
@@ -215,7 +215,7 @@ export default function Profile() {
 
     try {
       if (password === confirmPassword) {
-        const response = await axios.put(`/api/password/change/${id}`, {
+        const response = await axios.put(`/api/password/change/${userId}`, {
           oldPassword,
           password,
           confirmPassword
@@ -238,8 +238,8 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get('/api/myprofile');
-      const { user } = response.data;
+      const response = await axios.get(`/api/myprofile/${userId}`);
+      const { user } = response.data.data;
       setName(user.name);
       setLastName(user.lastName);
       setEmail(user.email);
@@ -298,7 +298,7 @@ export default function Profile() {
           </Modal.Header>
           <Modal.Body>
             <Form>
-              <Form.Group controlId="email">
+              <Form.Group controlId="oldPassword">
                 <Form.Label>Old Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -314,7 +314,7 @@ export default function Profile() {
               {!isFormValid.confirmPassword && (
                 <div className="text-danger">This fields are required.</div>
               )}
-              <Form.Group controlId="name">
+              <Form.Group controlId="newPassword">
                 <Form.Label>New Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -330,7 +330,7 @@ export default function Profile() {
               {!isFormValid.confirmPassword && (
                 <div className="text-danger">This fields are required.</div>
               )}
-              <Form.Group controlId="name">
+              <Form.Group controlId="confirm_password">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                   type="password"

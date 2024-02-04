@@ -84,8 +84,8 @@ const OrdersHistory = () => {
       setTotalOrders(totalOrders);
       setTotalPrice(totalPrice);
 
-      console.log('Total Orders:', totalOrders);
-      console.log('Non-Active Orders:', extractedNonActiveOrders);
+      // console.log('Total Orders:', totalOrders);
+      // console.log('Non-Active Orders:', extractedNonActiveOrders);
       // const orders = Array.isArray(response.data)
       //   ? response.data
       //   : response.data.orders;
@@ -170,7 +170,7 @@ const OrdersHistory = () => {
         const response = await axios.get('/api/restaurant/get');
         const restaurant = response.data.data;
         // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
-        console.log(restaurant);
+        // console.log(restaurant);
         setRestaurant(restaurant);
       } catch (error) {
         console.error('Error fetching time slots:', error.message);

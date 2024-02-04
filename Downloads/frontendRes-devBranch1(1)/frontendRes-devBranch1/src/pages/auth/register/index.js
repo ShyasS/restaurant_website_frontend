@@ -58,12 +58,12 @@ const Register = () => {
         </div>
 
         <div>
-          <label htmlFor="name">Last name:</label>
+          <label htmlFor="lastName">Last name:</label>
           <div>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="lastName"
+              name="lastName"
               placeholder="Last Name"
               value={formData.lastName}
               onChange={handleChange}

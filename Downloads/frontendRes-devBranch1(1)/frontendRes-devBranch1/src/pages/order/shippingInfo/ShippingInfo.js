@@ -61,7 +61,7 @@ const ShippingInfo1 = () => {
 
   const handleTimeChange = (newTime) => {
     setTime(newTime);
-    console.log(time);
+    // console.log(time);
   };
 
   const handleUseCurrentLocationChange = () => {
@@ -267,21 +267,22 @@ const ShippingInfo1 = () => {
 
       // Check the response from the server
       if (response.data.success) {
-        console.log('OTP verified successfully');
+        // console.log('OTP verified successfully');
         toast.success('OTP verified successfully');
         localStorage.setItem('emailOrMobile', JSON.stringify(emailOrMobile));
         setOtpVerified(true);
         // Proceed with further actions, such as navigating to the next step
       } else {
-        console.error('OTP verification failed:', response.data.message);
+        // console.error('OTP verification failed:', response.data.message);
+        toast.error(`OTP verification failed!`);
         // Handle the case where OTP verification failed, show an error message, etc.
       }
     } catch (error) {
-      console.error('Error confirming OTP:', error);
+      // console.error('Error confirming OTP:', error);
       toast.error(`OTP verification failed!`);
       // Handle other errors, show an error message, etc.
     }
-    console.log('Entered OTP:', enteredOtp);
+    // console.log('Entered OTP:', enteredOtp);
   };
   const handleEmailOrMobileChange = (e) => {
     setEmailOrMobile(e.target.value);
@@ -290,7 +291,7 @@ const ShippingInfo1 = () => {
   const handleGetOtp = async () => {
     try {
       const apiUrl = '/api/send/otp';
-      console.log('Mobile Number:', emailOrMobile);
+      // console.log('Mobile Number:', emailOrMobile);
       // Check if the input is an email or a phone number
       const isEmail = /\S+@\S+\.\S+/.test(emailOrMobile);
       const isPhone = /^\d{10}$/.test(emailOrMobile);
@@ -304,7 +305,7 @@ const ShippingInfo1 = () => {
       toast.success('OTP sent successfully!');
       setIsOtpSent(true);
     } catch (error) {
-      console.error('Error sending OTP:', error);
+      // console.error('Error sending OTP:', error);
       toast.error(`Error sending OTP!`);
     }
   };
@@ -344,8 +345,8 @@ const ShippingInfo1 = () => {
         } else {
           setDeliveryVerified(false);
         }
-        console.log('Distance Result:', distanceResult);
-        console.log('Full Distance Response:', distanceResponse.data);
+        // console.log('Distance Result:', distanceResult);
+        // console.log('Full Distance Response:', distanceResponse.data);
         localStorage.setItem('distanceResponse', JSON.stringify(result));
         localStorage.setItem(
           'deliveryAddress',
@@ -358,17 +359,19 @@ const ShippingInfo1 = () => {
           })
         );
 
-        console.log(data);
+        // console.log(data);
         setToastShown(true);
       } else {
         toast.error('Geolocation is not supported by your browser');
       }
     } catch (error) {
-      console.error('Error getting location:', error.message);
+      // console.error('Error getting location:', error.message);
+      toast.error('Error getting location');
       // notifyError(error.message);
     }
   };
-  const handleBillingAddressChange = async () => {
+  const handleBillingAddressChange = async (event) => {
+    event.preventDefault();
     const fullBillingAddress = `${streetAddress}, ${city}, ${state}, ${postal_code}, ${country}`;
 
     const geocodeBillingAddressToCoordinates = async (address) => {
@@ -392,7 +395,8 @@ const ShippingInfo1 = () => {
         setBillingVerified(true);
         return { latitude: lat, longitude: lon };
       } catch (error) {
-        console.error('Error geocoding billing address:', error.message);
+        // console.error('Error geocoding billing address:', error.message);
+        toast.error('Error geocoding billing address');
         throw error;
       }
     };
@@ -404,7 +408,8 @@ const ShippingInfo1 = () => {
       setBillingCoordinates(billingCoordinates);
       setBillingVerified(true);
     } catch (error) {
-      console.error('Error getting billing coordinates:', error.message);
+      // console.error('Error getting billing coordinates:', error.message);
+      toast.error('Error getting billing coordinates');
       // Handle errors for billing address coordinates
     }
   };
@@ -420,9 +425,9 @@ const ShippingInfo1 = () => {
         const response = await axios.get(
           `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${geoapifyApiKey}`
         );
-        console.log(
-          `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${geoapifyApiKey}`
-        );
+        // console.log(
+        //   `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${geoapifyApiKey}`
+        // );
 
         if (!response.data.features || response.data.features.length === 0) {
           throw new Error('Coordinates not found for the given address');
@@ -432,13 +437,14 @@ const ShippingInfo1 = () => {
         const { lat, lon } = firstFeature.properties;
         positionLat = firstFeature.properties.lat;
         positionLng = firstFeature.properties.lon;
-        console.log(`-------------${positionLat}`);
+        // console.log(`-------------${positionLat}`);
 
         localStorage.setItem('lat', JSON.stringify(lat));
         localStorage.setItem('lng', JSON.stringify(lon));
         return { latitude: lat, longitude: lon };
       } catch (error) {
-        console.error('Error geocoding address:', error.message);
+        // console.error('Error geocoding address:', error.message);
+        toast.error('Error geocoding address');
         throw error;
       }
     };
@@ -447,7 +453,8 @@ const ShippingInfo1 = () => {
       try {
         findMyCoordinates();
       } catch (error) {
-        console.log(error);
+        // console.log(error);
+        toast.error('Error in finding coordinates');
       }
     } else {
       try {
@@ -468,11 +475,12 @@ const ShippingInfo1 = () => {
           setDeliveryVerified(false);
         }
 
-        console.log('Distance Result:', distanceResult);
-        console.log('Full Distance Response:', distanceResponse.data);
+        // console.log('Distance Result:', distanceResult);
+        // console.log('Full Distance Response:', distanceResponse.data);
         localStorage.setItem('distanceResponse', JSON.stringify(result));
       } catch (error) {
-        console.error('Error getting coordinates:', error.message);
+        // console.error('Error getting coordinates:', error.message);
+        toast.error('Error getting coordinates');
 
         // Check if the error is an AxiosError and the status code is 400
         if (
@@ -496,7 +504,7 @@ const ShippingInfo1 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted');
+    // console.log('Form submitted');
 
     try {
       // Check if the form is valid (uncomment if you have a validateForm function)
@@ -562,7 +570,7 @@ const ShippingInfo1 = () => {
         }
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      // console.error('Error submitting form:', error);
 
       // Show specific error messages based on the error type
       if (
@@ -585,10 +593,11 @@ const ShippingInfo1 = () => {
         const response = await axios.post('/api/timeSlots', { restaurantId });
         const timeSlotsData = response.data.timeSlots;
         // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
-        console.log(timeSlotsData);
+        // console.log(timeSlotsData);
         setTimeSlots(timeSlotsData);
       } catch (error) {
-        console.error('Error fetching time slots:', error.message);
+        // console.error('Error fetching time slots:', error.message);
+        toast.error('Error fetching time slots');
       }
     };
 

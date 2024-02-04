@@ -44,7 +44,7 @@ const Home = () => {
   const handleAddToCart = (menuItem) => {
     // Check if menuItem is defined and has an _id property
     if (!menuItem || !menuItem._id) {
-      console.error('Invalid menuItem:', menuItem);
+      // console.error('Invalid menuItem:', menuItem);
       return;
     }
 
@@ -97,7 +97,7 @@ const Home = () => {
       setResPerPage(response.data.resPerPage);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching menus:', error);
+      // console.error('Error fetching menus:', error);
       setLoading(false);
       toast.warning('No menus available!', {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -202,7 +202,8 @@ const Home = () => {
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
       }
     } catch (error) {
-      console.error('Error deleting item:', error.message);
+      // console.error('Error deleting item:', error.message);
+      toast.error('Error deleting item:');
     }
   };
 
@@ -211,7 +212,7 @@ const Home = () => {
       const quantity = item.quantity || 1; // Use item.quantity directly
       const price = Number(item.price);
       const subtotal = quantity * price;
-      console.log(`Item: ${item._id}, Subtotal: ${subtotal}`);
+      // console.log(`Item: ${item._id}, Subtotal: ${subtotal}`);
       return acc + subtotal;
     }, 0);
     localStorage.setItem('cartItemsTotal', JSON.stringify(cartItemsTotal));
@@ -242,15 +243,17 @@ const Home = () => {
     axios
       .get('/api/dietary-preferences')
       .then((response) => setDietaryCategories(response.data.data))
-      .catch((error) =>
-        console.error('Error fetching dietary categories:', error)
+      .catch(() =>
+        // console.error('Error fetching dietary categories:', error)
+        toast.error('Error fetching dietary categories')
       );
 
     axios
       .get('/api/meal-types')
       .then((response) => setMealCategories(response.data.data))
-      .catch((error) =>
-        console.error('Error fetching meal categories:', error)
+      .catch(() =>
+        // console.error('Error fetching meal categories:', error)
+        toast.error('Error fetching meal categories')
       );
   }, []);
 

@@ -22,10 +22,10 @@ const SendLoginOtp = () => {
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/');
-      console.log('Logged in successfully');
+      // console.log('Logged in successfully');
     }
     if (error) {
-      console.log(error);
+      // console.log(error);
       toast(error, {
         position: toast.POSITION.BOTTOM_CENTER,
         type: 'error',

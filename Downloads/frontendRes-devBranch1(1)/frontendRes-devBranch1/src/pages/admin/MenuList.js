@@ -53,14 +53,14 @@ const MenuList = () => {
   const handleEdit = (menuId) => {
     // Implement edit functionality here
     navigate(`/admin/updateMenu/${menuId}`);
-    console.log(`Edit menu item with ID ${menuId}`);
+    // console.log(`Edit menu item with ID ${menuId}`);
   };
 
   const handleDelete = async (menuId) => {
     try {
       // Make an Axios DELETE request to delete the product
       await axios.delete(`/api/admin/product/${menuId}`);
-
+      fetchOrders();
       // Handle success, e.g., navigate to another page or show a success message
       toast('Product Deleted Successfully!', {
         type: 'success',
