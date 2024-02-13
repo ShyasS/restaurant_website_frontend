@@ -1,9 +1,10 @@
-.custom-navbar .nav-link {
+/* .custom-navbar .nav-link {
   color: white !important;
 }
 .custom-navbar {
   color: white !important;
-}.btn-custom {
+} */
+.btn-custom {
   background-color: #ffa500 !important;
   border: none !important;
 border-radius: 0 !important;
@@ -59,20 +60,20 @@ margin: 2px;
   color: #bbb!important;
   float: left;
 }
-.navbar-default{
+/* .navbar-default{
   border-color: #555;
   height:32px;
   padding-top: 0px;
   padding-bottom: 0px;
-}
+} */
 
-.nav-item-left{
+/* .nav-item-left{
   background-color: #222;
   color:#888;
   float: left;
   height: 32px;
-}
-.navbar-text{
+} */
+/* .navbar-text{
   color: #888!important;
   border-color: #555;
   height:32px;
@@ -81,7 +82,7 @@ margin: 2px;
   margin-top: 0px;
   margin-bottom: 0px;
   vertical-align: middle!important;
-}
+} */
 .RightBoxNav {
   float: right!important;
   background-color: #222;
@@ -119,17 +120,17 @@ margin: 2px;
   margin:0px;
   padding:0px;
 }
-.navbar-light .navbar-toggler .navbar-toggler-icon{
+/* .navbar-light .navbar-toggler .navbar-toggler-icon{
   width:32px;
   height:32px;
   background-color: #555;
   padding:0px;
   margin:0px;
-}
-.navbar-light .navbar-nav .navbar-link{
+} */
+/* .navbar-light .navbar-nav .navbar-link{
   width:32px;
   height:32px;
   background-color: #555;
   padding:0px;
   margin:0px;
-}
+} */

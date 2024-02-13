@@ -9,6 +9,14 @@
   background-color: '#E5E4E2';
 }
 
+/* .HomeSlider{
+  background-image: url('./assets/img/Background-Image-Home.jpg');
+} */
+
+.HomeSlider{
+ 
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

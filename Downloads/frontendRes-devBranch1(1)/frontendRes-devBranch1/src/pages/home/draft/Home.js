@@ -5,178 +5,280 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable global-require */
-import React from 'react';
-import styled from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import {
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBCarouselCaption
-} from 'mdb-react-ui-kit';
-import { Col, Container, Row } from 'react-bootstrap';
-import slider_1 from '../../../assets/img/slider_1.png';
-import savor_spice from '../../../assets/img/savor_spice.png';
-import delight_diversity from '../../../assets/img/delight_diversity.png';
-import Services1 from '../../../assets/img/Services1.png';
-import Services2 from '../../../assets/img/Services2.png';
-import Services3 from '../../../assets/img/Services3.png';
-import { TitleStyles } from './ReusedStyles';
-import './home1.css';
+  // import { Swiper, SwiperSlide } from 'swiper/react';
+  // import 'swiper/css';
+  // import 'swiper/css/pagination';
+  // import 'swiper/css/navigation';
+  // // import CustomArrow from '../Swiper/CustomArrow'
+  // import './styles.css';
+  // import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-const Section = styled.section`
-  margin: 2rem 4rem;
-  ${TitleStyles};
-  .services {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10vw;
-    margin-top: 4rem;
-    .service {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5vw;
-      padding: 0 3vw;
-      img {
-        height: 2.8rem;
-      }
-      p {
-        text-align: center;
-        line-height: 2rem;
-        font-size: 1.1rem;
-        letter-spacing: 0.1rem;
-      }
-      button {
-        padding: 0.6rem 3rem;
-        letter-spacing: 0.2rem;
-        border-radius: 2rem;
-        font-size: 1.1rem;
-        border: none;
-        color: white;
-        background-color: #fc4958;
-        transition: 0.3s ease-in-out;
-        &:hover {
-          background-color: #f9c74f;
-        }
-      }
-    }
-    .yellow {
-      button {
-        background-color: #f9c74f;
-        &:hover {
-          background-color: #fc4958;
-        }
-      }
-    }
-  }
-  @media screen and (min-width: 260px) and (max-width: 1080px) {
-    margin: 2rem;
-    .services {
-      grid-template-columns: 1fr;
-    }
-  }
-`;
+  import React, { useRef, useState } from 'react';
+  // Import Swiper React components
+  import { Swiper, SwiperSlide } from 'swiper/react';
+  import './home1.css';
+  // Import Swiper styles
+  import 'swiper/css';
+  import 'swiper/css/effect-cube';
+  import 'swiper/css/pagination';
+  
+  import './styles.css';
+  
+  // import required modules
+  import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+  import { EffectCube } from 'swiper/modules';
+
+
+// import React from 'react';
+// import styled from 'styled-components';
+// // eslint-disable-next-line import/no-extraneous-dependencies
+// import {
+//   MDBCarousel,
+//   MDBCarouselItem,
+//   MDBCarouselCaption
+// } from 'mdb-react-ui-kit';
+// import { Col, Container, Image, Row } from 'react-bootstrap';
+// import slider_1 from '../../../assets/img/slider_1.png';
+// import savor_spice from '../../../assets/img/savor_spice.png';
+// import delight_diversity from '../../../assets/img/delight_diversity.png';
+// import Services1 from '../../../assets/img/Services1.png';
+// import Services2 from '../../../assets/img/Services2.png';
+// import Services3 from '../../../assets/img/Services3.png';
+// import { TitleStyles } from './ReusedStyles';
+
+import { Image } from 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
+// const Section = styled.section`
+//   margin: 2rem 4rem;
+//   ${TitleStyles};
+//   .services {
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     gap: 10vw;
+//     margin-top: 4rem;
+//     .service {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       gap: 1.5vw;
+//       padding: 0 3vw;
+//       img {
+//         height: 2.8rem;
+//       }
+//       p {
+//         text-align: center;
+//         line-height: 2rem;
+//         font-size: 1.1rem;
+//         letter-spacing: 0.1rem;
+//       }
+//       button {
+//         padding: 0.6rem 3rem;
+//         letter-spacing: 0.2rem;
+//         border-radius: 2rem;
+//         font-size: 1.1rem;
+//         border: none;
+//         color: white;
+//         background-color: #fc4958;
+//         transition: 0.3s ease-in-out;
+//         &:hover {
+//           background-color: #f9c74f;
+//         }
+//       }
+//     }
+//     .yellow {
+//       button {
+//         background-color: #f9c74f;
+//         &:hover {
+//           background-color: #fc4958;
+//         }
+//       }
+//     }
+//   }
+//   @media screen and (min-width: 260px) and (max-width: 1080px) {
+//     margin: 2rem;
+//     .services {
+//       grid-template-columns: 1fr;
+//     }
+//   }
+// `;
 
 const Home = () => {
   return (
-    <Container style={{ maxWidth: '100%' }}>
-      <Row>
-        <MDBCarousel showIndicators showControls fade>
-          <MDBCarouselItem itemId={1}>
-            <img src={slider_1} className="d-block w-100" alt="..." />
-            <MDBCarouselCaption>
-              <h5>First slide label</h5>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </MDBCarouselCaption>
-          </MDBCarouselItem>
+    // <Container style={{ maxWidth: '100%' }}>
+    //   <Row>
+    //     <MDBCarousel showIndicators showControls fade>
+    //       <MDBCarouselItem itemId={1}>
+    //         <img src={slider_1} className="d-block w-100" alt="..." />
+    //         <MDBCarouselCaption>
+    //           <h5>First slide label</h5>
+    //           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    //         </MDBCarouselCaption>
+    //       </MDBCarouselItem>
 
-          <MDBCarouselItem itemId={2}>
-            <img
-              src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-            <MDBCarouselCaption>
-              <h5>Second slide label</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </MDBCarouselCaption>
-          </MDBCarouselItem>
+    //       <MDBCarouselItem itemId={2}>
+    //         <img
+    //           src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+    //           className="d-block w-100"
+    //           alt="..."
+    //         />
+    //         <MDBCarouselCaption>
+    //           <h5>Second slide label</h5>
+    //           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    //         </MDBCarouselCaption>
+    //       </MDBCarouselItem>
 
-          <MDBCarouselItem itemId={3}>
-            <img
-              src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-            <MDBCarouselCaption>
-              <h5>Third slide label</h5>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </MDBCarouselCaption>
-          </MDBCarouselItem>
-        </MDBCarousel>
-      </Row>
-      <Row>
-        <Col>
-          <Section id="services">
-            <Row>
-              <Col xs={8} md={8} lg={6}>
-                <div>
-                  <img
-                    src={savor_spice}
-                    style={{ height: '40%', width: '40%' }}
-                    alt="..."
-                  />
-                </div>
-              </Col>
-              <Col xs={8} md={8} lg={6}>
-                <div>
-                  <img
-                    src={delight_diversity}
-                    style={{ height: '40%', width: '40%' }}
-                    alt="..."
-                  />
-                </div>
-              </Col>
-            </Row>
-            <div className="title">
-              <h1 className="yellow">What we do?</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Tenetur, incidunt magnam labore ipsam vero minima maxime
-                doloribus dolores ipsa soluta.
-              </p>
-            </div>
-            <div className="services">
-              <div className="service">
-                <img src={Services2} alt="" />
-                <p>
-                  He Printing and Typesetting the industry.{' '}
-                  <span>Lorem Ipsum</span> has been the Industry's
-                </p>
-              </div>
-              <div className="service yellow">
-                <img src={Services1} alt="" />
-                <p>
-                  He Printing and Typesetting the industry.{' '}
-                  <span>Lorem Ipsum</span> has been the Industry's
-                </p>
-              </div>
-              <div className="service">
-                <img src={Services3} alt="" />
-                <p>
-                  He Printing and Typesetting the industry.{' '}
-                  <span>Lorem Ipsum</span> has been the Industry's
-                </p>
-              </div>
-            </div>
-          </Section>
-          '
-        </Col>
-      </Row>
-    </Container>
+    //       <MDBCarouselItem itemId={3}>
+    //         <img
+    //           src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+    //           className="d-block w-100"
+    //           alt="..."
+    //         />
+    //         <MDBCarouselCaption>
+    //           <h5>Third slide label</h5>
+    //           <p>
+    //             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+    //           </p>
+    //         </MDBCarouselCaption>
+    //       </MDBCarouselItem>
+    //     </MDBCarousel>
+    //   </Row>
+    //   <Row>
+    //     <Col>
+    //       <Section id="services">
+    //         <Row>
+    //           <Col xs={8} md={8} lg={6}>
+    //             <div>
+    //               <img
+    //                 src={savor_spice}
+    //                 style={{ height: '40%', width: '40%' }}
+    //                 alt="..."
+    //               />
+    //             </div>
+    //           </Col>
+    //           <Col xs={8} md={8} lg={6}>
+    //             <div>
+    //               <img
+    //                 src={delight_diversity}
+    //                 style={{ height: '40%', width: '40%' }}
+    //                 alt="..."
+    //               />
+    //             </div>
+    //           </Col>
+    //         </Row>
+    //         <div className="title">
+    //           <h1 className="yellow">What we do?</h1>
+    //           <p>
+    //             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    //             Tenetur, incidunt magnam labore ipsam vero minima maxime
+    //             doloribus dolores ipsa soluta.
+    //           </p>
+    //         </div>
+    //         <div className="services">
+    //           <div className="service">
+    //             <img src={Services2} alt="" />
+    //             <p>
+    //               He Printing and Typesetting the industry.{' '}
+    //               <span>Lorem Ipsum</span> has been the Industry's
+    //             </p>
+    //           </div>
+    //           <div className="service yellow">
+    //             <img src={Services1} alt="" />
+    //             <p>
+    //               He Printing and Typesetting the industry.{' '}
+    //               <span>Lorem Ipsum</span> has been the Industry's
+    //             </p>
+    //           </div>
+    //           <div className="service">
+    //             <img src={Services3} alt="" />
+    //             <p>
+    //               He Printing and Typesetting the industry.{' '}
+    //               <span>Lorem Ipsum</span> has been the Industry's
+    //             </p>
+    //           </div>
+    //         </div>
+    //       </Section>
+    //     </Col>
+    //   </Row>
+    // </Container>
+  <div className=''>
+    
+          <Swiper
+        effect={'cube'}
+        grabCursor={true}
+        cubeEffect={{
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+        }}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        pagination={true}
+        modules={[Autoplay,EffectCube]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg1.jpg')}/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg2.jpg')} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg3.jpg')}/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg1.jpg')}/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg2.jpg')} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg3.jpg')}/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg1.jpg')}/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg2.jpg')} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../../assets/img/ESliderImg3.jpg')}/>
+        </SwiperSlide>
+      </Swiper>
+  </div>
+    
   );
-};
+};  
+    
+    
+    
+    
+    
+    
+     
+   
+         {/* <Swiper 
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide><Image src={require('../../../assets/img/SliderImg1.jpg')} style={{height:'300px', width:'30'}}/></SwiperSlide>
+        <SwiperSlide><Image src={require('../../../assets/img/SliderImg2.jpg')} style={{height:'300px'}} /></SwiperSlide>
+        {/* <CustomArrow/> */}
+      {/* </Swiper> */}
+
+
+
+
 
 export default Home;

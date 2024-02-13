@@ -10,11 +10,10 @@ import Navbar from 'react-bootstrap/Navbar';
 // import { Form, FormControl, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavDropdown } from 'react-bootstrap';
+import { Col, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../redux-toolkit/actions/auth';
 import './header.css';
-import logo from '../assets/img/grandIndiaLogo1.png';
 
 const Header = () => {
   const { isAuthenticated } = useSelector((state) => state.authState);
@@ -85,13 +84,13 @@ const Header = () => {
   }, []);
 
   return (
-    <Navbar expand="lg" className="header-custom custom-navbar">
+    <Navbar expand="lg" >
       {pathname1 === '/login' || pathname1 === '/signup' ? (
         <></>
       ) : (
         <>
           <Navbar.Brand as={Link} to="/">
-            <img src={logo} alt="Grand India Logo" style={{ width: '60%' }} />
+            <img src={require('../assets/img/grandIndiaLogo1.png')} alt="Grand India Logo" style={{ width: '50%' }} />
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
@@ -235,14 +234,33 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/">
+                     <Container >
+                  <Navbar.Toggle aria-controls=" responsive-navbar-nav" />
+                   <Navbar.Collapse id=" justify-content-end responsive-navbar-nav">
+                 <Nav style={{marginLeft:'200px'}}  >
+                                <Nav.Link as={Link}  to={'/'} className='navlink' id="Navlink" href="#home"><span>Home</span></Nav.Link>
+                                <Nav.Link as={Link} to={'/select'} className='navlink' id="Navlink" ><span>Order</span></Nav.Link>
+                  
+                            </Nav>  
+                            <Col md={10} xs={8} >     
+                            {isLoggedIn ? (
+                    <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                  ) : (
+                    <Nav.Link as={Link} to="/login">
+                      Login
+                    </Nav.Link>
+                  )}
+                  </Col>
+                            </Navbar.Collapse>
+                            </Container>
+                  {/* <Nav.Link  as={Link} to="/">
                     <i className="fa-solid fa-house menuIconColor" />
                     <span>Home</span>
                   </Nav.Link>
                   <Nav.Link as={Link} to="/select">
                     <i className="fa-solid fa-bell-concierge menuIconColor" />
                     <span> Order</span>
-                  </Nav.Link>
+                  </Nav.Link> */}
                   {/* <Nav.Link as={Link} to="/cart">
               <i className="fa-solid fa-cart-shopping" />
               <span className="badge rounded-pill badge-notification bg-danger">
@@ -250,13 +268,8 @@ const Header = () => {
               </span>
               <span>Cart</span>
         </Nav.Link> */}
-                  {isLoggedIn ? (
-                    <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                  ) : (
-                    <Nav.Link as={Link} to="/login">
-                      Login
-                    </Nav.Link>
-                  )}
+                 
+                
                 </>
               )}
             </Nav>

@@ -72,6 +72,7 @@ import RegistrationSuccess from 'pages/auth/register/RegistrationSuccess';
 import LocationComponent from 'pages/location/Location';
 import ContactUs from 'pages/contactUs/contactUs';
 import Home from 'pages/home/draft/Home';
+// import HomePage from 'ExamplePage/HomePage';
 
 function App() {
   const loggedIn = window.sessionStorage.getItem('isloggedIn');
@@ -334,6 +335,10 @@ function App() {
         </HelmetProvider>
       </div>
     </Router>
+
+    // <Router>
+    //   <HomePage/>
+    // </Router>
   );
 }
 
