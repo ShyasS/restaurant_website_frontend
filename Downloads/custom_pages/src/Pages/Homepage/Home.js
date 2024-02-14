@@ -6,7 +6,7 @@ import HomeFourthComp from './HomeFourthComp'
 
 const Home = () => {
   return (
-  <>
+  <div>
     <div>
            <HomeFirstComp/>
     </div>
@@ -19,9 +19,7 @@ const Home = () => {
     <div>
            <HomeFourthComp/>
     </div>
-
-
-    </>
+    </div>
   )
 }
 
