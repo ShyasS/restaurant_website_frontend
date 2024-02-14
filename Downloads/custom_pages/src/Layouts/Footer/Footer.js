@@ -21,9 +21,9 @@ const Footer = () => {
             <hr className='FooterHR1' />
           </Col>
           <Col md={3} xs={12}>
-            <Image src={require('../../assets/img/grandIndiaLogo1.png')} style={{ height: '70px', width: '190px', marginTop: '90px' }} className=' ms-5' />
+            <Image src={require('../../assets/img/grandIndiaLogo1.png')} style={{ height: '70px', width: '190px', marginTop: '90px' }} className=' ms-4' />
             <p style={{ margin: '10px 0' }} className=''>A distinctive, well-preserved and comfortable space, high-quality products, authentic cuisine, food and drinks are done flawlessly.</p>
-            <FontAwesomeIcon icon={faFacebook} style={{ marginLeft: '90px' }} />
+            <FontAwesomeIcon icon={faFacebook} style={{ marginLeft: '50px' }} />
             <FontAwesomeIcon icon={faTwitter} style={{ marginLeft: '20px' }} />
             <FontAwesomeIcon icon={faPinterest} style={{ marginLeft: '20px' }} />
             <FontAwesomeIcon icon={faInstagram} style={{ marginLeft: '20px' }} />
