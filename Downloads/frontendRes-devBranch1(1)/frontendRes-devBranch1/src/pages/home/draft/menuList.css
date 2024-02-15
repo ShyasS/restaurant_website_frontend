@@ -83,16 +83,12 @@ Menu
 }
 
 .photo {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
   border: 0.25rem solid var(--clr-gold);
   border-radius: var(--radius);
   display: block;
-    height: auto;
-    min-height: 100px;
-    max-height: 250px;
-    width: auto;
-    min-width: 80px;
-    max-width: 250px;
 }
 
 .item-info header {
@@ -325,3 +321,4 @@ p {
     border-image-repeat: round;
     padding-top: 1rem;
   }
+  

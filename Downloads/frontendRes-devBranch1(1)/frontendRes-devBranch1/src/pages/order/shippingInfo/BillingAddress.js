@@ -4,6 +4,7 @@
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import './index.css';
+import { Button } from 'react-bootstrap';
 
 const BillingAddress = ({
   streetAddress,
@@ -125,7 +126,9 @@ const BillingAddress = ({
         />
         {orderType === 'Pickup' && (
           <div>
-            <button onClick={handleBillingAddressChange}>Check Address</button>
+            <Button className="mt-2" onClick={handleBillingAddressChange}>
+              Check Address
+            </Button>
           </div>
         )}
       </div>

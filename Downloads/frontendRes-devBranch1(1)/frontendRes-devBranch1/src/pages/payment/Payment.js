@@ -13,7 +13,6 @@ import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import ErrorBoundary from './ErrorBoundary';
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -99,58 +98,52 @@ const Payment = () => {
   }, [error]);
 
   return (
-    <ErrorBoundary>
-      <div className="row wrapper col-12">
-        <div className="container my-4">
-          <div className="col-8 mx-auto mt-5">
-            <Form onSubmit={submitHandler} className="shadow-lg custom-table">
-              <div className="m-3">
-                <h4 className="mb-4">Card Info</h4>
-                <div className="form-group">
-                  <label htmlFor="card_num_field">Card Number</label>
-                  <CardNumberElement
-                    type="text"
-                    id="card_num_field"
-                    className="form-control"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="card_exp_field">Card Expiry</label>
-                  <CardExpiryElement
-                    type="text"
-                    id="card_exp_field"
-                    className="form-control"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="card_cvc_field">Card CVC</label>
-                  <CardCvcElement
-                    type="text"
-                    id="card_cvc_field"
-                    className="form-control"
-                    value=""
-                  />
-                </div>
-
-                <button
-                  id="pay_btn"
-                  type="submit"
-                  className="btn btn-block my-3"
-                >
-                  Pay -{' '}
-                  {` $${
-                    confirmOrderData.orderSummary &&
-                    confirmOrderData.orderSummary.total
-                  }`}
-                </button>
+    <div className="row wrapper col-12">
+      <div className="container my-4">
+        <div className="col-8 mx-auto mt-5">
+          <Form onSubmit={submitHandler} className="shadow-lg custom-table">
+            <div className="m-3">
+              <h4 className="mb-4">Card Info</h4>
+              <div className="form-group">
+                <label htmlFor="card_num_field">Card Number</label>
+                <CardNumberElement
+                  type="text"
+                  id="card_num_field"
+                  className="form-control"
+                />
               </div>
-            </Form>
-          </div>
+
+              <div className="form-group">
+                <label htmlFor="card_exp_field">Card Expiry</label>
+                <CardExpiryElement
+                  type="text"
+                  id="card_exp_field"
+                  className="form-control"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="card_cvc_field">Card CVC</label>
+                <CardCvcElement
+                  type="text"
+                  id="card_cvc_field"
+                  className="form-control"
+                  value=""
+                />
+              </div>
+
+              <button id="pay_btn" type="submit" className="btn btn-block my-3">
+                Pay -{' '}
+                {` $${
+                  confirmOrderData.orderSummary &&
+                  confirmOrderData.orderSummary.total
+                }`}
+              </button>
+            </div>
+          </Form>
         </div>
       </div>
-    </ErrorBoundary>
+    </div>
   );
 };
 

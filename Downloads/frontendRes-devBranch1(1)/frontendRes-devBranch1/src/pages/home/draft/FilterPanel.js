@@ -23,79 +23,97 @@ const FilterPanel = ({
   loading
 }) => {
   return (
-    <div className="col-2">
+    <div className="col-12 borderUp">
       <h4 id="products_heading">Category</h4>
       {/* <Button onClick={handleClearFilter}>clear</Button> */}
-      <hr />
+      {/* <hr /> */}
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="row">
+          <div
+            className="row"
+            style={{
+              background: '#red',
+              borderRadius: '8px'
+            }}
+          >
             <div>
-              <h5 className="mb-3 mt-3">Food Preferences</h5>
-              <ul className="pl-0">
-                {dietaryCategories.map((category) => (
-                  <li
-                    style={{
-                      cursor: 'pointer',
-                      listStyleType: 'none',
-                      color:
-                        dietaryPreferenceCategory ===
-                        category.dietaryPreferenceCategory
-                          ? 'red'
-                          : 'black' // Highlight color
-                    }}
-                    key={category._id}
-                    onClick={() => {
-                      if (
-                        dietaryPreferenceCategory ===
-                        category.dietaryPreferenceCategory
-                      ) {
-                        setDietaryPreferenceCategory(null);
-                      } else {
-                        setDietaryPreferenceCategory(
+              <>
+                <h5 className="mb-3 mt-3" style={{ color: 'black' }}>
+                  Food Preferences
+                </h5>
+              </>
+              <>
+                <ul className="pl-0">
+                  {dietaryCategories.map((category) => (
+                    <li
+                      style={{
+                        cursor: 'pointer',
+                        listStyleType: 'none',
+                        color:
+                          dietaryPreferenceCategory ===
                           category.dietaryPreferenceCategory
-                        );
-                      }
-                    }}
-                  >
-                    {category.dietaryPreferenceCategory}
-                  </li>
-                ))}
-              </ul>
+                            ? 'red'
+                            : 'black' // Highlight color
+                      }}
+                      key={category._id}
+                      onClick={() => {
+                        if (
+                          dietaryPreferenceCategory ===
+                          category.dietaryPreferenceCategory
+                        ) {
+                          setDietaryPreferenceCategory(null);
+                        } else {
+                          setDietaryPreferenceCategory(
+                            category.dietaryPreferenceCategory
+                          );
+                        }
+                      }}
+                    >
+                      {category.dietaryPreferenceCategory}
+                    </li>
+                  ))}
+                </ul>
+              </>
             </div>
-            <hr />
+            {/* <hr /> */}
             <div className="mt-5">
-              <h5 className="mb-3">Course</h5>
-              <ul className="pl-0">
-                {mealCategories.map((category) => (
-                  <li
-                    style={{
-                      cursor: 'pointer',
-                      listStyleType: 'none',
-                      color:
-                        mealTypeCategory === category.mealTypeCategory
-                          ? 'red'
-                          : 'black'
-                    }}
-                    key={category._id}
-                    onClick={() => {
-                      if (mealTypeCategory === category.mealTypeCategory) {
-                        setMealTypeCategory(null);
-                      } else {
-                        setMealTypeCategory(category.mealTypeCategory);
-                      }
-                    }}
-                  >
-                    {category.mealTypeCategory}
-                  </li>
-                ))}
-              </ul>
+              <>
+                <h5 className="mb-3" style={{ color: 'black' }}>
+                  Course
+                </h5>
+              </>
+              <>
+                <ul className="pl-0">
+                  {mealCategories.map((category) => (
+                    <li
+                      style={{
+                        cursor: 'pointer',
+                        listStyleType: 'none',
+                        color:
+                          mealTypeCategory === category.mealTypeCategory
+                            ? 'red'
+                            : 'black'
+                      }}
+                      key={category._id}
+                      onClick={() => {
+                        if (mealTypeCategory === category.mealTypeCategory) {
+                          setMealTypeCategory(null);
+                        } else {
+                          setMealTypeCategory(category.mealTypeCategory);
+                        }
+                      }}
+                    >
+                      {category.mealTypeCategory}
+                    </li>
+                  ))}
+                </ul>
+              </>
             </div>
-            <hr className="my-5" />
+            {/* <hr className="my-5" /> */}
           </div>
-          {productsCount > 0 && productsCount > resPerPage ? (
+          {/* {productsCount > 0 && productsCount > resPerPage ? (
             <div className="d-flex justify-content-center mt-5">
               <Pagination
                 activePage={currentPage}
@@ -109,7 +127,7 @@ const FilterPanel = ({
                 linkClass="page-link"
               />
             </div>
-          ) : null}
+          ) : null} */}
         </>
       )}
     </div>

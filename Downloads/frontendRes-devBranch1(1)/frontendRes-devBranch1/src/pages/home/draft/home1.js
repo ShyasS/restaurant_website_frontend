@@ -2,13 +2,15 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import MenuList from './MenuList';
@@ -27,6 +29,7 @@ const Home = () => {
   const [menus, setMenus] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+  const [showFilterPanel, setShowFilterPanel] = useState(false);
   const [localQuantities, setLocalQuantities] = useState(
     storedCartItems.reduce((acc, item) => {
       acc[item._id] = Number(item.quantity);
@@ -95,7 +98,10 @@ const Home = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
+  const handleToggleFilterPanel = () => {
+    setShowFilterPanel(!showFilterPanel);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   const getProducts = async (
     keyword,
     dietaryPreferenceCategory,
@@ -244,6 +250,9 @@ const Home = () => {
       // toast.error('Cannot proceed to checkout with an empty cart.');
     }
   };
+  const returnBack = () => {
+    getProducts();
+  };
 
   useEffect(() => {
     if (storedCartItems.length > 0) {
@@ -301,21 +310,31 @@ const Home = () => {
             {items}
           </span>
         </Nav.Link>
+        <Button
+          style={{ border: 'none', backgroundColor: 'transparent' }}
+          className="mt-4 filter-icon"
+          variant="light"
+          onClick={handleToggleFilterPanel}
+        >
+          <FontAwesomeIcon icon={faFilter} />
+        </Button>
       </div>
       <Container fluid style={{ marginTop: '2%' }}>
         <Row>
-          <Col xs={4} md={2} lg={2}>
-            <FilterPanel
-              dietaryCategories={dietaryCategories}
-              mealCategories={mealCategories}
-              mealTypeCategory={mealTypeCategory}
-              setMealTypeCategory={setMealTypeCategory}
-              dietaryPreferenceCategory={dietaryPreferenceCategory}
-              setDietaryPreferenceCategory={setDietaryPreferenceCategory}
-              handleClearFilter={handleClearFilter}
-            />
-          </Col>
-          {menus.length === 0 ? (
+          {showFilterPanel && (
+            <Col xs={12} md={4} lg={3}>
+              <FilterPanel
+                dietaryCategories={dietaryCategories}
+                mealCategories={mealCategories}
+                mealTypeCategory={mealTypeCategory}
+                setMealTypeCategory={setMealTypeCategory}
+                dietaryPreferenceCategory={dietaryPreferenceCategory}
+                setDietaryPreferenceCategory={setDietaryPreferenceCategory}
+                handleClearFilter={handleClearFilter}
+              />
+            </Col>
+          )}
+          {/* {menus.length === 0 ? (
             <div
               style={{
                 position: 'fixed',
@@ -328,50 +347,28 @@ const Home = () => {
                 display: menus.length === 0 ? 'block' : 'none'
               }}
             >
-              No menus found
+              <div>No menus found</div>
+
+              <Button onClick={returnBack}>Okay</Button>
             </div>
-          ) : (
-            <Col xs={12} md={7} lg={10}>
-              <MenuList
-                menus={menus}
-                handleViewDetails={handleViewDetails}
-                handleAddToCart={handleAddToCart}
-                handleSearchChange={handleSearchChange}
-                handleSearchSubmit={handleSearchSubmit}
-                handlePageChange={handlePageChange}
-                searchTerm={searchTerm}
-                handleCloseModal={handleCloseModal}
-                showModal={showModal}
-                show={showModal}
-                onHide={handleCloseModal}
-                selectedMenuItem={selectedMenuItem}
-              />
-            </Col>
-          )}
-          {/* <Col xs={2} md={1} lg={1}>
-  <CartSummary
-    branch={branch}
-    address={address}
-    date={date}
-    cartItems={cartItems}
-    handleAdd={handleAdd}
-    handleMinus={handleMinus}
-    handleDelete={handleDelete}
-    handleViewDetails={handleViewDetails}
-    checkoutHandler={checkoutHandler}
-    handleCloseModal={handleCloseModal}
-    showModal={showModal}
-    show={showModal}
-    onHide={handleCloseModal}
-    selectedMenuItem={selectedMenuItem}
-  />
-   <Modal
-show={showModal}
-showModal={showModal}
-onHide={handleCloseModal}
-selectedMenuItem={selectedMenuItem}
-/>
-</Col> */}
+          ) : ( */}
+          <Col xs={12} md={7} lg={9}>
+            <MenuList
+              menus={menus}
+              handleViewDetails={handleViewDetails}
+              handleAddToCart={handleAddToCart}
+              handleSearchChange={handleSearchChange}
+              handleSearchSubmit={handleSearchSubmit}
+              handlePageChange={handlePageChange}
+              searchTerm={searchTerm}
+              handleCloseModal={handleCloseModal}
+              showModal={showModal}
+              show={showModal}
+              onHide={handleCloseModal}
+              selectedMenuItem={selectedMenuItem}
+            />
+          </Col>
+          {/* )} */}
         </Row>
       </Container>
     </>

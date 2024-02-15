@@ -6,6 +6,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/button-has-type */
 import React, { Fragment, useState, useEffect } from 'react';
+import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
@@ -38,40 +39,44 @@ export default function Cart() {
           </h4>
           <div className="row d-flex justify-content-between">
             <div className="col-12 col-lg-8">
-              {storedCartItems.map((item) => (
-                <Fragment key={item._id}>
-                  <hr />
-                  <div className="cart-item">
-                    <div className="row">
-                      <div className="col-4 col-lg-3" />
-                      <div className="col-5 col-lg-3">
-                      <img
-                        className="cartImage col-10"
-                        src={
-                          item.images[0] === undefined
-                            ? 'https://via.placeholder.com/20'
-                            : item.images[0].image
-                        }
-                        alt={item.name}
-                      />
-                        <Link to={`/product/${item._id}`}>{item.name}</Link>
-                      </div>
-                      <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                        <p id="card_item_price">${item.price}</p>
-                      </div>
-                      <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                        <p id="card_item_price">Qty: {item.quantity || 1 } </p>
-                      </div>
-                      
-                    </div>
-                  </div>
-                </Fragment>
-              ))}
-              <hr />
+             {storedCartItems.map((item) => (
+  <Fragment key={item._id}>
+    {/* <hr /> */}
+    <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
+      <div className="row">
+        <div className="col-4 col-lg-3">
+          <img
+           className="cartImage img-fluid border"
+            src={
+              item.images[0] === undefined
+                ? 'https://via.placeholder.com/20'
+                : item.images[0].image
+            }
+            alt={item.name}
+          />
+        </div>
+        <div className="col-7">
+          <div className="row">
+            <div className="col-12">
+              <Link to={`/product/${item._id}`}>{item.name}</Link>
             </div>
-            <div className="col-12 col-lg-3 my-4">
+            <div className="col-6 ">
+              <p id="card_item_price">${item.price * item.quantity}</p>
+            </div>
+            <div className="col-6">
+              <p id="card_item_price">Qty: {item.quantity || 1}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </Fragment>
+))}
+              {/* <hr /> */}
+            </div>
+            <Card className="col-12 col-lg-6 my-4">
               <div id="order_summary">
-                <hr />
+                {/* <hr /> */}
                 
                 <p>
                   Items total:{' '}
@@ -79,9 +84,9 @@ export default function Cart() {
                     ${Number(cartItemsTotal).toFixed(2)}
                   </span>
                 </p>
-                <hr />
+                {/* <hr /> */}
               </div>
-            </div>
+            </Card>
           </div>
         </>
       )}

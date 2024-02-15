@@ -11,7 +11,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import OrdersHistory from 'pages/admin/OrderHistory';
 import UsersList from 'pages/admin/UserList';
 import RestaurantTable from 'pages/admin/Restaurant';
-import Offers from 'pages/user/Offers';
 // import UpdateMenu from 'pages/admin/UpdateMenu';
 import UpdateMenu from 'pages/admin/UpdateSingleMenu';
 import MenuList from 'pages/admin/MenuList';
@@ -33,7 +32,6 @@ import Restaurant from './pages/menu/restaurant';
 import Menus from './pages/menu/menus';
 import ResetPassword from './pages/auth/resetPassword/resetPassword';
 import ForgotPasswordPage from './pages/auth/forgotPassword';
-import Cart from './pages/order/cart';
 import ConfirmOrder from './pages/order/ConfirmOrder';
 import OrderSuccess from './pages/order/OrderSuccess';
 import OrderDetails from './pages/order/OrderDetails';
@@ -49,16 +47,10 @@ import UserOrderList from './pages/order/UserOrderList';
 // import ShippingInfo from './pages/order/ShippingInfo';
 import SignUpForm from './pages/auth/register/Signup';
 import { useEffect, useState, useRef  } from 'react';
-import { store } from './store';
 import axios from 'axios';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { loadUser } from 'redux-toolkit/actions/auth';
-// import ProductModal from 'pages/home/HomeModel';
-import ProductPage from 'pages/home/ProductHomePage';
-import CheckoutDeliveryForm from 'pages/checkout/CheckoutDeliveryForm';
 import HomeDraft from 'pages/home/draft/home1';
-import CartModel from 'pages/order/CartModel';
 import CreateRestaurant from 'pages/admin/CreateRestaurant';
 import EditRestaurant from 'pages/admin/UpdateRestaurant';
 import CreateAdmin from 'pages/admin/CreateAdmin';
@@ -70,10 +62,13 @@ import MyTimePicker from 'services/helperFunctions/test';
 import ShippingInfo1 from 'pages/order/shippingInfo/ShippingInfo';
 import RegistrationSuccess from 'pages/auth/register/RegistrationSuccess';
 import LocationComponent from 'pages/location/Location';
-import ContactUs from 'pages/contactUs/contactUs';
 import Home from 'pages/home/draft/Home';
 import UpdateProfile from 'pages/user/UpdateProfile';
 import CustomerList from 'pages/admin/CustomerList';
+// import CartSummary from 'pages/home/draft/CartSummaryy';
+// import Cart from 'pages/home/draft/cartSummary';
+import Cart from './pages/order/cart';
+import Landing from 'pages/home/LandingPage/Home';
 
 function App() {
   const loggedIn = window.localStorage.getItem('isloggedIn'  || false);
@@ -109,7 +104,10 @@ function App() {
     <Router>
       <div className="App">
         <HelmetProvider>
-          <Header />
+          <div className="header">
+              <Header />
+          </div>
+        
           <div className="container-fluid d-flex justify-content-center content-container">
             <ToastContainer theme="dark" />
             <Routes>
@@ -119,25 +117,22 @@ function App() {
               <Route path="/product/:id" element={<ProductDetail />} /> */}
               <Route path="/time" element={<MyTimePicker />} />
               <Route path="/select" element={<HomePage />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/landing" element={<Home />} />
               <Route path="/home" element={<HomeDraft />} />
-              <Route path="/Product" element={<ProductPage />} />
               <Route path="/ProductSearch" element={<ProductSearch />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/login/otp" element={<SendLoginOtp />} />
               <Route path="/loginWithOtp" element={<LoginWithOtp />} />
               <Route path="/menuDetails/:id" element={<MenuDetails />} />
               <Route path="/restaurants" element={<Restaurant />} />
-              <Route path="/cartModel" element={<CartModel />} />
               <Route path="/signup" element={<SignUpForm />} />
               <Route path="/menus" element={<Menus />} />
-              <Route path="/password/forgot" element={<ForgotPasswordPage />} />
+              < Route path="/" element={<Landing />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/offers" element={<Offers />} />
+              <Route path="/password/forgot" element={<ForgotPasswordPage />} />
               <Route path="/userOrderList" element={<UserOrderList />} />
               <Route path="/api/verify-email/:token" element={<RegistrationSuccess />} />
               <Route path="/shippingInfo" element={<ShippingInfo1 />} />
-              <Route path="/checkoutDeliveryForm" element={<CheckoutDeliveryForm />} />
               <Route path="/api/password/reset/:token" element={<ResetPassword />} />
               <Route path="/location" element={<LocationComponent/>} />
               <Route path="/order/confirm" element={                  
