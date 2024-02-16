@@ -132,11 +132,11 @@ const RestaurantSelection = () => {
     }
   }, [restaurantId]);
   return (
-    <div>
-      <Card className="col-11 mx-auto mt-5">
+    <div className='OrderCard'>
+      <Card className="col-md-4 mx-auto mt-5" id="CardBackIMg">
         <Card.Body>
           <div className="d-flex justify-content-start">
-            <button onClick={handleGoBack} className="btn" type="button">
+            <button onClick={handleGoBack} className="btn text-white" type="button">
               <FaArrowLeft /> Back
             </button>
           </div>
@@ -179,8 +179,8 @@ const RestaurantSelection = () => {
                   variant="outline-danger"
                   style={{
                     backgroundColor:
-                      selectedDate === date ? 'green' : 'transparent',
-                    color: selectedDate === date ? 'white' : 'black',
+                      selectedDate === date ? 'white' : 'transparent',
+                    color: selectedDate === date ? 'black' : 'white',
                     border:
                       selectedDate === date
                         ? '2px solid black'

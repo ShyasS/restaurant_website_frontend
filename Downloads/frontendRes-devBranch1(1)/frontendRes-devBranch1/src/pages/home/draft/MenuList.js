@@ -8,10 +8,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 // MenuList.js
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Col, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './menuList.css';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
 const MenuList = ({
   menus,
   handleViewDetails,
@@ -92,76 +94,68 @@ const MenuList = ({
   //   </div>
   // );
   return (
-    <div id="products" className="col-12">
-      <div className="row">
-        <div className="col-10 fixed-search">
-          <input
+    <div >
+
+ <Col md={{span:0, offset:4}}>
+        <input
             type="text"
+            style={{borderRadius:'50px', width:'380px',marginTop:'50px'}}
             className={`form-control `}
             placeholder="Search products..."
             value={searchTerm}
             onChange={handleSearchChange}
           />
-        </div>
-      </div>
+        </Col>
+   
 
       {menus.length === 0 ? (
         <div style={{ margin: '2%', textAlign: 'center' }}>
           <p>No menus found.</p>
         </div>
       ) : (
-        <div style={{ margin: '2%' }} className="borderUp">
-          <div>
-            {menus.map((menuItem) => (
-              <div key={menuItem._id} className="row" style={{ margin: '2%' }}>
-                <div className="col">
-                  <article className="menu-item">
-                    <div>
-                      <img
-                        src={
-                          menuItem.images.length > 0
-                            ? menuItem.images[0].image
-                            : 'https://via.placeholder.com/75x50'
-                        }
-                        alt={menuItem.name}
-                        className="photo img-fluid"
-                      />
-                    </div>
+        <Container>
+         <Row  id="RowFourthComp"  xs={1} sm={2} lg={3} md={2} className='mt-5'>
+            {
+            menus.map((menuItem) => (
+              <div key={menuItem._id} className="row">
+                <div >
 
-                    <div className="item-info">
-                      <header>
-                        <h4>{menuItem.name}</h4>
-                        <h4>${menuItem.price}</h4>
-                      </header>
-                      <p className="item-desc">{menuItem.mealTypeCategory}</p>
-                      <div style={{ margin: '5%' }}>{menuItem.description}</div>
-                      <div>
-                        <button
-                          type="button"
-                          id="cart_btn"
+                <Card style={{ width: '18rem' }} >
+      <Card.Img variant="top" src={ menuItem.images.length > 0
+                            ? menuItem.images[0].image
+                            : 'https://via.placeholder.com/75x50'}  alt={menuItem.name}  style={{height:'200px', width:'285px'}}/>
+      <Card.Body>
+        <Card.Title className='text-center' style={{fontSize:'23px'}}>{menuItem.name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-center">{menuItem.price}</Card.Subtitle>
+        <Card.Text className='text-center' >{menuItem.mealTypeCategory}</Card.Text>
+        <Card.Text className='text-center' >{menuItem.description}</Card.Text>
+        <Button variant="primary"    id="cart_btn"
                           disabled={!menuItem.isAvailable}
                           onClick={() => handleAddToCart(menuItem)}
                           className="btn d-inline mb-2 ms-auto "
                           style={{
                             backgroundColor: '#ffa500',
                             color: 'white',
+                            width:'240px',
                             textTransform: 'none'
-                          }}
-                        >
-                          {!menuItem.isAvailable ? (
+                          }} >
+ {!menuItem.isAvailable ? (
                             <h6>Sold Out</h6>
                           ) : (
                             <h6>Add to Cart</h6>
                           )}
-                        </button>
-                      </div>
-                    </div>
-                  </article>
+
+
+                          </Button>
+      </Card.Body>
+    </Card>
+
+                
                 </div>
               </div>
             ))}
-          </div>
-        </div>
+        </Row>
+               </Container>
       )}
     </div>
   );

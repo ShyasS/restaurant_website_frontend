@@ -295,35 +295,46 @@ const Home = () => {
 
   return (
     <>
+
+   <div className='ProductImg1'>
+          <h1 className='text-white text-center' style={{paddingTop:'140px'}}><span style={{opacity:'0.5'}}>--</span> MENU LIST <span style={{opacity:'0.5'}}>--</span></h1>   
+ 
+   </div > 
+        <div className='Product2Comp'>
+           <h3 className='py-4' id='Product2H3' style={{color:' #c6ac83'}}>What food do we have in our restaurant?</h3>
+           <h2 className='mt-2' style={{color:'#dadce0'}}>FROM OUR MENU</h2>
+           <p className='mt-5 ' style={{color:' #c6ac83'}}>We always give our customers a feeling of peace of mind and comfort when dining at our restaurant</p>
+           <p style={{color:' #c6ac83'}}>Sed ut perspiciatis unde omnis iste natus error voluptate accusantium</p>
+        </div>
+
+
+   <div className='Product3Comp'>
       <div
-        style={{
-          position: 'fixed',
-          float: 'right',
-          margin: '4%',
-          marginLeft: '88%'
-        }}
-        className="ml-auto"
+        style={{}}
+        className=""
+
       >
-        <Nav.Link as={Link} to="/cart">
-          <i className="fa-solid fa-cart-shopping fa-xl" />
-          <span className="badge rounded-pill badge-notification bg-danger">
+        <Button as={Link} to="/cart" style={{ border: 'none', backgroundColor: 'orange',borderRadius:'0%' }}>
+          <i className="fa-solid fa-cart-shopping fa-xl " />
+          <span >
             {items}
           </span>
-        </Nav.Link>
+        </Button>
         <Button
-          style={{ border: 'none', backgroundColor: 'transparent' }}
-          className="mt-4 filter-icon"
+          style={{ border: 'none', backgroundColor: 'orange',borderRadius:'50%' }}
+          className="filter-icon float-end"
           variant="light"
           onClick={handleToggleFilterPanel}
         >
           <FontAwesomeIcon icon={faFilter} />
-        </Button>
+        </Button> 
       </div>
-      <Container fluid style={{ marginTop: '2%' }}>
+      <Container fluid>
         <Row>
           {showFilterPanel && (
             <Col xs={12} md={4} lg={3}>
               <FilterPanel
+
                 dietaryCategories={dietaryCategories}
                 mealCategories={mealCategories}
                 mealTypeCategory={mealTypeCategory}
@@ -352,7 +363,7 @@ const Home = () => {
               <Button onClick={returnBack}>Okay</Button>
             </div>
           ) : ( */}
-          <Col xs={12} md={7} lg={9}>
+          <Col xs={12} md={7} lg={12}>
             <MenuList
               menus={menus}
               handleViewDetails={handleViewDetails}
@@ -371,6 +382,7 @@ const Home = () => {
           {/* )} */}
         </Row>
       </Container>
+      </div>
     </>
   );
 };

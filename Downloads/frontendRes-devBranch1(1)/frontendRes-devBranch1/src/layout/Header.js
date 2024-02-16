@@ -80,8 +80,6 @@ const Header = () => {
     <Navbar
       expand="lg"
       className="header-custom custom-navbar"
-      id="header"
-      style={{ backgroundColor: 'white', color: 'black' }}
       expanded={navbarExpanded}
     >
       {pathname1 === '/login' ||
@@ -104,7 +102,7 @@ const Header = () => {
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
             onClick={handleNavbarToggle}
-            style={{ border: '2px solid #8D4527' }}
+          
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav
@@ -115,6 +113,7 @@ const Header = () => {
                 <>
                   {role === 'user' && (
                     <>
+                    <Nav className="col-md-12 mx-auto" >
                       <Nav.Link as={Link} to="/">
                         {/* <i className="fa-solid fa-house menuIconColor" /> */}
                         Home
@@ -127,10 +126,12 @@ const Header = () => {
                         {/* <i className="fa-solid fa-user menuIconColor" /> */}
                         Profile
                       </Nav.Link>
+                      </Nav>
                     </>
                   )}
                   {role === 'admin' && (
                     <>
+                    <Nav  className="col-md-12 mx-auto">
                       <Nav.Link as={Link} to="/">
                         {/* <i className="fa-solid fa-house menuIconColor" /> */}
                         Home
@@ -160,6 +161,7 @@ const Header = () => {
                         {/* <i className="fa-solid fa-utensils menuIconColor" /> */}
                         Menus
                       </Nav.Link>
+                      </Nav>
                     </>
                   )}
                   {role === 'superAdmin' && (
@@ -200,17 +202,20 @@ const Header = () => {
                   )}
                   <div className="logout-login-buttons">
                     {!isLoggedIn ? (
+                        <Stack direction="horizontal" gap={3}>
                       <Nav.Link
                         style={{
                           borderRadius: '30px',
                           width: '100px',
                           backgroundColor: '#f0b06c',
-                          borderColor: '#f0b06c'
+                          borderColor: '#f0b06c',
+                          padding:'10px 20px '
                         }}
                         onClick={handleLogout}
                       >
                         Logout
                       </Nav.Link>
+                      </Stack>
                     ) : (
                       <>
                         <Stack direction="horizontal" gap={3} />
@@ -219,7 +224,8 @@ const Header = () => {
                             borderRadius: '30px',
                             width: '100px',
                             backgroundColor: '#f0b06c',
-                            borderColor: '#f0b06c'
+                            borderColor: '#f0b06c',
+                            padding:'10px 20px '
                           }}
                           as={Link}
                           to="/login"
@@ -242,6 +248,7 @@ const Header = () => {
                   </Nav.Link>
                   <div className="logout-login-buttons">
                     {isLoggedIn ? (
+                       <Stack direction="horizontal" gap={3}>
                       <Nav.Link
                         style={{
                           borderRadius: '30px',
@@ -253,21 +260,24 @@ const Header = () => {
                       >
                         Logout
                       </Nav.Link>
+                      </Stack>
                     ) : (
-                      <Nav>
-                        <Stack direction="horizontal" gap={3} />
+                      <Nav className='ms-2'>
+                        <Stack direction="horizontal" gap={3} >
                         <Nav.Link
                           style={{
                             borderRadius: '30px',
                             width: '100px',
                             backgroundColor: '#f0b06c',
-                            borderColor: '#f0b06c'
+                            borderColor: '#f0b06c',
+                            padding:'10px 20px '
                           }}
                           as={Link}
                           to="/login"
                         >
                           Login
                         </Nav.Link>
+                        </Stack>
                       </Nav>
                     )}
                   </div>

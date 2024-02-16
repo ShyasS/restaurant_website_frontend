@@ -102,13 +102,13 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div>
         <HelmetProvider>
-          <div className="header">
+          <div >
               <Header />
           </div>
         
-          <div className="container-fluid d-flex justify-content-center content-container">
+          <div>
             <ToastContainer theme="dark" />
             <Routes>
               <Route element={loggedIn ? <HomePage /> : <LoginPage />} />
@@ -348,7 +348,7 @@ function App() {
 
            <Footer /> 
         </HelmetProvider>
-      </div>
+      </  div>
     </Router>
   );
 }

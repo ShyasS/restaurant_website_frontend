@@ -10,7 +10,7 @@ const HomeFirstComp = () => {
         <Row>
           <Col xs={12} md={{ span: 8, offset: 2 }}>
             <h1 className="text-center text-white " id="HomeH1Tag">
-              Welcome to Grand India Restaurants
+              Welcome to  <span style={{ color: 'orange'}}> Grand India Restaurants</span>
             </h1>
             <h6 className="text-center text-white py-5">
               THE PERFECT CHOICE FOR YOUR RESTAURANT

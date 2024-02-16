@@ -10,6 +10,19 @@
     align-items: center;
     
   }
+  .OrderCard{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),url('../../assets/img/ESliderImg2.jpg');
+    height:90vh;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+  }
+  #OrderCardBg{
+    color:whitesmoke;
+   background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/HomeThirdMainImg.jpg');
+  } 
   
   .modal {
     background: #ffffff;
@@ -54,4 +67,7 @@
   .modal-footer button:hover {
     background-color: #ff9400;
   }
-    
+  #CardBackIMg{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/Gradient-colorBG.webp');
+    color: white;
+  }

@@ -290,7 +290,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="col-12 col-lg-5 pt-4">
+    <div className="col-12 col-lg-3 pt-4 " style={{marginLeft:'500px'}}>
       <Card className="mb-4 borderUp">
         <Card.Body>
           <div className="delivery-info">

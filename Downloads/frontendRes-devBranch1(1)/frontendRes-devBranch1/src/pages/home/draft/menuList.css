@@ -322,3 +322,7 @@ p {
     padding-top: 1rem;
   }
   
+  #RowFourthComp{
+    /* margin-left:40px; */
+    gap:30px;
+  }
