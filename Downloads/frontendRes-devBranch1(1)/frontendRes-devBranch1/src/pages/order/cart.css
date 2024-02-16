@@ -1,4 +1,4 @@
-
+/* 
 .icon-container {
     border: 1px solid #ccc;
     width: 20px;
@@ -11,7 +11,7 @@
   }
   
   .quantity {
-    /* border: 1px solid #ccc; */
+   
     width: 20px;
     margin-top: -2px;
     height: 20px;
@@ -19,4 +19,30 @@
     margin-right: 5px; 
   }
   
-  
+   */
+
+   
+.icon-container {
+  border: 1px solid #ccc;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 5px; 
+}
+
+.quantity {
+  /* border: 1px solid #ccc; */
+  width: 20px;
+  margin-top: -2px;
+  height: 20px;
+  padding: 3px;
+  margin-right: 5px; 
+}
+#CartMain{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/CartBgIMg.jpg');
+  height:100vh;
+
+}

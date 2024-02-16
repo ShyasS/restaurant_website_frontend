@@ -23,7 +23,7 @@ const FilterPanel = ({
   loading
 }) => {
   return (
-    <div className="col-12 borderUp">
+    <div className="col-12">
       <h4 id="products_heading">Category</h4>
       {/* <Button onClick={handleClearFilter}>clear</Button> */}
       {/* <hr /> */}

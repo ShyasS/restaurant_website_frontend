@@ -216,7 +216,7 @@ const OrderSuccess = () => {
           <h4>Your Order has been placed successfully.</h4>
           <div>
             <Link to="/">
-              <Button>Go to home</Button>{' '}
+              <Button className="my-global-button  mb-5">Go to home</Button>{' '}
             </Link>
           </div>
 

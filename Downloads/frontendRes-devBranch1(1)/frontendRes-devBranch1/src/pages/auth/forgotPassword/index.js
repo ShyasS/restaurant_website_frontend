@@ -153,7 +153,7 @@ const ForgotPasswordPage = () => {
   }, []);
 
   return (
-    <div className="signup-form-container mb-4 mx-3 ">
+    <div className="signup-form-container mx-auto container-fluid col-md-5 mb-4 mx-3 ">
       <form onSubmit={handleSubmit}>
         <div className="row custom-table my-5">
           <div className="col-md-12">

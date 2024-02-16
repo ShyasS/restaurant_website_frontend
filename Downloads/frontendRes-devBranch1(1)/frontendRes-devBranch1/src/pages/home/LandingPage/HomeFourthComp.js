@@ -26,13 +26,13 @@ const HomeFourthComp = () => {
               />
             </div>
             <Button
-              className="ms-4"
-              style={{
-                borderRadius: '0px',
-                padding: '10px 30px',
-                backgroundColor: '#c9913a',
-                borderColor: '#c9913a'
-              }}
+              className="ms-4 my-global-button"
+              // style={{
+              //   borderRadius: '0px',
+              //   padding: '10px 30px',
+              //   backgroundColor: '#c9913a',
+              //   borderColor: '#c9913a'
+              // }}
             >
               Register
             </Button>

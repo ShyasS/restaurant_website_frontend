@@ -1,26 +1,26 @@
-@import 'bootstrap/scss/bootstrap';
+// @import 'bootstrap/scss/bootstrap';
 
-:root {
-  --bs-primary-rgb: 0, 98, 204;
-  --bs-secondary-rgb: 237, 28, 36;
-}
-.btn-custom {
-  background-color: #ffa500 !important;
-  border: none !important;
-border-radius: 0 !important;
-margin: 2px;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  // color: #EE402F !important;
-  // background-color: #EE402F !important; 
-}
+// :root {
+//   --bs-primary-rgb: 0, 98, 204;
+//   --bs-secondary-rgb: 237, 28, 36;
+// }
+// .btn-custom {
+//   background-color: #ffa500 !important;
+//   border: none !important;
+// border-radius: 0 !important;
+// margin: 2px;
+// }
+// body {
+//   font-family: 'Poppins', sans-serif;
+//   // color: #EE402F !important;
+//   // background-color: #EE402F !important; 
+// }
 .my-global-button {
   /* Your common button styles go here */
-  background-color: #3a7975 !important;
+  background-color: #c9913a !important;
   color: #fff !important;
   padding: 10px 20px;
-  border: none;
+  border: none !important;
   border-radius: 30px !important;
   cursor: pointer;
   width: auto !important;
@@ -40,5 +40,5 @@ body {
 
 .my-global-button:hover {
   /* Styles for the button on hover */
-  background-color: #3a7975 !important;
+  background-color: #c9913a !important;
 }

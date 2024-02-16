@@ -53,7 +53,7 @@ const SendLoginOtp = () => {
     }
   };
   return (
-    <div className="container-fluid mt-5 mb-4 signup-form-container ">
+    <div className="container-fluid mx-auto col-md-5 mt-5 mb-4 signup-form-container ">
       <form onSubmit={handleLogin}>
         <div className="row  custom-table mx-3 my-5">
           <div className="col-11 mx-auto">

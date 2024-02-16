@@ -103,7 +103,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className="App bg-dark">
         <HelmetProvider>
           <div className="header">
               <Header />

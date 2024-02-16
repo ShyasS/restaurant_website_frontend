@@ -56,7 +56,7 @@ const LoginWithOtp = () => {
   };
 
   return (
-    <div className="signup-form-container container-fluid col-md-5 my-5">
+    <div className="signup-form-container mx-auto container-fluid col-md-5 my-5">
       <form onSubmit={handleLogin}>
         <div className="row mx-3 custom-table">
           <div className="col-11 mx-auto">

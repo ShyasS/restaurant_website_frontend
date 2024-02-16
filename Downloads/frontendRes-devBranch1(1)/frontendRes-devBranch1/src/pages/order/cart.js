@@ -281,82 +281,114 @@ const Cart = () => {
   // export default Cart;
   if (!cartItems || cartItems.length === 0) {
     return (
-      <div className="row justify-content-center">
-        <div className="col-12 mt-5 borderUp text-center align-center">
-          <h3>Your cart is empty.</h3>
+      <div className="row justify-content-center" style={{ height: '60vh' }}>
+        <div className="col-12 mt-5 my-auto text-center align-center">
+          <h3 className="my-auto" style={{ color: 'white' }}>
+            Your cart is empty.
+          </h3>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="container custom-table col-12 col-lg-5 my-3 pt-5">
-      <Card className="px-4 py-2 mb-3 col-11 mx-auto">
-        <Card.Body>
-          <div className="delivery-info">
-            <b>Restaurant:</b> {branch} {address}
-          </div>
-          <div className="delivery-info">
-            <b>Date:</b> {date}
-          </div>
-          <div className="delivery-info">
-            <b>Time:</b> {time}
-          </div>
-        </Card.Body>
-      </Card>
-      <Card className="px-4 py-2 mb-3 col-11 mx-auto">
-        <h5>Cart Order Items</h5>
-      </Card>
+    <div id="CartMain">
+      <div className="col-11 mx-auto py-5 ">
+        <div
+          style={{
+            backgroundColor: 'transparent',
+            color: 'whitesmoke'
+            // fontSize: '23px'
+          }}
+          className="container mx-auto custom-table col-12 col-lg-5 pt-5"
+        >
+          <Card
+            style={{
+              backgroundColor: 'transparent',
+              color: 'whitesmoke'
+              // fontSize: '23px'
+            }}
+            className="px-4 py-2 mb-3 col-11 mx-auto"
+          >
+            <Card.Body>
+              <div className="delivery-info">
+                <b>Restaurant:</b> {branch} {address}
+              </div>
+              <div className="delivery-info">
+                <b>Date:</b> {date}
+              </div>
+              <div className="delivery-info">
+                <b>Time:</b> {time}
+              </div>
+            </Card.Body>
+          </Card>
+          <Card
+            style={{
+              backgroundColor: 'transparent',
+              color: 'whitesmoke'
+              // fontSize: '23px'
+            }}
+            className="px-4 py-2 mb-3 col-11 mx-auto"
+          >
+            <h5>Cart Order Items</h5>
+          </Card>
 
-      <Card className="row d-flex col-11 mx-auto justify-content-between borderUp">
-        {/* <div> */}
-        {cartItems.map((item) => (
-          <Fragment key={item._id}>
-            {/* <hr /> */}
-            <div className="row cart-item">
-              <div className="container-fluid">
-                <div className="row cart-item-details">
-                  <span
-                    className="pointer col-5"
-                    onClick={() => handleViewDetails(item)}
-                    style={{ fontSize: '0.7rem' }}
-                  >
-                    {item.name}
-                  </span>
-                  <div className="col-7 d-flex mb-2">
-                    {/* <p className="col-12" id="card_item_price">
+          <Card
+            style={{
+              backgroundColor: 'transparent',
+              color: 'whitesmoke'
+              // fontSize: '23px'
+            }}
+            className="row d-flex col-11 mx-auto justify-content-between "
+          >
+            {/* <div> */}
+            {cartItems.map((item) => (
+              <Fragment key={item._id}>
+                {/* <hr /> */}
+                <div className="row cart-item">
+                  <div className="container-fluid">
+                    <div className="row cart-item-details">
+                      <span
+                        className="pointer col-5"
+                        onClick={() => handleViewDetails(item)}
+                        style={{ fontSize: '0.7rem' }}
+                      >
+                        {item.name}
+                      </span>
+                      <div className="col-7 d-flex mb-2">
+                        {/* <p className="col-12" id="card_item_price">
                       ${item.price}
                     </p> */}
-                    <p className="col-6" id="card_item_total">
-                      ${item.price * item.quantity}
-                    </p>
-                    <div className="stockCounter col-6 ">
-                      {/* <div className="stockCounter "> */}
-                      <span
-                        className="icon-container"
-                        onClick={() => handleMinus(item)}
-                      >
-                        <FontAwesomeIcon
-                          icon={faMinus}
-                          className="icon-border"
-                        />
-                      </span>
-                      <span className=" quantity ">{item.quantity} </span>
-                      <span
-                        className="icon-container"
-                        onClick={() => handleAdd(item)}
-                      >
-                        <FontAwesomeIcon
-                          icon={faPlus}
-                          className="icon-border"
-                        />
-                      </span>
-                      {/* </div> */}
+                        <p className="col-6" id="card_item_total">
+                          ${item.price * item.quantity}
+                        </p>
+                        <div className="stockCounter col-6 ">
+                          {/* <div className="stockCounter "> */}
+                          <span
+                            className="icon-container"
+                            onClick={() => handleMinus(item)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faMinus}
+                              className="icon-border"
+                            />
+                          </span>
+                          <span className=" quantity ">{item.quantity} </span>
+                          <span
+                            className="icon-container"
+                            onClick={() => handleAdd(item)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faPlus}
+                              className="icon-border"
+                            />
+                          </span>
+                          {/* </div> */}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              {/* <div className="col-1">
+                  {/* <div className="col-1">
                 <span
                   className=" col-2 "
                   onClick={() => handleDelete(item._id)}
@@ -367,57 +399,59 @@ const Cart = () => {
                   />
                 </span>
               </div> */}
+                </div>
+                {/* <hr /> */}
+              </Fragment>
+            ))}
+            <div className="col-12">
+              <div id="order_summary">
+                <p>
+                  Items total:{' '}
+                  <span className="order-summary-values">
+                    $
+                    {(
+                      cartItems.reduce((acc, item) => {
+                        const subtotal = item.price * item.quantity;
+                        return acc + subtotal;
+                      }, 0) || 0
+                    ).toFixed(2)}
+                  </span>
+                </p>
+                {/* <hr /> */}
+              </div>
             </div>
-            <hr />
-          </Fragment>
-        ))}
-        <div className="col-12">
-          <div id="order_summary">
-            <p>
-              Items total:{' '}
-              <span className="order-summary-values">
-                $
-                {(
-                  cartItems.reduce((acc, item) => {
-                    const subtotal = item.price * item.quantity;
-                    return acc + subtotal;
-                  }, 0) || 0
-                ).toFixed(2)}
-              </span>
-            </p>
-            {/* <hr /> */}
+          </Card>
+          <div className="px-4 py-2 mb-3 col-11 mx-auto">
+            <button
+              id="checkout_btn"
+              onClick={checkoutHandler}
+              className="btn my-global-button my-4 "
+            >
+              Check out
+            </button>
           </div>
-        </div>
-      </Card>
-      <div className="px-4 py-2 mb-3 col-11 mx-auto">
-        <button
-          id="checkout_btn"
-          onClick={checkoutHandler}
-          className="btn my-global-button my-4 "
-        >
-          Check out
-        </button>
-      </div>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Menu Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {selectedMenuItem && (
-            <>
-              <h3>{selectedMenuItem.name}</h3>
-              <p>Price: ${selectedMenuItem.price.toFixed(2)}</p>
-              <p>Description: {selectedMenuItem.description}</p>
-            </>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          <Modal show={showModal} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Menu Details</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {selectedMenuItem && (
+                <>
+                  <h3>{selectedMenuItem.name}</h3>
+                  <p>Price: ${selectedMenuItem.price.toFixed(2)}</p>
+                  <p>Description: {selectedMenuItem.description}</p>
+                </>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      </div>
     </div>
   );
 };
