@@ -388,7 +388,7 @@ const ReusableTable = ({
         {onUpdate && (
           <td>
             <Button
-              className="btn-custom with-border-radius"
+              className="my-global-button"
               onClick={() => onUpdate(item._id)}
             >
               <FontAwesomeIcon icon={faEdit} />
@@ -397,7 +397,10 @@ const ReusableTable = ({
         )}
         {update && (
           <td>
-            <Button className="btn-custom" onClick={() => update(item._id)}>
+            <Button
+              className="my-global-button"
+              onClick={() => update(item._id)}
+            >
               Update
             </Button>
           </td>
@@ -405,7 +408,7 @@ const ReusableTable = ({
         {onEdit && (
           <td>
             <Button
-              className="btn-custom with-border-radius"
+              className="my-global-button"
               onClick={() => onEdit(item._id)}
             >
               <FontAwesomeIcon icon={faEye} />
@@ -416,7 +419,7 @@ const ReusableTable = ({
         {onDelete && (
           <td>
             <Button
-              className="btn-custom with-border-radius"
+              className="my-global-button"
               onClick={() => onDelete(item._id)}
             >
               <FontAwesomeIcon icon={faTrash} />
@@ -426,7 +429,7 @@ const ReusableTable = ({
         {onViewDetails && (
           <td>
             <Button
-              className="btn-custom with-border-radius"
+              className="my-global-button with-border-radius"
               onClick={() => onViewDetails(item._id)}
             >
               <FontAwesomeIcon icon={faEye} />
@@ -435,7 +438,10 @@ const ReusableTable = ({
         )}
         {onAddMenu && (
           <td>
-            <Button className="btn-custom" onClick={() => onAddMenu(item._id)}>
+            <Button
+              className="my-global-button"
+              onClick={() => onAddMenu(item._id)}
+            >
               Add Menu
             </Button>
           </td>
@@ -445,7 +451,7 @@ const ReusableTable = ({
   };
 
   return (
-    <Table bordered responsive className="custom-table mt-4">
+    <Table bordered responsive className=" mt-4">
       <thead className="table-head">
         <tr>
           {headers.map((header) => (

@@ -7,4 +7,101 @@
     text-align: left;
     display: block;
   }
-  
+  /* Add this CSS to your existing stylesheet or create a new one */
+
+.address-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-label {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.radio-custom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff; /* Adjust the border color as needed */
+  border-radius: 50%;
+  background-color: #fff; /* Adjust the background color as needed */
+  transition: background-color 0.3s;
+}
+
+.radio-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-label:hover .radio-custom {
+  background-color: #f0f0f0; /* Adjust the background color on hover as needed */
+}
+
+.radio-label input:checked + .radio-custom {
+  background-color: #007bff; /* Adjust the background color for checked state */
+  border-color: #007bff; /* Adjust the border color for checked state */
+}
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.location-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-label {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.radio-custom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff; /* Adjust the border color as needed */
+  border-radius: 50%;
+  background-color: #fff; /* Adjust the background color as needed */
+  transition: background-color 0.3s;
+}
+
+.radio-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-label:hover .radio-custom {
+  background-color: #f0f0f0; /* Adjust the background color on hover as needed */
+}
+
+.radio-label input:checked + .radio-custom {
+  background-color: #007bff; /* Adjust the background color for checked state */
+  border-color: #007bff; /* Adjust the border color for checked state */
+}
+.form-select {
+  width: 100%;
+}
+
+/* Additional styles for smaller screens */
+@media (max-width: 576px) {
+  /* Adjust the width and other styles as needed */
+  .form-select {
+    width: 100%; /* Set the width to 100% for full-width on small screens */
+    max-width: none; /* Override max-width if needed */
+  }
+}

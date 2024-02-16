@@ -86,7 +86,7 @@ const RestaurantTable = () => {
           ) : (
             <div style={{ display: 'flex' }}>
               <h5 className="mt-2">Create a new restaurant - </h5>
-              <button className="btn m-1" onClick={handleAdd}>
+              <button className="btn my-global-button m-1" onClick={handleAdd}>
                 Create
               </button>
             </div>

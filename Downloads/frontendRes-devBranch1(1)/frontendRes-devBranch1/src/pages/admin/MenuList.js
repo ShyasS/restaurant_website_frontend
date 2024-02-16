@@ -87,7 +87,7 @@ const MenuList = () => {
   ];
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col">
           {/* <SearchBar handleSearch={handleSearch} /> */}
@@ -112,7 +112,7 @@ const MenuList = () => {
             </div>
             {/* Remove the Submit button as it's no longer needed */}
           </div>
-          <Button className="btn-custom" onClick={handleAdd}>
+          <Button className=" my-global-button" onClick={handleAdd}>
             Add Menu
           </Button>
           <ReusableTable

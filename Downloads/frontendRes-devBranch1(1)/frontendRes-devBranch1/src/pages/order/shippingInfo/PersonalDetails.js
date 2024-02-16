@@ -4,6 +4,7 @@
 import React from 'react';
 // import SimpleReactValidator from 'simple-react-validator';
 import './index.css';
+import { Button, Card } from 'react-bootstrap';
 
 const PersonalDetails = ({
   name,
@@ -39,8 +40,8 @@ const PersonalDetails = ({
   // };
 
   return (
-    <>
-      <h2>Personal Details</h2>
+    <Card className="my-3 p-3">
+      <h4>Personal Details</h4>
       <div className="mb-3 address-container">
         <label htmlFor="userName" className="form-label">
           First Name{' '}
@@ -95,9 +96,13 @@ const PersonalDetails = ({
           placeholder="Field is required"
         />
       </div>
-      <button type="button" className="my-2" onClick={handleGetOtp}>
+      <Button
+        type="button"
+        className="my-global-button my-2"
+        onClick={handleGetOtp}
+      >
         Get OTP
-      </button>
+      </Button>
       {isOtpSent && (
         <>
           <div>
@@ -118,17 +123,17 @@ const PersonalDetails = ({
               placeholder="Field is required"
             />
           </div>
-          <button
+          <Button
             type="button"
-            className="my-3"
+            className="my-3 my-global-button"
             required
             onClick={handleConfirmOtp}
           >
             Confirm OTP
-          </button>
+          </Button>
         </>
       )}
-    </>
+    </Card>
   );
 };
 

@@ -61,12 +61,12 @@ const OrdersTable = () => {
   }
 
   return (
-    <div className="container col-lg-8 custom-table my-5">
+    <div className="container col-lg-8 mt-2">
       <div className="row">
-        <div className="col my-5">
+        <div className="col p-4 my-2">
           {!noCurrentOrders && (
             <>
-              <h2>Current Orders</h2>
+              <h3>Current Orders</h3>
               <ReusableTable
                 data={currentOrders}
                 headers={headers}
@@ -78,10 +78,10 @@ const OrdersTable = () => {
       </div>
 
       <div className="row">
-        <div className="col my-5">
+        <div className="col p-4 mb-2">
           {!noDeliveredOrders && (
             <>
-              <h2>Delivered Orders</h2>
+              <h3>Delivered Orders</h3>
               <ReusableTable
                 data={deliveredOrders}
                 headers={headers}

@@ -170,7 +170,7 @@ const CustomerList = () => {
               actions: (
                 <div>
                   <Button
-                    className="btn-custom with-border-radius"
+                    className="my-global-button"
                     onClick={() => handleDelete(user._id)}
                   >
                     <FontAwesomeIcon icon={faTrash} />

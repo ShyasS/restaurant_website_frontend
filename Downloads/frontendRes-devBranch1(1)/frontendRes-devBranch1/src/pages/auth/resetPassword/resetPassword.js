@@ -54,7 +54,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="signup-form-container my-5">
+    <div className="signup-form-container mx-3 my-5">
       <div>
         <form onSubmit={handleSubmit}>
           <div className="row custom-table">
@@ -107,7 +107,7 @@ const ResetPassword = () => {
               </div>
             </div>
             <div className="mb-3">
-              <button type="submit" className="btn btn-secondary">
+              <button type="submit" className="btn my-global-button">
                 Submit
               </button>
             </div>

@@ -191,7 +191,7 @@ const UsersList = () => {
           </div> */}
           <div>
             <Link
-              className="btn"
+              className="btn my-global-button"
               style={{ background: '#51bc8fb5' }}
               to="/admin/customer/list"
             >
@@ -200,7 +200,7 @@ const UsersList = () => {
           </div>
           <div>
             <button
-              className="btn"
+              className="btn my-global-button"
               style={{ color: 'white' }}
               onClick={handleAdd}
             >
@@ -223,7 +223,7 @@ const UsersList = () => {
                     <FontAwesomeIcon icon={faEdit} />
                   </Button>{' '} */}
                   <Button
-                    className="btn-custom with-border-radius"
+                    className="my-global-button"
                     onClick={() => handleDelete(user._id)}
                   >
                     <FontAwesomeIcon icon={faTrash} />
@@ -287,10 +287,13 @@ const UsersList = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="btn-custom" onClick={handleCloseEditModal}>
+          <Button
+            className="btn-custom my-global-button"
+            onClick={handleCloseEditModal}
+          >
             Edit
           </Button>
-          <Button className="btn-custom" onClick={handleEdit}>
+          <Button className="btn-custom my-global-button" onClick={handleEdit}>
             Delete
           </Button>
         </Modal.Footer>

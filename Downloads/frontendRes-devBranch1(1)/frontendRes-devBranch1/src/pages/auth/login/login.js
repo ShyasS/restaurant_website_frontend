@@ -213,7 +213,7 @@ const LoginPage = () => {
   }, [error, isAuthenticated, dispatch, navigate, loginSuccess]);
 
   return (
-    <div className="signup-form-container ">
+    <div className="signup-form-container mb-4 mx-3 ">
       <form onSubmit={handleLogin}>
         <div className="row custom-table mx-auto mt-5">
           <div className="col-md-12 ">
@@ -267,7 +267,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn btn-secondary my-3"
+              className="btn my-global-button my-3"
             >
               Submit
             </button>

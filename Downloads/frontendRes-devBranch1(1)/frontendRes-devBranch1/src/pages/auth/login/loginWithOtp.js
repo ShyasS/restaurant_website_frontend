@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import './login.scss';
 
 const LoginWithOtp = () => {
   const emailOrPhone = JSON.parse(localStorage.getItem('emailOrPhone'));
@@ -55,9 +56,9 @@ const LoginWithOtp = () => {
   };
 
   return (
-    <div className="signup-form-container my-5">
+    <div className="signup-form-container container-fluid col-md-5 my-5">
       <form onSubmit={handleLogin}>
-        <div className="row custom-table">
+        <div className="row mx-3 custom-table">
           <div className="col-11 mx-auto">
             <h3 className="text-center mt-3 font-regular-29">Log in</h3>
             <div>
@@ -109,7 +110,7 @@ const LoginWithOtp = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn btn-secondary my-3"
+              className="btn my-global-button my-3"
             >
               {loading ? 'Logging in...' : 'Submit'}
             </button>

@@ -31,20 +31,20 @@ export default function Cart() {
   return (
     <>
       {storedCartItems.length === 0 ? (
-        <h2 className="mt-5">Your Cart is Empty</h2>
+        <h4 className="mt-5">Your Cart is Empty</h4>
       ) : (
         <>
           <h4 className="mt-5">
             Your Cart: <b>{storedCartItems.length} items</b>
           </h4>
-          <div className="row d-flex justify-content-between">
-            <div className="col-12 col-lg-8">
-             {storedCartItems.map((item) => (
-  <Fragment key={item._id}>
-    {/* <hr /> */}
-    <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
-      <div className="row">
-        <div className="col-4 col-lg-3">
+          <Card className="row d-flex justify-content-between">
+            <div className="col-12 ">
+              {storedCartItems.map((item) => (
+                <Fragment key={item._id}>
+                  {/* <hr /> */}
+                  <Card className="mt-3 p-2 mx-auto" style={{ borderRadius: '10px' }}>
+                    <div className="row">
+                      {/* <div className="col-4  col-lg-3">
           <img
            className="cartImage img-fluid border"
             src={
@@ -54,30 +54,31 @@ export default function Cart() {
             }
             alt={item.name}
           />
-        </div>
-        <div className="col-7">
-          <div className="row">
-            <div className="col-12">
-              <Link to={`/product/${item._id}`}>{item.name}</Link>
-            </div>
-            <div className="col-6 ">
-              <p id="card_item_price">${item.price * item.quantity}</p>
-            </div>
-            <div className="col-6">
-              <p id="card_item_price">Qty: {item.quantity || 1}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Card>
-  </Fragment>
-))}
+        </div> */}
+                      <div className="col-12">
+                        <div className="row">
+                          <div className="col-4">
+                            <p>{item.name}</p>
+                          </div>
+                          <div className="col-4">
+                            <p id="card_item_price">Qty: {item.quantity || 1}</p>
+                          </div>
+                          <div className="col-4 ">
+                            <p id="card_item_price">${item.price * item.quantity}</p>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Fragment>
+              ))}
               {/* <hr /> */}
             </div>
-            <Card className="col-12 col-lg-6 my-4">
+            <Card className="col-11 mx-auto pt-2 my-4">
               <div id="order_summary">
                 {/* <hr /> */}
-                
+
                 <p>
                   Items total:{' '}
                   <span className="order-summary-values">
@@ -87,7 +88,7 @@ export default function Cart() {
                 {/* <hr /> */}
               </div>
             </Card>
-          </div>
+          </Card>
         </>
       )}
     </>

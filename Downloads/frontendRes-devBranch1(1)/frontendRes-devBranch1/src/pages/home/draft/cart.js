@@ -220,9 +220,9 @@ export default function Cart() {
                 <button
                   id="checkout_btn"
                   onClick={checkoutHandler}
-                  className="btn btn-primary btn-block"
+                  className="btn my-global-button btn-block"
                 >
-                  Check out
+                  Check out..
                 </button>
               </div>
             </div>

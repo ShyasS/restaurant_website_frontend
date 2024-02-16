@@ -69,6 +69,7 @@ import CustomerList from 'pages/admin/CustomerList';
 // import Cart from 'pages/home/draft/cartSummary';
 import Cart from './pages/order/cart';
 import Landing from 'pages/home/LandingPage/Home';
+import ProtectedRoute from 'routes/protectedRoute';
 
 function App() {
   const loggedIn = window.localStorage.getItem('isloggedIn'  || false);
@@ -107,8 +108,6 @@ function App() {
           <div className="header">
               <Header />
           </div>
-        
-          <div className="container-fluid d-flex justify-content-center content-container">
             <ToastContainer theme="dark" />
             <Routes>
               <Route element={loggedIn ? <HomePage /> : <LoginPage />} />
@@ -242,7 +241,7 @@ function App() {
                 element={
                   // <ProtectedRoute isAdmin>
                   <CarouselForm />
-                  // </ProtectedRoute>
+                // </ProtectedRoute>
                 }
               />
                <Route
@@ -344,8 +343,6 @@ function App() {
                 />
               )}
             </Routes>
-          </div>
-
            <Footer /> 
         </HelmetProvider>
       </div>

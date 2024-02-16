@@ -123,7 +123,11 @@ const CartSummary = ({
                   )}
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="secondary" onClick={handleCloseModal}>
+                  <Button
+                    className="my-global-button"
+                    variant="secondary"
+                    onClick={handleCloseModal}
+                  >
                     Close
                   </Button>
                 </Modal.Footer>
@@ -147,7 +151,7 @@ const CartSummary = ({
                 <button
                   id="checkout_btn"
                   onClick={checkoutHandler}
-                  className="btn btn-primary btn-block mb-3"
+                  className="btn my-global-button btn-block mb-3"
                 >
                   Check out
                 </button>

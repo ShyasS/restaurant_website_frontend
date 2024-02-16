@@ -205,8 +205,11 @@ const Header = () => {
                           borderRadius: '30px',
                           width: '100px',
                           backgroundColor: '#f0b06c',
+                          textAlign: 'center', // Center text horizontally
+                          display: 'inline-block',
                           borderColor: '#f0b06c'
                         }}
+                        className="my-global-button mx-auto"
                         onClick={handleLogout}
                       >
                         Logout
@@ -219,8 +222,11 @@ const Header = () => {
                             borderRadius: '30px',
                             width: '100px',
                             backgroundColor: '#f0b06c',
+                            textAlign: 'center', // Center text horizontally
+                            display: 'inline-block',
                             borderColor: '#f0b06c'
                           }}
+                          className="my-global-button mx-auto"
                           as={Link}
                           to="/login"
                         >
@@ -240,12 +246,15 @@ const Header = () => {
                     {/* <i className="fa-solid fa-bell-concierge menuIconColor" /> */}
                     <span> Order</span>
                   </Nav.Link>
-                  <div className="logout-login-buttons">
+                  <div className="logout-login-buttons ">
                     {isLoggedIn ? (
                       <Nav.Link
+                        className="my-global-button mx-auto"
                         style={{
                           borderRadius: '30px',
                           width: '100px',
+                          textAlign: 'center', // Center text horizontally
+                          display: 'inline-block',
                           backgroundColor: '#f0b06c',
                           borderColor: '#f0b06c'
                         }}
@@ -260,9 +269,12 @@ const Header = () => {
                           style={{
                             borderRadius: '30px',
                             width: '100px',
+                            textAlign: 'center', // Center text horizontally
+                            display: 'inline-block',
                             backgroundColor: '#f0b06c',
                             borderColor: '#f0b06c'
                           }}
+                          className="my-global-button mx-auto"
                           as={Link}
                           to="/login"
                         >

@@ -73,11 +73,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="container signup-form-container">
+    <div className="container-fluid signup-form-container mb-3">
       <form onSubmit={handleSubmit}>
-        <div className="col-11 col-md-6 mx-auto custom-table mt-4">
+        <div className="col-11 col-md-6 mx-auto custom-table mx-3 mt-4">
           <div className="col-md-12 col-12 px-4">
-            <h3 className="text-center mt-3 font-regular-29">Sign up</h3>
+            <h4 className="text-center mt-3 font-regular-29">Sign up</h4>
             <div>
               If you have account?{' '}
               <div className="links-container mb-4">
@@ -231,7 +231,9 @@ const SignUpForm = () => {
             </div>
 
             <div className="my-3">
-              <button type="submit">Sign up</button>
+              <button type="submit" className="my-global-button">
+                Sign up
+              </button>
             </div>
           </div>
         </div>

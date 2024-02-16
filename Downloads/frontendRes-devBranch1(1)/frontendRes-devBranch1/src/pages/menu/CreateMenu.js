@@ -11,7 +11,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import CategoryList from './CategoryList';
 import CategoryList1 from './CategoryList1';
 // import Sidebar from './Sidebar';
@@ -299,7 +299,7 @@ export default function CreateMenu() {
             className="address-container shadow-lg "
             encType="multipart/form-data"
           >
-            <h3 className="my-5 pt-4">Create Menu Item</h3>
+            <h4 className="my-5 mx-5 pt-4">Create Menu Item</h4>
             <div className="row">
               <div className="col-6">
                 <div className="mb-4 mx-5">
@@ -508,7 +508,12 @@ export default function CreateMenu() {
                 </div>
 
                 <div className="mb-4 mx-5">
-                  <label htmlFor="vegetarian_checkbox">Is Available</label>
+                  <label
+                    htmlFor="vegetarian_checkbox"
+                    style={{ fontSize: '1rem', color: '#333' }}
+                  >
+                    Is Available
+                  </label>
                   <div className="my-2">
                     <input
                       type="checkbox"
@@ -516,16 +521,46 @@ export default function CreateMenu() {
                       checked={isAvailable}
                       onChange={handleCheckboxChange}
                       className="custom-checkbox form-control"
+                      style={{
+                        display: 'none' // Hide default checkbox
+                      }}
                     />
+                    <label
+                      htmlFor="vegetarian_checkbox"
+                      style={{
+                        marginTop: '5px',
+                        borderRadius: '50%', // Make it round
+                        width: '20px', // Adjust the size as needed
+                        height: '20px', // Adjust the size as needed
+                        cursor: 'pointer',
+                        border: '1px solid #333',
+                        display: 'inline-block',
+                        position: 'relative',
+                        backgroundColor: isAvailable ? '#4caf50' : '#fff' // Green background for checked state
+                      }}
+                    >
+                      {isAvailable && (
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          style={{
+                            color: '#fff',
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)'
+                          }}
+                        />
+                      )}
+                    </label>
                   </div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 p-5">
                   <button
                     id="login_button"
                     type="submit"
                     disabled={loading}
-                    className="btn btn-block my-5"
+                    className="my-global-button"
                   >
                     CREATE
                   </button>
@@ -558,15 +593,21 @@ export default function CreateMenu() {
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  className="my-global-button"
                   onClick={() => setAddMealCategoryModalOpen(false)}
                 >
                   Close
                 </Button>
-                <Button variant="secondary" onClick={handleViewAllCategories1}>
+                <Button
+                  className="my-global-button"
+                  onClick={handleViewAllCategories1}
+                >
                   View all Category
                 </Button>
-                <Button variant="primary" onClick={handleSaveMealCategory}>
+                <Button
+                  className="my-global-button"
+                  onClick={handleSaveMealCategory}
+                >
                   Save
                 </Button>
               </Modal.Footer>
@@ -598,15 +639,21 @@ export default function CreateMenu() {
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  className="my-global-button"
                   onClick={() => setAddCategoryModalOpen(false)}
                 >
                   Close
                 </Button>
-                <Button variant="secondary" onClick={handleViewAllCategories}>
+                <Button
+                  className="my-global-button"
+                  onClick={handleViewAllCategories}
+                >
                   View all Category
                 </Button>
-                <Button variant="primary" onClick={handleSaveCategory}>
+                <Button
+                  className="my-global-button"
+                  onClick={handleSaveCategory}
+                >
                   Save
                 </Button>
               </Modal.Footer>
@@ -629,7 +676,7 @@ export default function CreateMenu() {
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  className="my-global-button"
                   onClick={() => setViewCategoryModalOpen(false)}
                 >
                   Close
@@ -654,7 +701,7 @@ export default function CreateMenu() {
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  className="my-global-button"
                   onClick={() => setViewCategoryModalOpen1(false)}
                 >
                   Close

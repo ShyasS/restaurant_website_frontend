@@ -164,7 +164,7 @@ const OrderDetails = () => {
 
   return (
     <div className="container">
-      <div className="row custom-table mx-auto mt-4 mb-4">
+      <div className="row custom-table mx-auto mt-4 p-2 mb-4">
         <div className="col">
           <div className="row d-flex justify-content-around">
             <div className="col-12 col-lg-4 order-details">
@@ -193,10 +193,11 @@ const OrderDetails = () => {
                 <b className="mx-2">Phone:</b>{' '}
                 {orderDetails?.shipping.phone || 'not found'}
               </div>
-              <div
+              <Card
                 style={{
                   display: 'flex',
-                  marginBottom: '1rem'
+                  marginBottom: '1rem',
+                  padding: '5px'
                 }}
               >
                 <b className="">Billing Address:</b>{' '}
@@ -205,13 +206,13 @@ const OrderDetails = () => {
                 {orderDetails?.shipping.address.state || ''},{' '}
                 {orderDetails?.shipping.address.country || ''},
                 {orderDetails?.shipping.address.postalCode || ''}
-              </div>
+              </Card>
               {orderDetails?.delivery && (
-                <div
+                <Card
                   style={{
                     display: 'flex',
                     marginBottom: '1rem',
-                    marginLeft: '7px'
+                    padding: '5px'
                   }}
                 >
                   <b className="">Delivery Address:</b>{' '}
@@ -220,40 +221,49 @@ const OrderDetails = () => {
                   {orderDetails?.delivery?.state || ''},{' '}
                   {orderDetails?.delivery?.country || ''},
                   {orderDetails?.delivery?.postalCode || ''}
-                </div>
+                </Card>
               )}
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Restaurant:</b>{' '}
-                {orderDetails?.restaurantBranch || 'not found'}
-              </div>
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Selected time:</b>{' '}
-                {orderDetails?.selectedTimeSlot || 'not found'}
-              </div>
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Selected Date:</b>{' '}
-                {orderDetails?.orderDate || 'not found'}
-              </div>
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Order Type:</b>{' '}
-                {orderDetails?.orderType || 'not found'}
-              </div>
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Total Amount:</b> $
-                {orderDetails?.totalPrice}
-              </div>
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Payment:</b> {orderDetails?.paymentStatus}
-              </div>
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Payment Id:</b> {orderDetails?.paymentInfo}
-              </div>
-              <div />
-              <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Paid at:</b> {orderDetails?.paidAt}
-              </div>
-              <div
-                style={{ display: 'flex', marginBottom: '1rem' }}
+              <Card className="mb-3">
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Restaurant:</b>{' '}
+                  {orderDetails?.restaurantBranch || 'not found'}
+                </div>
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Selected time:</b>{' '}
+                  {orderDetails?.selectedTimeSlot || 'not found'}
+                </div>
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Selected Date:</b>{' '}
+                  {orderDetails?.orderDate || 'not found'}
+                </div>
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Order Type:</b>{' '}
+                  {orderDetails?.orderType || 'not found'}
+                </div>
+              </Card>
+              <Card className="pt-2">
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Total Amount:</b> $
+                  {orderDetails?.totalPrice}
+                </div>
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Payment:</b> {orderDetails?.paymentStatus}
+                </div>
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Payment Id:</b>{' '}
+                  {orderDetails?.paymentInfo}
+                </div>
+                <div />
+                <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                  <b className="mx-2">Paid at:</b> {orderDetails?.paidAt}
+                </div>
+              </Card>
+              <Card
+                style={{
+                  display: 'flex',
+                  marginBottom: '1rem',
+                  padding: '5px'
+                }}
                 className={`my-4 ${
                   orderDetails?.orderStatus === 'Delivered'
                     ? 'greenColor'
@@ -262,7 +272,7 @@ const OrderDetails = () => {
               >
                 <b className="mx-2">Order Status:</b>{' '}
                 {orderDetails?.orderStatus}
-              </div>
+              </Card>
               <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <b className="mx-2">Order Instruction:</b>{' '}
                 {orderDetails?.orderInstruction || '-'}
@@ -275,41 +285,44 @@ const OrderDetails = () => {
             </div>
 
             <div className="col-12 col-lg-8 mt-5">
-              <h4 className="my-4">Order Items:</h4>
-
-              {orderDetails?.items.length > 0 ? (
-                orderDetails?.items.map((item) => (
-                  <Card
-                    className="cart-item my-3 container col-8"
-                    key={item._id}
-                  >
-                    <div className="row my-2">
-                      <div className="col-2 col-lg-1">
+              <div className="col-9 px-5 mx-auto">
+                <h3 className="my-4">Order Items:</h3>
+              </div>
+              <div className="col-12">
+                {orderDetails?.items.length > 0 ? (
+                  orderDetails?.items.map((item) => (
+                    <Card
+                      className="cart-item my-3 container col-8"
+                      key={item._id}
+                    >
+                      <div className="row my-2">
+                        {/* <div className="col-2 col-lg-1">
                         <img
                           src={item.image}
                           alt={item.name}
                           height="45"
                           width="65"
                         />
-                      </div>
+                      </div> */}
 
-                      <div className="col-12 col-lg-6">
-                        <Link to={`/menuDetails/${item._id}`}>{item.name}</Link>
-                      </div>
+                        <div className="col-12 col-lg-6">
+                          <p>{item.name}</p>
+                        </div>
 
-                      <div className="col-5 col-lg-2 mt-4 mt-lg-0">
-                        <p>${item.price}</p>
-                      </div>
+                        <div className="col-5 col-lg-2 mt-4 mt-lg-0">
+                          <p>${item.price}</p>
+                        </div>
 
-                      <div className="col-7 col-lg-3 mt-4 mt-lg-0">
-                        <p>Qty-{item.itemQuantity}</p>
+                        <div className="col-7 col-lg-3 mt-4 mt-lg-0">
+                          <p>Qty-{item.itemQuantity}</p>
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                ))
-              ) : (
-                <p>Items failed to display</p>
-              )}
+                    </Card>
+                  ))
+                ) : (
+                  <p>Items failed to display</p>
+                )}
+              </div>
             </div>
           </div>
         </div>

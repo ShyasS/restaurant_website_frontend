@@ -4,7 +4,7 @@
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import './index.css';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 const BillingAddress = ({
   streetAddress,
@@ -32,8 +32,8 @@ const BillingAddress = ({
   }, [streetAddress, postalCode, city, state, country]);
 
   return (
-    <>
-      <h2>Billing Address</h2>
+    <Card className="my-3 p-3">
+      <h4>Billing Address</h4>
       <div className="mb-3 address-container">
         <label htmlFor="streetAddress" className="form-label">
           Street Address{' '}
@@ -126,13 +126,16 @@ const BillingAddress = ({
         />
         {orderType === 'Pickup' && (
           <div>
-            <Button className="mt-2" onClick={handleBillingAddressChange}>
+            <Button
+              className="mt-2 my-global-button"
+              onClick={handleBillingAddressChange}
+            >
               Check Address
             </Button>
           </div>
         )}
       </div>
-    </>
+    </Card>
   );
 };
 

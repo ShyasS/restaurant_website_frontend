@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Button, Card } from 'react-bootstrap';
 // import '../auth/register/SignUpForm.css';
 
 const CreateAdmin = () => {
@@ -94,9 +95,12 @@ const CreateAdmin = () => {
   }, []);
 
   return (
-    <div className="address-container col-4">
+    <Card className="address-container container my-4 p-4 col-md-4">
       <form onSubmit={handleSubmit}>
-        <h2>Create Admin</h2>
+        <div>
+          <h4>Create Admin</h4>
+        </div>
+
         <div className="mb-3">
           <label htmlFor="name">
             First name:
@@ -250,12 +254,12 @@ const CreateAdmin = () => {
           />
         </div>
         <div className="mb-3">
-          <button type="submit" className="btn mb-4">
+          <Button type="submit" className=" my-global-button mb-4">
             Create Admin
-          </button>
+          </Button>
         </div>
       </form>
-    </div>
+    </Card>
   );
 };
 

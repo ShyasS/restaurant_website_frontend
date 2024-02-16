@@ -133,14 +133,18 @@ const RestaurantSelection = () => {
   }, [restaurantId]);
   return (
     <div>
-      <Card className="col-11 mx-auto mt-5">
+      <Card className="col-11 seletion mx-auto mt-3">
         <Card.Body>
-          <div className="d-flex justify-content-start">
-            <button onClick={handleGoBack} className="btn" type="button">
+          <div className="d-flex justify-content-start modal-footer">
+            <Button
+              onClick={handleGoBack}
+              className="btn my-global-button"
+              style={{ color: 'white' }}
+            >
               <FaArrowLeft /> Back
-            </button>
+            </Button>
           </div>
-          <Card.Title>Select Restaurant</Card.Title>
+          <Card.Title style={{ color: 'white' }}>Select Restaurant</Card.Title>
           <Form className="container">
             <Form.Group controlId="formrestaurantId">
               <Form.Select
@@ -169,7 +173,7 @@ const RestaurantSelection = () => {
         </Card.Body>
         <Card.Body>
           <div className="modal-body">
-            <Card.Title>Order Date</Card.Title>
+            <Card.Title style={{ color: 'white' }}>Order Date</Card.Title>
             {/* You would generate the following buttons dynamically based on available dates */}
             <div className="date-buttons">
               {availableDates.map((date) => (
@@ -180,7 +184,7 @@ const RestaurantSelection = () => {
                   style={{
                     backgroundColor:
                       selectedDate === date ? 'green' : 'transparent',
-                    color: selectedDate === date ? 'white' : 'black',
+                    color: selectedDate === date ? 'white' : 'white',
                     border:
                       selectedDate === date
                         ? '2px solid black'
@@ -195,7 +199,7 @@ const RestaurantSelection = () => {
         </Card.Body>
         <Card.Body>
           <div className="modal-body">
-            <Card.Title>Order Time</Card.Title>
+            <Card.Title style={{ color: 'white' }}>Order Time</Card.Title>
             <Form.Select
               value={selectedTimeSlot}
               onChange={(e) => setSelectedTimeSlot(e.target.value)}
@@ -211,8 +215,8 @@ const RestaurantSelection = () => {
             </Form.Select>
           </div>
         </Card.Body>
-        <div className="modal-footer">
-          <button className="btn" onClick={handleContinue}>
+        <div className="modal-footer mx-auto">
+          <button className="btn my-global-button" onClick={handleContinue}>
             Continue
           </button>
         </div>

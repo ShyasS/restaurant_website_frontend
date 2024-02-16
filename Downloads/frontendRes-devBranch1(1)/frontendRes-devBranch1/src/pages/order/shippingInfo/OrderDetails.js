@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import { Card } from 'react-bootstrap';
 import './index.css';
 
 const OrderDetails = ({
@@ -11,8 +12,8 @@ const OrderDetails = ({
   textBox1
 }) => {
   return (
-    <div className="mt-3">
-      <h2>Order Details</h2>
+    <Card className="my-3 p-3">
+      <h4>Order Details</h4>
       <div className="mb-3 address-container">
         <label htmlFor="orderType" className="form-label">
           Order Type{' '}
@@ -22,7 +23,7 @@ const OrderDetails = ({
           </span>
         </label>
         <select
-          className={`form-select `}
+          className="form-select form-select-sm col-xs-2"
           id="orderType"
           value={orderType}
           onChange={handleOrderTypeChange}
@@ -48,7 +49,7 @@ const OrderDetails = ({
           placeholder="Order Notes"
         />
       </div>
-    </div>
+    </Card>
   );
 };
 

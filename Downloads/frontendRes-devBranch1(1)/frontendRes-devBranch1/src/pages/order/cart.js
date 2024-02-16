@@ -290,8 +290,8 @@ const Cart = () => {
   }
 
   return (
-    <div className="col-12 col-lg-5 pt-4">
-      <Card className="mb-4 borderUp">
+    <div className="container custom-table col-12 col-lg-5 my-3 pt-5">
+      <Card className="px-4 py-2 mb-3 col-11 mx-auto">
         <Card.Body>
           <div className="delivery-info">
             <b>Restaurant:</b> {branch} {address}
@@ -304,10 +304,12 @@ const Cart = () => {
           </div>
         </Card.Body>
       </Card>
+      <Card className="px-4 py-2 mb-3 col-11 mx-auto">
+        <h5>Cart Order Items</h5>
+      </Card>
 
-      <Card className="row d-flex justify-content-between borderUp">
+      <Card className="row d-flex col-11 mx-auto justify-content-between borderUp">
         {/* <div> */}
-        <h4>Cart Order Items</h4>
         {cartItems.map((item) => (
           <Fragment key={item._id}>
             {/* <hr /> */}
@@ -315,20 +317,20 @@ const Cart = () => {
               <div className="container-fluid">
                 <div className="row cart-item-details">
                   <span
-                    className="pointer col-6"
+                    className="pointer col-5"
                     onClick={() => handleViewDetails(item)}
                     style={{ fontSize: '0.7rem' }}
                   >
                     {item.name}
                   </span>
-                  <div className="col-6 mb-2">
+                  <div className="col-7 d-flex mb-2">
                     {/* <p className="col-12" id="card_item_price">
                       ${item.price}
                     </p> */}
-                    <p className="col-12" id="card_item_total">
+                    <p className="col-6" id="card_item_total">
                       ${item.price * item.quantity}
                     </p>
-                    <div className="stockCounter col-12 ">
+                    <div className="stockCounter col-6 ">
                       {/* <div className="stockCounter "> */}
                       <span
                         className="icon-container"
@@ -384,16 +386,18 @@ const Cart = () => {
               </span>
             </p>
             {/* <hr /> */}
-            <button
-              id="checkout_btn"
-              onClick={checkoutHandler}
-              className="btn btn-primary btn-block"
-            >
-              Check out
-            </button>
           </div>
         </div>
       </Card>
+      <div className="px-4 py-2 mb-3 col-11 mx-auto">
+        <button
+          id="checkout_btn"
+          onClick={checkoutHandler}
+          className="btn my-global-button my-4 "
+        >
+          Check out
+        </button>
+      </div>
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>

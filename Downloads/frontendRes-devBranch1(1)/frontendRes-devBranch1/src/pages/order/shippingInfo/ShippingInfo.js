@@ -613,7 +613,7 @@ const ShippingInfo1 = () => {
   }, [otpVerified, navigate]);
 
   return (
-    <div className="container borderUp custom-table my-4">
+    <div className="container col-md-5 custom-table my-4">
       <form className="checkout-form" onSubmit={handleSubmit}>
         {!isLoggedIn && (
           <PersonalDetails
@@ -690,7 +690,7 @@ const ShippingInfo1 = () => {
             orderType={orderType}
           />
         )}
-        <button type="submit" className="btn btn-primary mb-4">
+        <button type="submit" className="btn my-global-button btn-primary mb-4">
           Continue
         </button>
       </form>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Card } from 'react-bootstrap';
 
 const EditRestaurant = () => {
   const { id: restaurantId } = useParams();
@@ -90,244 +91,245 @@ const EditRestaurant = () => {
   };
 
   return (
-    <div className="col-4">
-      <h1>Edit Restaurant</h1>
+    <div className="col-md-5 container">
+      <h4 className="py-3">Edit Restaurant</h4>
       <form onSubmit={handleSubmit} className="address-container">
-        <div className="mb-4">
-          <label>
-            Restaurant Name:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="restaurantName"
-            value={formData.restaurantName}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+        <Card className="p-3">
+          <div className="mb-4">
+            <label>
+              Restaurant Name:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="restaurantName"
+              value={formData.restaurantName}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Restaurant Branch:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="restaurantBranch"
-            value={formData.restaurantBranch}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Restaurant Branch:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="restaurantBranch"
+              value={formData.restaurantBranch}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Restaurant Id:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="restaurantId"
-            value={formData.restaurantId}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Restaurant Id:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="restaurantId"
+              value={formData.restaurantId}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Description:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Description:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Address Line 1:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="address.line1"
-            value={formData.address.line1}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Address Line 1:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="address.line1"
+              value={formData.address.line1}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Address Line 2:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="address.line2"
-            value={formData.address.line2}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Address Line 2:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="address.line2"
+              value={formData.address.line2}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            City:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="address.city"
-            value={formData.address.city}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              City:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="address.city"
+              value={formData.address.city}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            State:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="address.state"
-            value={formData.address.state}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              State:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="address.state"
+              value={formData.address.state}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Postal Code:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="address.postalCode"
-            value={formData.address.postalCode}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Postal Code:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="address.postalCode"
+              value={formData.address.postalCode}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Country:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="address.country"
-            value={formData.address.country}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
+          <div className="mb-4">
+            <label>
+              Country:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="address.country"
+              value={formData.address.country}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Cuisine:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <select
-            name="cuisineTypeCategory"
-            value={formData.cuisineTypeCategory}
-            onChange={handleChange}
-            required
-            className={`form-control `}
-          >
-            <option value="">Select</option>
-            <option value="Italian">Italian</option>
-            <option value="Asian">Asian</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Indian">Indian</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+          <div className="mb-4">
+            <label>
+              Cuisine:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <select
+              name="cuisineTypeCategory"
+              value={formData.cuisineTypeCategory}
+              onChange={handleChange}
+              required
+              className={`form-control `}
+            >
+              <option value="">Select</option>
+              <option value="Italian">Italian</option>
+              <option value="Asian">Asian</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Indian">Indian</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        <div className="mb-4">
-          <label>
-            Opening Hours:
-            <span className="text-danger">
-              {' '}
-              <b>*</b>
-            </span>
-          </label>
-          <input
-            type="text"
-            name="openingHours"
-            value={formData.openingHours}
-            onChange={handleChange}
-            required
-            placeholder="Field is required"
-            className={`form-control `}
-          />
-        </div>
-
-        <button type="submit" className="btn mb-4">
+          <div className="mb-4">
+            <label>
+              Opening Hours:
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              type="text"
+              name="openingHours"
+              value={formData.openingHours}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
+        </Card>
+        <button type="submit" className="my-global-button my-4">
           Update Restaurant
         </button>
       </form>

@@ -15,3 +15,30 @@ body {
   // color: #EE402F !important;
   // background-color: #EE402F !important; 
 }
+.my-global-button {
+  /* Your common button styles go here */
+  background-color: #3a7975 !important;
+  color: #fff !important;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px !important;
+  cursor: pointer;
+  width: auto !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+  text-align: center !important;
+  font-size: 0.8em !important; /* Adjust the base font size as needed */
+}
+
+/* Responsive font size for smaller screens */
+@media (max-width: 576px) {
+  .my-global-button {
+    font-size: 0.6rem !important; /* Adjust the font size for smaller screens */
+  }
+}
+
+
+.my-global-button:hover {
+  /* Styles for the button on hover */
+  background-color: #3a7975 !important;
+}

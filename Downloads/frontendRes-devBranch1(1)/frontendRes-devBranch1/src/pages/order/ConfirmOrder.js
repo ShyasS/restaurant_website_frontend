@@ -108,124 +108,121 @@ const ConfirmOrder = () => {
 
   return (
     <div>
-      <div>
-        <div className="row d-flex justify-content-between col-12 col-md-6 mx-auto">
-          <div className=" order-confirm " style={{ textAlign: 'left' }}>
-            <h3 className="mb-3">
-              <b>Shipping Info</b>
-            </h3>
-            <Card className="p-2 borderUp" style={{ borderRadius: '10px' }}>
-              <p>
-                <b>Name:</b> {localData.name}{' '}
-                {/* Replace with actual name data */}
-              </p>
-              {isLoggedIn && (
-                <>
-                  <p>
-                    <b>Email:</b> {localData.email}
-                  </p>
-                  <p>
-                    <b>Phone:</b> {localData.mobileNumber}
-                  </p>
-                </>
-              )}
-              {!isLoggedIn && (
-                <>
-                  <p>
-                    <b>Email / Phone:</b> {emailOrMobile}
-                  </p>
+      <Card className="row my-3 d-flex justify-content-between col-12 col-md-5 mx-auto">
+        <div className=" order-confirm " style={{ textAlign: 'left' }}>
+          <h4 className="mb-3 my-2">
+            <>Shipping Info</>
+          </h4>
+          <Card className="p-2 borderUp" style={{ borderRadius: '10px' }}>
+            <p>
+              <b>Name:</b> {localData.name}{' '}
+              {/* Replace with actual name data */}
+            </p>
+            {isLoggedIn && (
+              <>
+                <p>
+                  <b>Email:</b> {localData.email}
+                </p>
+                <p>
+                  <b>Phone:</b> {localData.mobileNumber}
+                </p>
+              </>
+            )}
+            {!isLoggedIn && (
+              <>
+                <p>
+                  <b>Email / Phone:</b> {emailOrMobile}
+                </p>
+                <p className="mb-4">
+                  <b>Billing Address:</b> {mappedData.streetAddress},{' '}
+                  {mappedData.city}, {mappedData.state}, {mappedData.postalCode}
+                  , {mappedData.country}
+                </p>
+              </>
+            )}
+            {mappedData.orderType === 'Pickup' ? (
+              <div>
+                <p>
+                  <b>Type:</b> Pickup
+                </p>
+                <p>
+                  <b>Order date:</b> {selectedDate}
+                </p>
+                <p>
+                  <b>Pickup Time:</b> {mappedData.selectedTimeSlot}
+                </p>
+                <p>
+                  <b>Restaurant:</b> {restaurantBranch}
+                </p>
+              </div>
+            ) : (
+              <div>
+                <p>
+                  <b>Type:</b> Delivery
+                </p>
+                <p>
+                  <b>Restaurant:</b> {restaurantBranch}
+                </p>
+                <p>
+                  <b>Delivery Time:</b>{' '}
+                  {mappedData.selectedTimeSlot || Date.now()}
+                </p>
+                <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
                   <p className="mb-4">
                     <b>Billing Address:</b> {mappedData.streetAddress},{' '}
                     {mappedData.city}, {mappedData.state},{' '}
                     {mappedData.postalCode}, {mappedData.country}
                   </p>
-                </>
-              )}
-              {mappedData.orderType === 'Pickup' ? (
-                <div>
-                  <p>
-                    <b>Type:</b> Pickup
+                </Card>
+                <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
+                  <p className="mb-4">
+                    <b>Delivery Address:</b> {deliveryAddress.streetAddress},{' '}
+                    {deliveryAddress.city}, {deliveryAddress.state},{' '}
+                    {deliveryAddress.postalCode}, {deliveryAddress.country}
                   </p>
-                  <p>
-                    <b>Order date:</b> {selectedDate}
-                  </p>
-                  <p>
-                    <b>Pickup Time:</b> {mappedData.selectedTimeSlot}
-                  </p>
-                  <p>
-                    <b>Restaurant:</b> {restaurantBranch}
-                  </p>
-                </div>
-              ) : (
-                <div>
-                  <p>
-                    <b>Type:</b> Delivery
-                  </p>
-                  <p>
-                    <b>Restaurant:</b> {restaurantBranch}
-                  </p>
-                  <p>
-                    <b>Delivery Time:</b>{' '}
-                    {mappedData.selectedTimeSlot || Date.now()}
-                  </p>
-                  <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
-                    <p className="mb-4">
-                      <b>Billing Address:</b> {mappedData.streetAddress},{' '}
-                      {mappedData.city}, {mappedData.state},{' '}
-                      {mappedData.postalCode}, {mappedData.country}
-                    </p>
-                  </Card>
-                  <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
-                    <p className="mb-4">
-                      <b>Delivery Address:</b> {deliveryAddress.streetAddress},{' '}
-                      {deliveryAddress.city}, {deliveryAddress.state},{' '}
-                      {deliveryAddress.postalCode}, {deliveryAddress.country}
-                    </p>
-                  </Card>
-                </div>
-              )}
-            </Card>
-            {/* <Card className="p-2 " style={{ borderRadius: '10px' }}> */}
-            <Cart />
-            {/* </Card> */}
-          </div>
-
-          <div className="">
-            <Card
-              className="mt-3 p-2 borderUp"
-              style={{ borderRadius: '10px' }}
-              id="order_summary"
-            >
-              <p>
-                Tax: <span className="order-summary-values">${taxPrice}</span>
-              </p>
-
-              {/* <hr /> */}
-              <p>
-                Delivery:{' '}
-                <span className="order-summary-values">${shippingPrice}</span>
-              </p>
-
-              {/* <hr /> */}
-
-              <p>
-                Total:{' '}
-                <span className="order-summary-values">${totalPrice}</span>
-              </p>
-              {/* <hr /> */}
-            </Card>
-            <button
-              type="submit"
-              id="checkout_btn"
-              className="btn btn-block my-4"
-              style={{ backgroundColor: '#ffa500' }}
-              onClick={processPayment}
-            >
-              Proceed to Payment
-            </button>
-          </div>
+                </Card>
+              </div>
+            )}
+          </Card>
+          {/* <Card className="p-2 " style={{ borderRadius: '10px' }}> */}
+          <Cart />
+          {/* </Card> */}
         </div>
-      </div>
+
+        <div className="">
+          <Card
+            className="mt-3 p-2 borderUp"
+            style={{ borderRadius: '10px' }}
+            id="order_summary"
+          >
+            <p>
+              Tax: <span className="order-summary-values">${taxPrice}</span>
+            </p>
+
+            {/* <hr /> */}
+            <p>
+              Delivery:{' '}
+              <span className="order-summary-values">${shippingPrice}</span>
+            </p>
+
+            {/* <hr /> */}
+
+            <p>
+              Total: <span className="order-summary-values">${totalPrice}</span>
+            </p>
+            {/* <hr /> */}
+          </Card>
+          <button
+            type="submit"
+            id="checkout_btn"
+            className="btn my-global-button my-4"
+            style={{ backgroundColor: '#ffa500' }}
+            onClick={processPayment}
+          >
+            Proceed to Payment
+          </button>
+        </div>
+      </Card>
     </div>
   );
 };

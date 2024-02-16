@@ -53,41 +53,43 @@ const SendLoginOtp = () => {
     }
   };
   return (
-    <form onSubmit={handleLogin}>
-      <div className="row custom-table my-5">
-        <div className="col-11 mx-auto">
-          <h3 className="text-center mt-3 font-regular-29">Send OTP</h3>
-          <div className="mb-3">
-            <label className="form-label">
-              Email
-              <span className="text-danger">
-                {' '}
-                <b>*</b>
-              </span>
-            </label>
-            <input
-              value={email}
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              required
-              placeholder="Field is required"
-              className="form-control"
-            />
-            {validator.current.message('email', email, 'required')}
+    <div className="container-fluid mt-5 mb-4 signup-form-container ">
+      <form onSubmit={handleLogin}>
+        <div className="row  custom-table mx-3 my-5">
+          <div className="col-11 mx-auto">
+            <h4 className="text-center mt-3 font-regular-29">Send OTP</h4>
+            <div className="mb-3">
+              <label className="form-label">
+                Email
+                <span className="text-danger">
+                  {' '}
+                  <b>*</b>
+                </span>
+              </label>
+              <input
+                value={email}
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                required
+                placeholder="Field is required"
+                className="form-control"
+              />
+              {validator.current.message('email', email, 'required')}
+            </div>
+            <div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn my-global-button m-3"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
-        <div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn btn-secondary m-3"
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 export default SendLoginOtp;

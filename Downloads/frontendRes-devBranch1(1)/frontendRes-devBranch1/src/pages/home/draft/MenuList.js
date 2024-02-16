@@ -141,7 +141,7 @@ const MenuList = ({
                           id="cart_btn"
                           disabled={!menuItem.isAvailable}
                           onClick={() => handleAddToCart(menuItem)}
-                          className="btn d-inline mb-2 ms-auto "
+                          className="btn my-global-button d-inline mb-2 ms-auto "
                           style={{
                             backgroundColor: '#ffa500',
                             color: 'white',

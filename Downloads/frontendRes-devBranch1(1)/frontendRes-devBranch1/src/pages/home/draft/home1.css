@@ -144,7 +144,7 @@ a:hover {
 
 h1 {
 	font-size: 4.5vh;
-    letter-spacing: 4px;
+    /* letter-spacing: 4px; */
     padding-top: .5em;
 }
 

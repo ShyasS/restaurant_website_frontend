@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 // import { toast } from 'react-toastify';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import BillingAddress from './BillingAddress';
 
@@ -178,25 +178,27 @@ const DeliveryAddress = ({
   }, [sameAsDelivery, streetAddress, postalCode, city, state, country]);
 
   return (
-    <>
-      <h2>Delivery Address</h2>
-      <div>
-        <label>
+    <Card className="my-3 p-3">
+      <h4>Delivery Address</h4>
+      <div className="location-options mt-2">
+        <label className="radio-label">
           <input
             type="radio"
             name="locationOption"
             checked={useCurrentLocation}
             onChange={handleUseCurrentLocationChange}
           />
+          <span className="radio-custom" />
           Use current location
         </label>
-        <label>
+        <label className="radio-label">
           <input
             type="radio"
             name="locationOption"
             checked={!useCurrentLocation}
             onChange={handleUseCurrentLocationChange}
           />
+          <span className="radio-custom" />
           Enter address manually
         </label>
       </div>
@@ -213,9 +215,12 @@ const DeliveryAddress = ({
                 {userLocation.features[0].properties.state},{' '}
                 {userLocation.features[0].properties.country}
               </p>
-              <button className="mb-2" onClick={handleButtonClick}>
+              <Button
+                className="mb-2 my-global-button"
+                onClick={handleButtonClick}
+              >
                 Check delivery{' '}
-              </button>{' '}
+              </Button>{' '}
               <span className="text-danger">*</span>
               {distanceResult !== null && (
                 <>
@@ -245,23 +250,25 @@ const DeliveryAddress = ({
                   placeholder="Delivery Instructions"
                 />
               </div>
-              <div>
-                <label>
+              <div className="address-options mt-2">
+                <label className="radio-label">
                   <input
                     type="radio"
                     name="sameAsDeliveryOption"
                     checked={sameAsDelivery}
                     onChange={handleSameAsDeliveryChange}
                   />
+                  <span className="radio-custom" />
                   Use Delivery address
                 </label>
-                <label>
+                <label className="radio-label">
                   <input
                     type="radio"
                     name="sameAsDeliveryOption"
                     checked={!sameAsDelivery}
                     onChange={handleSameAsDeliveryChange}
                   />
+                  <span className="radio-custom" />
                   Enter different address
                 </label>
               </div>
@@ -282,7 +289,10 @@ const DeliveryAddress = ({
                 handleStateChange={(e) => setBillingState(e.target.value)}
                 handleCountryChange={(e) => setBillingCountry(e.target.value)}
               />
-              <Button className="mb-2" onClick={handleBillingAddressChange}>
+              <Button
+                className="mb-2 my-global-button"
+                onClick={handleBillingAddressChange}
+              >
                 Check Address
               </Button>
             </div>
@@ -383,13 +393,13 @@ const DeliveryAddress = ({
               placeholder="Field is required"
             />
           </div>
-          <button
-            className="mb-2"
+          <Button
+            className="mb-2 my-global-button"
             onClick={handleButtonClick}
             // disabled={isButtonClicked}
           >
             Check delivery{' '}
-          </button>{' '}
+          </Button>{' '}
           <span className="text-danger">*</span>
           {distanceResult !== null && (
             <>
@@ -417,23 +427,25 @@ const DeliveryAddress = ({
               placeholder="Delivery Instructions"
             />
           </div>
-          <div>
-            <label>
+          <div className="address-options mt-2">
+            <label className="radio-label">
               <input
                 type="radio"
                 name="sameAsDeliveryOption"
                 checked={sameAsDelivery}
                 onChange={handleSameAsDeliveryChange}
               />
+              <span className="radio-custom" />
               Use Delivery address
             </label>
-            <label>
+            <label className="radio-label">
               <input
                 type="radio"
                 name="sameAsDeliveryOption"
                 checked={!sameAsDelivery}
                 onChange={handleSameAsDeliveryChange}
               />
+              <span className="radio-custom" />
               Enter different address
             </label>
           </div>
@@ -452,12 +464,15 @@ const DeliveryAddress = ({
             handleStateChange={(e) => setBillingState(e.target.value)}
             handleCountryChange={(e) => setBillingCountry(e.target.value)}
           />
-          <Button className="mb-2" onClick={handleBillingAddressChange}>
+          <Button
+            className="my-global-button mb-2"
+            onClick={handleBillingAddressChange}
+          >
             Check Address
           </Button>
         </div>
       )}
-    </>
+    </Card>
   );
 };
 

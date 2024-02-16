@@ -225,7 +225,10 @@ const OrdersTable = () => {
                 />{' '}
                 Delivery
               </label>{' '}
-              <button className=" btn mb-2" onClick={handleClear}>
+              <button
+                className="my-global-button btn mb-2"
+                onClick={handleClear}
+              >
                 clear
               </button>
             </div>
@@ -251,6 +254,7 @@ const OrdersTable = () => {
             {availableDates.map((date) => (
               <Button
                 key={date}
+                className="my-global-button"
                 value={date}
                 onClick={() => handleDateSelection(date)}
                 style={{

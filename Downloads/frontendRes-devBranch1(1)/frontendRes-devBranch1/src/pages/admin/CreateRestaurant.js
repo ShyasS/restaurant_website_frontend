@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Card } from 'react-bootstrap';
 
 const CreateRestaurant = () => {
   const [formData, setFormData] = useState({
@@ -64,8 +65,8 @@ const CreateRestaurant = () => {
   };
 
   return (
-    <div>
-      <h1>Create a New Restaurant</h1>
+    <Card className="col-md-5 container my-3 p-3">
+      <h4>Create a New Restaurant</h4>
       <form onSubmit={handleSubmit} className="address-container">
         {/* Add input fields for each restaurant property */}
         <div className="mb-3">
@@ -322,11 +323,11 @@ const CreateRestaurant = () => {
           />
         </div>
 
-        <button className="btn mb-3" type="submit">
+        <button className="btn my-global-button mb-3" type="submit">
           Create Restaurant
         </button>
       </form>
-    </div>
+    </Card>
   );
 };
 

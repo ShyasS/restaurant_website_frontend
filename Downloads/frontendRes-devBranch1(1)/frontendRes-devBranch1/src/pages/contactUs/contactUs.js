@@ -32,6 +32,7 @@ const ContactUs = () => {
       <button
         type="button"
         data-bs-toggle="modal"
+        className="my-global-button"
         data-bs-target="#contactModal"
       >
         Contact Us

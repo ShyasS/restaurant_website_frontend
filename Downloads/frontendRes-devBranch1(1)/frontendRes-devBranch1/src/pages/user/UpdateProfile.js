@@ -79,13 +79,13 @@ export default function UpdateProfile() {
   return (
     <div className="container my-5">
       <MetaData title="update" />
-      <div className="col-10 custom-table col-lg-8 mx-auto my-2">
+      <div className="col-11 custom-table col-lg-6 mx-auto my-2">
         <form
           onSubmit={submitHandler}
           //   className="shadow-lg"
           encType="multipart/form-data"
         >
-          <div className="mt-4">
+          <div className="mt-4 px-3">
             <h4 className="mt-4 my-3">Update Profile</h4>
           </div>
 
@@ -187,10 +187,14 @@ export default function UpdateProfile() {
               </div>
             </div>
           </div> */}
-
-          <button type="submit" className="btn update-btn btn-block mt-4 mb-3">
-            Update
-          </button>
+          <div className="px-3">
+            <button
+              type="submit"
+              className="btn my-global-button update-btn btn-block mt-4 mb-3"
+            >
+              Update
+            </button>
+          </div>
         </form>
       </div>
     </div>

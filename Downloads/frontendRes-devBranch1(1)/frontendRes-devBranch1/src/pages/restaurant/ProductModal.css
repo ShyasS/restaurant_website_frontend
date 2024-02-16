@@ -54,4 +54,31 @@
   .modal-footer button:hover {
     background-color: #ff9400;
   }
-    
+    /* Add this CSS to your existing stylesheet or create a new one */
+
+    .seletion{
+      max-width: 600px; /* Adjust the maximum width as needed */
+      margin: auto;
+      background-image: url('../../assets/img/background1.png'); /* Replace with the actual path to your image */
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      /* opacity: 0.5; */
+      padding: 20px; /* Add padding to ensure content is readable on top of the background */
+      border-radius: 10px; /* Add border-radius for a rounded appearance if desired */
+    }
+
+.btn {
+  margin-right: 10px; /* Adjust the margin between buttons as needed */
+}
+
+.date-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the gap between date buttons as needed */
+}
+
+
+.modal-footer {
+  margin-top: 20px; /* Adjust the margin between the time selector and the footer button */
+}
