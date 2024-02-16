@@ -12,6 +12,7 @@ import PersonalDetails from './PersonalDetails';
 import OrderDetails from './OrderDetails';
 import DeliveryAddress from './DeliveryAddress';
 import BillingAddress from './BillingAddress';
+import './ShippingInfo.css';
 // import '../../checkout/CheckoutForm.css';
 import { toast } from 'react-toastify';
 
@@ -613,7 +614,7 @@ const ShippingInfo1 = () => {
   }, [otpVerified, navigate]);
 
   return (
-    <div className="container borderUp custom-table my-4">
+    <div className="container col-md-4 borderUp custom-table my-5" id="ShippingInfo" >
       <form className="checkout-form" onSubmit={handleSubmit}>
         {!isLoggedIn && (
           <PersonalDetails

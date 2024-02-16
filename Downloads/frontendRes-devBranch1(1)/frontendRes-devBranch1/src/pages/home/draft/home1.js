@@ -98,10 +98,14 @@ const Home = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  const handleToggleFilterPanel = () => {
-    setShowFilterPanel(!showFilterPanel);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  // const handleToggleFilterPanel = () => {
+  //   setShowFilterPanel(!showFilterPanel);
+  //   window.scrollTo({ behavior: 'smooth' });
+  // };
   const getProducts = async (
     keyword,
     dietaryPreferenceCategory,
@@ -314,25 +318,26 @@ const Home = () => {
         className=""
 
       >
-        <Button as={Link} to="/cart" style={{ border: 'none', backgroundColor: 'orange',borderRadius:'0%' }}>
+        <Button as={Link} to="/cart" style={{ border: 'none', backgroundColor: 'orange',borderRadius:'30px' }}>
           <i className="fa-solid fa-cart-shopping fa-xl " />
           <span >
             {items}
           </span>
         </Button>
         <Button
-          style={{ border: 'none', backgroundColor: 'orange',borderRadius:'50%' }}
-          className="filter-icon float-end"
+          style={{ border: 'none', backgroundColor: 'orange',borderRadius:'30px', padding:'6px 26px' }}
+          className="filter-icon text-center"
           variant="light"
-          onClick={handleToggleFilterPanel}
+          // onClick={handleToggleFilterPanel}
+          onClick={handleShow}
         >
-          <FontAwesomeIcon icon={faFilter} />
+   FILTER
         </Button> 
       </div>
       <Container fluid>
         <Row>
           {showFilterPanel && (
-            <Col xs={12} md={4} lg={3}>
+             
               <FilterPanel
 
                 dietaryCategories={dietaryCategories}
@@ -343,7 +348,7 @@ const Home = () => {
                 setDietaryPreferenceCategory={setDietaryPreferenceCategory}
                 handleClearFilter={handleClearFilter}
               />
-            </Col>
+
           )}
           {/* {menus.length === 0 ? (
             <div

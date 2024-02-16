@@ -19,7 +19,10 @@
     color:' #c6ac83';
 }
 .Product3Comp{
-    background-image: url('../../../assets/img/HomeThirdMainImg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../../assets/img/MenuListBgImg.jpg');
     height:160vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 

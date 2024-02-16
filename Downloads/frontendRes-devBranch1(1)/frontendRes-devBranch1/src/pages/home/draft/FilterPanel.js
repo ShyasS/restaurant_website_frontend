@@ -8,8 +8,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import Loader from 'layout/Loader';
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const FilterPanel = ({
   dietaryCategories,
@@ -22,6 +23,11 @@ const FilterPanel = ({
   productsCount,
   loading
 }) => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div className="col-12 borderUp">
       <h4 id="products_heading">Category</h4>
@@ -31,21 +37,20 @@ const FilterPanel = ({
         <Loader />
       ) : (
         <>
-          <div
-            className="row"
-            style={{
-              background: '#red',
-              borderRadius: '8px'
-            }}
-          >
-            <div>
-              <>
-                <h5 className="mb-3 mt-3" style={{ color: 'black' }}>
-                  Food Preferences
-                </h5>
-              </>
-              <>
-                <ul className="pl-0">
+          
+ 
+          <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        style={{backgroundColor:'transparent'}}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title> Food Preferences</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <ul className="pl-0">
                   {dietaryCategories.map((category) => (
                     <li
                       style={{
@@ -75,17 +80,12 @@ const FilterPanel = ({
                     </li>
                   ))}
                 </ul>
-              </>
-            </div>
-            {/* <hr /> */}
-            <div className="mt-5">
-              <>
-                <h5 className="mb-3" style={{ color: 'black' }}>
-                  Course
-                </h5>
-              </>
-              <>
-                <ul className="pl-0">
+        </Modal.Body>
+        <Modal.Header closeButton>
+          <Modal.Title> Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>  
+        <ul className="pl-0">
                   {mealCategories.map((category) => (
                     <li
                       style={{
@@ -109,6 +109,100 @@ const FilterPanel = ({
                     </li>
                   ))}
                 </ul>
+          
+               </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary">Understood</Button>
+        </Modal.Footer>
+      </Modal>
+
+        
+
+
+
+
+          <div
+            className="row"
+            style={{
+              background: '#red',
+              borderRadius: '8px'
+            }}
+          >
+            <div>
+              <>
+                {/* <h5 className="mb-3 mt-3" style={{ color: 'black' }}>
+                  Food Preferences
+                </h5> */}
+              </>
+              <>
+                {/* <ul className="pl-0">
+                  {dietaryCategories.map((category) => (
+                    <li
+                      style={{
+                        cursor: 'pointer',
+                        listStyleType: 'none',
+                        color:
+                          dietaryPreferenceCategory ===
+                          category.dietaryPreferenceCategory
+                            ? 'red'
+                            : 'black' // Highlight color
+                      }}
+                      key={category._id}
+                      onClick={() => {
+                        if (
+                          dietaryPreferenceCategory ===
+                          category.dietaryPreferenceCategory
+                        ) {
+                          setDietaryPreferenceCategory(null);
+                        } else {
+                          setDietaryPreferenceCategory(
+                            category.dietaryPreferenceCategory
+                          );
+                        }
+                      }}
+                    >
+                      {category.dietaryPreferenceCategory}
+                    </li>
+                  ))}
+                </ul> */}
+              </>
+            </div>
+            {/* <hr /> */}
+            <div className="mt-5">
+              <>
+                {/* <h5 className="mb-3" style={{ color: 'black' }}>
+                  Course
+                </h5> */}
+              </>
+              <>
+                {/* <ul className="pl-0">
+                  {mealCategories.map((category) => (
+                    <li
+                      style={{
+                        cursor: 'pointer',
+                        listStyleType: 'none',
+                        color:
+                          mealTypeCategory === category.mealTypeCategory
+                            ? 'red'
+                            : 'black'
+                      }}
+                      key={category._id}
+                      onClick={() => {
+                        if (mealTypeCategory === category.mealTypeCategory) {
+                          setMealTypeCategory(null);
+                        } else {
+                          setMealTypeCategory(category.mealTypeCategory);
+                        }
+                      }}
+                    >
+                      {category.mealTypeCategory}
+                    </li>
+                  ))}
+                </ul> */}
               </>
             </div>
             {/* <hr className="my-5" /> */}

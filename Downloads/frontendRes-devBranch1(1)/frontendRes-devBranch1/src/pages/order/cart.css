@@ -18,5 +18,9 @@
     padding: 3px;
     margin-right: 5px; 
   }
-  
+  #CartMain{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/CartBgIMg.jpg');
+    height:100vh;
+
+  }
   

@@ -290,8 +290,9 @@ const Cart = () => {
   }
 
   return (
-    <div className="col-12 col-lg-3 pt-4 " style={{marginLeft:'500px'}}>
-      <Card className="mb-4 borderUp">
+    <div id='CartMain'>
+    <div className="col-12 col-lg-4 pt-5 " style={{marginLeft:'500px'}} >
+      <Card className="mb-4 borderUp mt-4" style={{backgroundColor:'transparent',color:'whitesmoke',fontSize:'23px'}}>
         <Card.Body>
           <div className="delivery-info">
             <b>Restaurant:</b> {branch} {address}
@@ -305,9 +306,9 @@ const Cart = () => {
         </Card.Body>
       </Card>
 
-      <Card className="row d-flex justify-content-between borderUp">
+      <Card className="mb-4 borderUp mt-4"   style={{backgroundColor:'transparent',color:'whitesmoke',fontSize:'24px'}} >
         {/* <div> */}
-        <h4>Cart Order Items</h4>
+        <h4 className='text-center text-warning' >Cart Order Items</h4>
         {cartItems.map((item) => (
           <Fragment key={item._id}>
             {/* <hr /> */}
@@ -316,7 +317,6 @@ const Cart = () => {
                 <div className="row cart-item-details">
                   <span
                     className="pointer col-6"
-                    onClick={() => handleViewDetails(item)}
                     style={{ fontSize: '0.7rem' }}
                   >
                     {item.name}
@@ -353,6 +353,7 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
+                <button className='btn btn-warning' onClick={() => handleViewDetails(item)}>Check Order Detail</button>
               </div>
               {/* <div className="col-1">
                 <span
@@ -366,7 +367,8 @@ const Cart = () => {
                 </span>
               </div> */}
             </div>
-            <hr />
+            {/* <hr /> */}
+            <br/>
           </Fragment>
         ))}
         <div className="col-12">
@@ -387,7 +389,7 @@ const Cart = () => {
             <button
               id="checkout_btn"
               onClick={checkoutHandler}
-              className="btn btn-primary btn-block"
+              className="btn btn-success btn-block"
             >
               Check out
             </button>
@@ -395,7 +397,7 @@ const Cart = () => {
         </div>
       </Card>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal show={showModal} onHide={handleCloseModal} style={{backgroundColor:'transparent'}}>
         <Modal.Header closeButton>
           <Modal.Title>Menu Details</Modal.Title>
         </Modal.Header>
@@ -414,6 +416,7 @@ const Cart = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 };

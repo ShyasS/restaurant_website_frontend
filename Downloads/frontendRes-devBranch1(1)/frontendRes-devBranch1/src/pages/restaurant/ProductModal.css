@@ -68,6 +68,6 @@
     background-color: #ff9400;
   }
   #CardBackIMg{
-    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/Gradient-colorBG.webp');
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(230, 45, 45, 0.7)), url('../../assets/img/Gradient-colorBG.webp');
     color: white;
   }

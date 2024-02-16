@@ -95,7 +95,7 @@ const PersonalDetails = ({
           placeholder="Field is required"
         />
       </div>
-      <button type="button" className="my-2" onClick={handleGetOtp}>
+      <button type="button" className="btn btn-primary" style={{marginTop:'-22px'}} onClick={handleGetOtp}>
         Get OTP
       </button>
       {isOtpSent && (
@@ -120,7 +120,7 @@ const PersonalDetails = ({
           </div>
           <button
             type="button"
-            className="my-3"
+            className="my-3 "
             required
             onClick={handleConfirmOtp}
           >
