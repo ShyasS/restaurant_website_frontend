@@ -87,7 +87,8 @@ const MenuList = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="MenuHeaderMain">
+      <div className='container-fluid'>
       <div className="row">
         <div className="col">
           {/* <SearchBar handleSearch={handleSearch} /> */}
@@ -95,7 +96,7 @@ const MenuList = () => {
             <div className="form-group">
               {role !== 'admin' && (
                 <div className="form-group">
-                  <h4 className="my-4">Select branch</h4>
+                  <h4 className="my-4 text-white">Select branch</h4>
                   <select
                     className="form-control"
                     name="status"
@@ -123,6 +124,7 @@ const MenuList = () => {
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -153,15 +153,16 @@ const ForgotPasswordPage = () => {
   }, []);
 
   return (
-    <div className="signup-form-container mx-auto container-fluid col-md-5 mb-4 mx-3 ">
+    <div id="ForgetPMainImg">
+    <div className="signup-form-container mx-auto container-fluid col-md-4 py-5 mx-3 ">
       <form onSubmit={handleSubmit}>
-        <div className="row custom-table my-5">
+        <div className="row custom-table my-5" id="ForgetImg" >
           <div className="col-md-12">
-            <h4 className="text-center mt-3 font-regular-29">
+            <h2 className="text-center mt-3 font-regular-29">
               Forgot password
-            </h4>
+            </h2>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label" style={{color:'white',backgroundColor:'transparent'}}>
                 Email address{' '}
                 <span className="text-danger">
                   {' '}
@@ -169,6 +170,7 @@ const ForgotPasswordPage = () => {
                 </span>
               </label>
               <input
+              style={{color:'white',backgroundColor:'transparent'}}
                 value={email}
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -184,19 +186,21 @@ const ForgotPasswordPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn my-global-button mb-4"
+              className="btn mb-4 w-100"
+
             >
               Submit
             </button>
           </div>
           <div>
-            <Link to="/login">Back to login</Link>
+            <Link to="/login"  style={{color:'white',backgroundColor:'transparent'}}>Back to login</Link>
           </div>
           <div className="mb-3">
-            <Link to="/">Continue as Guest</Link>
+            <Link to="/"  style={{color:'white',backgroundColor:'transparent'}}>Continue as Guest</Link>
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 };

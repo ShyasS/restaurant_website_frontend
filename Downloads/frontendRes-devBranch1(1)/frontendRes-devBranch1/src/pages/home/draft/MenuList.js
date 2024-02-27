@@ -198,10 +198,10 @@ const MenuList = ({
 }) => {
   return (
     <div>
-      <Col md={{ span: 0, offset: 4 }}>
+      <Col lg={{ span: 4, offset: 4 }} md={{span: 8, offset: 2}} sm={{span:12, offset:2}} xs={12}>
         <input
           type="text"
-          style={{ borderRadius: '50px', width: '380px', marginTop: '50px' }}
+          style={{ borderRadius: '50px', marginTop: '50px',backgroundColor:'white' }}
           className={`form-control `}
           placeholder="Search products..."
           value={searchTerm}
@@ -214,12 +214,12 @@ const MenuList = ({
           <p>No menus found.</p>
         </div>
       ) : (
-        <Container>
-          <Row id="RowFourthComp" xs={1} sm={2} lg={4} md={2} className="mt-5">
+        <Container >
+          <Row id="RowFourthComp" xs={12} sm={2} lg={4} md={2} className="mt-5">
             {menus.map((menuItem) => (
               <div key={menuItem._id} className="row">
                 <div>
-                  <Card style={{ width: '18rem' }}>
+                  <Card style={{ width: '18rem' }} >
                     <Card.Img
                       variant="top"
                       src={

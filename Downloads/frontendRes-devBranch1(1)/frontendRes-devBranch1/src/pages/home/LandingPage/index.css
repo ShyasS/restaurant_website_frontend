@@ -9,6 +9,12 @@
     background-size: cover;
     background-position: center;
   }
+  h1,h2,h3,h4,h5,h6,p{
+    font-family: serif;
+  }
+  p{
+    font-size:19px;
+  }
   
   .HomeImg1 {
     position: absolute;
@@ -28,8 +34,8 @@
   }
   
   .HomeSecondMain {
-    background-image: url('../../../assets/img/HomeThirdMainImg.jpg');
-    height: 110vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(159, 159, 159, 0.7)),  url('../../../assets/img/HomeThirdMainImg.jpg');
+    color: white;
     width: 100%;
   }
   
@@ -39,8 +45,7 @@
   }
   
   .HomeThirdComp {
-    background-color: #0e1927;
-    height: 120vh;
+    background-color: #080e16;
     width: 100%;
   }
   
@@ -52,22 +57,21 @@
   }
   
   .HomeForthComp {
-    background-image: url('../../../assets/img/HomeThirdMainImg.jpg');
-    height: 50vh;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(159, 159, 159, 0.7)),  url('../../../assets/img/HomeThirdMainImg.jpg');
+    /* height: 50vh; */
+    color:white;
     width: 100%;
   }
   
   #HomeFourthInput {
     background-color: transparent;
     border-color: black;
-    margin-left: 500px;
-    width:300px;
     outline: none;
   }
   
   .FooterComp {
     background-color: #0e1927;
-    height: 45vh;
+    /* height: 45vh; */
     width: 100%;
   }
   .FooterHR1{
@@ -119,7 +123,7 @@
     }
   
     .HomeSecondMain {
-      height: 180vh;
+
     }
   
     .HomeSecondImg {
@@ -136,9 +140,6 @@
       font-size: 24px;
     }
   
-    .HomeThirdComp {
-      height: 200vh;
-    }
     .HomeThirdHR{
       width:250px;
     }
@@ -151,16 +152,16 @@
       margin-left: -20px;
     }
   
-    .HomeForthComp {
+    /* .HomeForthComp {
       height: 80vh;
-    }
+    } */
     #HomeFourthInput{
       margin-left:30px;
       width:260px;
     }
-    .FooterComp{
+    /* .FooterComp{
       height:190vh;
-    }
+    } */
     .FooterMainRow{
       margin-left: 0px;
     }
@@ -170,5 +171,36 @@
     }
     #FooterOpenPara{
       margin-left:50px;
+    }
+  }
+
+
+  @media screen and (min-width:600px) and (max-width:767px){
+    .HomeImg2 {
+      display: none;
+    }
+    .HomeImg1 {
+      display: none;
+    }
+  }
+
+
+  @media screen and (min-width:768px) and (max-width:1440px) {
+    .HomeImg2 {
+      display: none;
+    }
+    .HomeImg1 {
+      display: none;
+    }
+  
+  }
+  
+
+  @media screen and (min-width:1600px){
+    .HomeImg2 {
+      display: none;
+    }
+    .HomeImg1 {
+      display: none;
     }
   }

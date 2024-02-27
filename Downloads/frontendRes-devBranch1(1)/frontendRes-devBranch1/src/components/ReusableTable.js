@@ -263,7 +263,7 @@ const ReusableTable = ({
     });
 
     return sortedData.map((item, i) => (
-      <tr key={item._id}>
+      <tr style={{backgroundColor:'transparent'}}  key={item._id}>
         {headers.map((header) => {
           if (header === 'Sl No') {
             return <td key={header}>{i + 1}</td>;
@@ -350,7 +350,7 @@ const ReusableTable = ({
           }
           if (header === 'Menu Name') {
             return (
-              <td key={header} onClick={() => handleSort('name')}>
+              <td  key={header} onClick={() => handleSort('name')}>
                 {item.name}{' '}
                 {/* {sortedColumn === 'name' && sortOrder === 'asc' ? ' ↑' : ' ↓'} */}
               </td>
@@ -358,10 +358,12 @@ const ReusableTable = ({
           }
           if (header === 'Name') {
             return (
-              <td key={header} onClick={() => handleSort('name')}>
+              <div style={{backgroundColor:'transparent',border:'none'}} >
+              <td  key={header} onClick={() => handleSort('name')}>
                 {item.name} {item.lastName}
                 {/* {sortedColumn === 'name' && sortOrder === 'asc' ? ' ↑' : ' ↓'} */}
               </td>
+              </div>
             );
           }
           if (header === 'Role') {
@@ -386,7 +388,7 @@ const ReusableTable = ({
           return <td key={header}>{item[header.toLowerCase()] || 'N/A'}</td>;
         })}
         {onUpdate && (
-          <td>
+          <td >
             <Button
               className="my-global-button"
               onClick={() => onUpdate(item._id)}
@@ -451,9 +453,10 @@ const ReusableTable = ({
   };
 
   return (
-    <Table bordered responsive className=" mt-4">
-      <thead className="table-head">
-        <tr>
+    <div >
+    <Table bordered responsive className=" mt-4 text-center w-100 " >
+      <thead className="table-head" id="CardBackIMg">
+        <tr >
           {headers.map((header) => (
             <th
               key={header}
@@ -475,8 +478,9 @@ const ReusableTable = ({
           {onAddMenu && <th>Add Menu</th>}
         </tr>
       </thead>
-      <tbody>{renderTableData()}</tbody>
+      <tbody >{renderTableData()}</tbody>
     </Table>
+    </div>
   );
 };
 

@@ -308,7 +308,7 @@ const Cart = () => {
               color: 'whitesmoke'
               // fontSize: '23px'
             }}
-            className="px-4 py-2 mb-3 col-11 mx-auto"
+            className="px-4 py-2 mb-3 col-12 mx-auto"
           >
             <Card.Body>
               <div className="delivery-info">
@@ -328,9 +328,9 @@ const Cart = () => {
               color: 'whitesmoke'
               // fontSize: '23px'
             }}
-            className="px-4 py-2 mb-3 col-11 mx-auto"
+            className="px-4 py-2 mb-3 col-12 ms-3 mx-auto"
           >
-            <h5>Cart Order Items</h5>
+            <>Cart Order Items</>
           </Card>
 
           <Card
@@ -351,7 +351,7 @@ const Cart = () => {
                       <span
                         className="pointer col-5"
                         onClick={() => handleViewDetails(item)}
-                        style={{ fontSize: '0.7rem' }}
+                        style={{ fontSize: '1.0rem' }}
                       >
                         {item.name}
                       </span>
@@ -359,8 +359,8 @@ const Cart = () => {
                         {/* <p className="col-12" id="card_item_price">
                       ${item.price}
                     </p> */}
-                        <p className="col-6" id="card_item_total">
-                          ${item.price * item.quantity}
+                        <p className="col-6 text-white" id="card_item_total">
+                          <p>${item.price * item.quantity}</p>  
                         </p>
                         <div className="stockCounter col-6 ">
                           {/* <div className="stockCounter "> */}

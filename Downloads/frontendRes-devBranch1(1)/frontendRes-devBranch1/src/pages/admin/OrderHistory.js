@@ -180,9 +180,10 @@ const OrdersHistory = () => {
     fetchRestaurants();
   }, []);
   return (
-    <div className="container">
+    <div className="MenuHeaderMain">
+      <div className='container-fluid'>
       <div className="row">
-        <h4 className="mt-4 mb-4" style={{ fontWeight: 'bold' }}>
+        <h4 className="mt-4 mb-4 text-white" style={{ fontWeight: 'bold' }}>
           ORDER HISTORY
         </h4>
         <div
@@ -194,7 +195,7 @@ const OrdersHistory = () => {
             style={{ display: 'flex', justifyContent: 'space-between' }}
           >
             <label>
-              Start Date:{' '}
+              <span className='text-white'>Start Date:</span>{' '}
               <DatePicker
                 className="form-control mb-3"
                 selected={startDate}
@@ -204,7 +205,7 @@ const OrdersHistory = () => {
             </label>
             <div>
               <label className="mx-1">
-                End Date:{' '}
+              <span className='text-white'>End Date:</span>{' '}
                 <DatePicker
                   className="form-control mb-3"
                   selected={endDate}
@@ -221,7 +222,7 @@ const OrdersHistory = () => {
           style={{ display: 'flex', justifyContent: 'space-between' }}
         >
           <div>
-            <h5 className="my-2">Select Order Type</h5>
+            <h5 className="my-2 text-white">Select Order Type</h5>
             <label>
               <input
                 type="radio"
@@ -229,7 +230,7 @@ const OrdersHistory = () => {
                 checked={orderType === 'Pickup'}
                 onChange={() => handleOrderTypeChange('Pickup')}
               />
-              Pickup
+                 <span className='text-white'>Pickup</span>
             </label>
             <label>
               <input
@@ -238,12 +239,12 @@ const OrdersHistory = () => {
                 checked={orderType === 'Delivery'}
                 onChange={() => handleOrderTypeChange('Delivery')}
               />
-              Delivery
+              <span className='text-white'>Delivery</span>
             </label>
           </div>
           <div className="col-3 mt-2">
             {/* <canvas className="col-6" ref={chartRef} width="200" height="200" /> */}
-            <h5 className="col-12">Select a branch</h5>
+            <h5 className="col-12 text-white">Select a branch</h5>
             {role !== 'admin' && (
               <select
                 className="form-control mb-3"
@@ -268,7 +269,7 @@ const OrdersHistory = () => {
               </select>
             )}
           </div>
-          <h6 className="col-3">Total orders: {totalOrders}</h6>
+          <h6 className="col-3 text-white">Total orders: {totalOrders}</h6>
           {/* <h6 className="col-3">Total price: {totalPrice}</h6> */}
         </div>
         <ReusableTable
@@ -292,6 +293,7 @@ const OrdersHistory = () => {
           breakLinkClassName="break-link"
         />
       </div>
+    </div>
     </div>
   );
 };

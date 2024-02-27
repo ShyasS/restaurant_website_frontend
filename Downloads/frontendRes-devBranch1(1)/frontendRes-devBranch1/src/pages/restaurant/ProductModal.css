@@ -11,7 +11,7 @@
   
 }
 .OrderCard{
-  background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),url('../../assets/img/ESliderImg2.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),url('../../assets/img/Bg5.jpg');
   height:90vh;
   width:100%;
   background-repeat: no-repeat;
@@ -68,6 +68,7 @@
   background-color: #ff9400;
 }
 #CardBackIMg{
-  background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(230, 45, 45, 0.7)), url('../../assets/img/Gradient-colorBG.webp');
+  /* background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(230, 45, 45, 0.7)), url('../../assets/img/Gradient-colorBG.webp'); */
+  background-color: #c1bca183;
   color: white;
 }

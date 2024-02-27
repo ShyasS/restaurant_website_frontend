@@ -73,22 +73,22 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="container-fluid signup-form-container mb-3">
+    <div className="container-fluid signup-form-container mb-3 py-5" id="LoginMainImg">
       <form onSubmit={handleSubmit}>
-        <div className="col-11 col-md-6 mx-auto custom-table mx-3 mt-4">
+        <div className="col-11 col-md-5 mx-auto custom-table mx-3 mt-4"  id="LoginImg1">
           <div className="col-md-12 col-12 px-4">
-            <h4 className="text-center mt-3 font-regular-29">Sign up</h4>
-            <div>
+            <h1 className="text-center mt-3 font-regular-29"  style={{color:'black',backgroundColor:'transparent'}}>Sign up</h1>
+            <div  style={{color:'white',backgroundColor:'transparent',fontSize:'18px', fontStyle:'italic',}}>
               If you have account?{' '}
               <div className="links-container mb-4">
                 <div>
-                  <Link to="/login">Login</Link>
+                  <Link to="/login" style={{color:'black',backgroundColor:'transparent',fontSize:'20px', fontFamily:'serif',fontStyle:'normal' }}>Login</Link>
                 </div>
               </div>
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="name">
+                <label htmlFor="name" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}}>
                   First name:
                   <span className="text-danger">
                     {' '}
@@ -97,6 +97,7 @@ const SignUpForm = () => {
                 </label>
                 <div>
                   <input
+                  style={{color:'black',backgroundColor:'transparent'}}
                     type="text"
                     id="name"
                     name="name"
@@ -111,7 +112,7 @@ const SignUpForm = () => {
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="lastName">
+                <label htmlFor="lastName" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}}>
                   Last name:
                   <span className="text-danger">
                     {' '}
@@ -120,6 +121,7 @@ const SignUpForm = () => {
                 </label>
                 <div>
                   <input
+                   style={{color:'black',backgroundColor:'transparent'}}
                     type="text"
                     id="lastName"
                     name="lastName"
@@ -134,7 +136,7 @@ const SignUpForm = () => {
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="email1">
+                <label htmlFor="email1" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}}>
                   Email:{' '}
                   <span className="text-danger">
                     {' '}
@@ -143,6 +145,7 @@ const SignUpForm = () => {
                 </label>
                 <div>
                   <input
+                    style={{color:'black',backgroundColor:'transparent'}}
                     type="email"
                     id="email1"
                     name="email"
@@ -157,18 +160,19 @@ const SignUpForm = () => {
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="password">
+                <label htmlFor="password" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}}>
                   Password:{' '}
                   <span className="text-danger">
                     {' '}
                     <b>*</b>
                     <span>
-                      <p>At least 8 characters</p>
+                      <p style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'14px'}}>At least 8 characters</p>
                     </span>
                   </span>
                 </label>
                 <div>
                   <input
+                  style={{color:'black',backgroundColor:'transparent'}}
                     type="password"
                     id="password"
                     name="password"
@@ -183,7 +187,7 @@ const SignUpForm = () => {
             </div>
             <div className="col-md-11 mx-auto">
               <div className="mb-3 address-container">
-                <label htmlFor="phone">
+                <label htmlFor="phone" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}}>
                   Phone:{' '}
                   <span className="text-danger">
                     {' '}
@@ -192,6 +196,7 @@ const SignUpForm = () => {
                 </label>
                 <div>
                   <input
+                   style={{color:'black',backgroundColor:'transparent'}}
                     type="tel"
                     id="phone"
                     name="phone"
@@ -205,7 +210,7 @@ const SignUpForm = () => {
               </div>
             </div>
             <div style={{ textAlign: 'center', display: 'none' }}>
-              <label htmlFor="avatar">Avatar Image:</label>
+              <label htmlFor="avatar" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}} >Avatar Image:</label>
               <div style={avatarContainerStyle}>
                 <img
                   src={formData.avatar}
@@ -219,6 +224,7 @@ const SignUpForm = () => {
                 />
               </div>
               <input
+               style={{color:'black',backgroundColor:'transparent',width: '100%'}}
                 type="file"
                 id="avatar"
                 name="avatar"
@@ -226,12 +232,11 @@ const SignUpForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, avatar: e.target.files[0] })
                 }
-                style={{ width: '100%' }}
               />
             </div>
 
             <div className="my-3">
-              <button type="submit" className="my-global-button">
+              <button type="submit" className="w-100 mt-4"  style={{backgroundColor:'#bd870b'}}>
                 Sign up
               </button>
             </div>

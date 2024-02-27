@@ -238,6 +238,9 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { FaArrowLeft } from 'react-icons/fa';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const RestaurantSelection = () => {
   const [restaurantId, setRestaurantId] = useState('');
@@ -360,9 +363,12 @@ const RestaurantSelection = () => {
     }
   }, [restaurantId]);
   return (
-    <div className="OrderCard">
-      <Card className="col-md-4 mx-auto mt-5" id="CardBackIMg">
-        <Card.Body>
+    <div className="OrderCard py-2">
+       <Container>
+      <Row>
+        <Col lg={{span:6,offset:3}} md={{span:7, offset:3}} xs={12} sm={12} >
+      <Card className=" mx-auto mt-lg-5 mt-md-2" id="CardBackIMg">
+        <Card.Body> 
           <div className="d-flex p-3 justify-content-start">
             <button
               onClick={handleGoBack}
@@ -376,6 +382,7 @@ const RestaurantSelection = () => {
           <Form className="container">
             <Form.Group controlId="formrestaurantId">
               <Form.Select
+              style={{color:'black',backgroundColor:'transparent'}}
                 value={restaurantId}
                 className="container"
                 onChange={handleRestaurantIdChange}
@@ -429,6 +436,7 @@ const RestaurantSelection = () => {
           <div className="modal-body">
             <Card.Title>Order Time</Card.Title>
             <Form.Select
+              style={{color:'black',backgroundColor:'transparent'}}
               value={selectedTimeSlot}
               onChange={(e) => setSelectedTimeSlot(e.target.value)}
             >
@@ -449,6 +457,9 @@ const RestaurantSelection = () => {
           </button>
         </div>
       </Card>
+      </Col>
+      </Row>
+    </Container>
     </div>
   );
 };

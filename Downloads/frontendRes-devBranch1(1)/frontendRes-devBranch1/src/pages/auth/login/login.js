@@ -213,17 +213,18 @@ const LoginPage = () => {
   }, [error, isAuthenticated, dispatch, navigate, loginSuccess]);
 
   return (
-    <div className="signup-form-container mb-4 mx-3 ">
-      <form onSubmit={handleLogin}>
-        <div className="row custom-table mx-auto mt-5">
-          <div className="col-md-12 ">
-            <h3 className="text-center mt-3 font-regular-29">Log in</h3>
-            <div>
+    <div className="container-fluid" id="LoginMainImg">
+    <div className="signup-form-container mx-auto py-5" >
+      <form onSubmit={handleLogin}  >
+        <div className="row custom-table mx-auto mt-5" id="LoginImg">
+          <div className="col-md-12 " >
+            <h1 className="text-center mt-3 font-regular-29">Log in</h1>
+            <div className='mt-4' style={{fontSize:'19px'}} >
               Do not have account?
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup" className='ms-2' style={{color:'black',backgroundColor:'transparent'}}>Sign Up</Link>
             </div>
             <div className="mb-3 address-container">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label mt-4" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}} >
                 Email address
                 <span className="text-danger">
                   {' '}
@@ -232,6 +233,7 @@ const LoginPage = () => {
               </label>
               <input
                 value={email}
+                style={{color:'black',backgroundColor:'transparent'}}
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
@@ -244,7 +246,7 @@ const LoginPage = () => {
           </div>
           <div className="col-md-12">
             <div className="mb-3 address-container">
-              <label htmlFor="password" className="form-label">
+              <label htmlFor="password" className="form-label" style={{color:'black',backgroundColor:'transparent', fontWeight:'500', fontSize:'19px'}}>
                 Password
                 <span className="text-danger">
                   {' '}
@@ -252,6 +254,7 @@ const LoginPage = () => {
                 </span>
               </label>
               <input
+               style={{color:'black',backgroundColor:'transparent'}}
                 value={password}
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -267,26 +270,29 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn my-global-button my-3"
+              className="btn  my-3 w-100 "
+              id="Btn"
+              style={{backgroundColor:'#bd870b'}}
             >
               Submit
             </button>
 
             <div className="links-container mb-4">
               <div>
-                <Link to="/">Continue as Guest</Link>
+                <Link to="/"   style={{color:'black',backgroundColor:'transparent',fontSize:'18px'}} >Continue as Guest</Link>
               </div>
 
               <div>
-                <Link to="/password/forgot">Forgot password?</Link>
+                <Link to="/password/forgot" style={{color:'black',backgroundColor:'transparent',fontSize:'18px'}} > Forgot password?</Link>
               </div>
               <div>
-                <Link to="/login/otp">Login with OTP</Link>
+                <Link to="/login/otp" style={{color:'black',backgroundColor:'transparent',fontSize:'18px'}} >Login with OTP</Link>
               </div>
             </div>
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import MetaData from 'layout/MetaData';
+import { Link } from 'react-router-dom';
 
 export default function UpdateProfile() {
   const userId = JSON.parse(sessionStorage.getItem('user'));
@@ -77,22 +78,23 @@ export default function UpdateProfile() {
   }, []);
 
   return (
-    <div className="container my-5">
-      <MetaData title="update" />
-      <div className="col-11 custom-table col-lg-6 mx-auto my-2">
+    <div   id="ProfileMainImg" className="py-5" >
+      <MetaData title="update"/>
+      <div className="col-11 custom-table col-lg-4 col-md-8 mx-auto " id="ForgetImg">
         <form
           onSubmit={submitHandler}
           //   className="shadow-lg"
           encType="multipart/form-data"
         >
-          <div className="mt-4 px-3">
+          <div className="mt-4 px-3" >
             <h4 className="mt-4 my-3">Update Profile</h4>
           </div>
 
           <div className="form-group mx-5 my-2">
-            <label htmlFor="name_field">Name</label>
+            <label htmlFor="name_field" style={{color:'black',backgroundColor:'transparent',fontWeight:'550'}}>Name</label>
             <input
               type="name"
+              style={{color:'white',backgroundColor:'transparent'}}
               id="name_field"
               className="form-control"
               name="name"
@@ -101,8 +103,9 @@ export default function UpdateProfile() {
             />
           </div>
           <div className="form-group mx-5 my-2">
-            <label htmlFor="lastName_field">Last Name</label>
+            <label htmlFor="lastName_field" style={{color:'black',backgroundColor:'transparent',fontWeight:'550'}}>Last Name</label>
             <input
+            style={{color:'white',backgroundColor:'transparent'}}
               type="name"
               id="lastName_field"
               className="form-control"
@@ -113,8 +116,9 @@ export default function UpdateProfile() {
           </div>
 
           <div className="form-group mx-5 my-2">
-            <label htmlFor="email_field">Email</label>
+            <label htmlFor="email_field" style={{color:'black',backgroundColor:'transparent',fontWeight:'550'}}>Email</label>
             <input
+            style={{color:'white',backgroundColor:'transparent'}}
               type="email"
               id="email_field"
               className="form-control"
@@ -124,8 +128,9 @@ export default function UpdateProfile() {
             />
           </div>
           <div className="form-group mx-5 my-2">
-            <label htmlFor="phone_field">Phone</label>
+            <label htmlFor="phone_field" style={{color:'black',backgroundColor:'transparent',fontWeight:'550'}}>Phone</label>
             <input
+            style={{color:'white',backgroundColor:'transparent',fontWeight:'550'}}
               type="tel"
               id="phone_field"
               className="form-control"
@@ -135,10 +140,11 @@ export default function UpdateProfile() {
             />
           </div>
           <div className="mb-4 my-2 mx-5">
-            <label htmlFor="customFile">Avatar</label>
+            <label htmlFor="customFile" style={{color:'black',backgroundColor:'transparent',fontWeight:'550'}}>Avatar</label>
 
             <div className="custom-file">
               <input
+              style={{color:'white',backgroundColor:'transparent',fontWeight:'550'}}
                 type="file"
                 name="avatar"
                 className="form-control"
@@ -194,6 +200,14 @@ export default function UpdateProfile() {
             >
               Update
             </button>
+            <Link to={'/myProfile/:id'}>
+            <button
+              type="submit"
+              className="btn my-global-button update-btn btn-block mt-4 mb-3 ms-5"
+            >
+             Back to HomePage
+            </button>
+            </Link>
           </div>
         </form>
       </div>

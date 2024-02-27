@@ -163,24 +163,27 @@ const OrdersTable = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h4 className=" mt-3" style={{ fontWeight: 'bold' }}>
+    <div className="ActiveOrders" >
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-lg-12 mx-auto'>
+      <h4 className=" py-4 text-white" style={{ fontWeight: 'bold' }}>
         CURRENT ORDERS
       </h4>
       <div
         className="row"
-        style={{ display: 'flex', justifyContent: 'space-between' }}
+        // style={{ display: 'flex', justifyContent: 'space-between' }}
       >
         <div
-          className="col-12 mt-3"
-          style={{ display: 'flex', justifyContent: 'space-between' }}
+          className="col-xs-6 col-sm-6 col-md-8 col-lg-6"
+          // style={{ display: 'flex', justifyContent: 'space-between' }}
         >
           <div className="form-group">
             {role !== 'admin' && (
-              <>
-                <h5 className="my-4 mt-3">Select Branch</h5>
+              <div className='col-lg-6 col-md-7 col-xs-6 col-sm-6' >
+                <h5 className="my-4 mt-3 text-white">Select Branch</h5>
                 <select
-                  className="form-control"
+                  className=" form-select  form-select-sm"
                   name="status"
                   value={selectedBranch}
                   onChange={handleBranchChange}
@@ -192,17 +195,20 @@ const OrdersTable = () => {
                         key={restaurant._id}
                         value={restaurant.restaurantId}
                       >
+                       
                         {restaurant.restaurantBranch} -{' '}
                         {formatAddress(restaurant.address)}
+                      
                       </option>
                     ))}
                 </select>
-              </>
+              </div>
             )}
           </div>
+          </div>
           <>
-            <div>
-              <h5 className="mt-3">Select order type</h5>
+            <div className='col-lg-6'>
+              <h5 className="mt-3 text-white">Select order type</h5>
               <label>
                 <input
                   id="pickup"
@@ -212,7 +218,7 @@ const OrdersTable = () => {
                   checked={orderType === 'Pickup'}
                   onChange={() => handleOrderTypeChange('Pickup')}
                 />{' '}
-                Pickup
+              <span className='text-white'>Pickup</span>  
               </label>{' '}
               <label>
                 <input
@@ -223,7 +229,7 @@ const OrdersTable = () => {
                   checked={orderType === 'Delivery'}
                   onChange={() => handleOrderTypeChange('Delivery')}
                 />{' '}
-                Delivery
+                   <span className='text-white'>Delivery</span> 
               </label>{' '}
               <button
                 className="my-global-button btn mb-2"
@@ -232,9 +238,12 @@ const OrdersTable = () => {
                 clear
               </button>
             </div>
-            <div />
-            <div>
-              <h5>Update order</h5>
+
+ {/* To change fields */}
+
+
+            <div className='col-lg-6 col-xs-12 col-sm-12 col-md-8'>
+              <h5 className='text-white'>Update order</h5>
               <select
                 className="form-control mb-2"
                 value={selectedOrderStatus}
@@ -248,8 +257,8 @@ const OrdersTable = () => {
               </select>
             </div>
           </>
-        </div>
-        <div className="col mt-4">
+   
+        <div className="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-4">
           <div className="date-buttons mb-4">
             {availableDates.map((date) => (
               <Button
@@ -276,7 +285,7 @@ const OrdersTable = () => {
           onEdit={handleEdit}
         />
         <ReactPaginate
-          className="pagination"
+          className="pagination bg-transparent"
           pageCount={totalPages}
           pageRangeDisplayed={5}
           marginPagesDisplayed={2}
@@ -285,7 +294,10 @@ const OrdersTable = () => {
           activeClassName="active"
         />
       </div>
+      </div>
     </div>
+    </div>
+        </div>
   );
 };
 

@@ -11,7 +11,7 @@ const HomeSecondComp = () => {
     <div className="HomeSecondMain">
       <Container style={{ paddingTop: '100px' }} fluid>
         <Row>
-          <Col xs={12} lg={{ span: 5, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col xs={12} sm={12} lg={{ span: 5, offset: 1 }} md={{span:8, offset:2}}>
             <Image
               src={require('../../../assets/img/HomeSecondImg.jpg')}
               className="HomeSecondImg"
@@ -21,24 +21,25 @@ const HomeSecondComp = () => {
           <Col
             xs={12}
             lg={{ span: 5, offset: 0 }}
-            md={{ span: 8, offset: 2 }}
-            className="xs-justify-content-center"
+            sm={12}
+            md={{span:10, offset:2}}
+            className="xs-justify-content-center mt-md-5 mt-lg-0"
           >
-            <h6 style={{ color: 'grey' }} className="HomeSecH1">
+            <h6 style={{ color: 'black', fontWeight:'500' }} className="HomeSecH1">
               ABOUT RESTAURANT
             </h6>
             <br />
             <hr />
             <h1 className="HomeSecH2">ENJOY AN EXCEPTIONAL JOURNEY OF TASTE</h1>
             <br />
-            <Col md={10}>
-              <p>
+            <Col md={10}  sm={12} xs={12}>
+              <p style={{ color: 'black' }}>
                 Our buzzy food-hall style concept is inspired by international
                 dining styles, especially in Asia. Explore the following
                 fast-action food stations as busy chefs perform.
               </p>
               <br />
-              <p>
+              <p  style={{ color: 'black' }}>
                 Enjoy a verdant Garden to Glass experience. It’s in the view,
                 it’s reflected in the design, and it infuses many drinks. In
                 fact, all our delicious fresh ingredients are sustainably picked

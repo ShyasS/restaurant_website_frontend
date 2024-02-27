@@ -95,10 +95,11 @@ const CreateAdmin = () => {
   }, []);
 
   return (
-    <Card className="address-container container my-4 p-4 col-md-4">
+    <div className='MenuHeaderMain py-5'>
+    <Card className="address-container container  p-4 col-md-8 col-lg-6 col-xl-4" style={{backgroundColor:'#908e8583', color:'white', fontSize:'17px', fontWeight:'550' }}>
       <form onSubmit={handleSubmit}>
         <div>
-          <h4>Create Admin</h4>
+          <h2>Create Admin</h2>
         </div>
 
         <div className="mb-3">
@@ -110,6 +111,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <input
+          style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}
             type="text"
             className={`form-control `}
             id="name"
@@ -129,6 +131,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <input
+             style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}
             type="text"
             className={`form-control `}
             id="lastName"
@@ -148,6 +151,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <input
+             style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}
             type="email"
             className={`form-control `}
             id="email1"
@@ -167,6 +171,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <input
+             style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}
             type="password"
             id="password"
             className={`form-control `}
@@ -186,6 +191,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <input
+             style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}
             type="tel"
             id="phone"
             name="phone"
@@ -197,7 +203,7 @@ const CreateAdmin = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="role">
+          <label htmlFor="role"    style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}>
             Role:
             <span className="text-danger">
               {' '}
@@ -205,6 +211,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <select
+             style={{backgroundColor:'transparent', color:'black', fontWeight:'550'}}
             className="form-control"
             id="role"
             name="role"
@@ -215,12 +222,12 @@ const CreateAdmin = () => {
             <option value="" disabled>
               Select Role
             </option>
-            <option value="superAdmin">Super Admin</option>
-            <option value="admin">Admin</option>
+            <option value="superAdmin" style={{backgroundColor:'transparent', color:'black', fontWeight:'550'}}>Super Admin</option>
+            <option value="admin" style={{backgroundColor:'transparent', color:'black', fontWeight:'550'}}>Admin</option>
           </select>
         </div>
         <div className="mb-3">
-          <label htmlFor="restaurantBranch">
+          <label htmlFor="restaurantBranch" style={{backgroundColor:'transparent', color:'white', fontWeight:'550'}}>
             Restaurant Branch:
             <span className="text-danger">
               {' '}
@@ -228,6 +235,7 @@ const CreateAdmin = () => {
             </span>
           </label>
           <select
+          style={{backgroundColor:'transparent', color:'black', fontWeight:'550'}}
             id="restaurantBranch"
             className="form-control"
             name="restaurantBranch"
@@ -260,6 +268,7 @@ const CreateAdmin = () => {
         </div>
       </form>
     </Card>
+    </div>
   );
 };
 

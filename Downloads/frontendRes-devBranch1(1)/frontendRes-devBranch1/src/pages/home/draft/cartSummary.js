@@ -31,19 +31,19 @@ export default function Cart() {
   return (
     <>
       {storedCartItems.length === 0 ? (
-        <h4 className="mt-5">Your Cart is Empty</h4>
+        <h4 className="mt-5" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Your Cart is Empty</h4>
       ) : (
         <>
-          <h4 className="mt-5">
+          <h4 className="mt-5" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
             Your Cart: <b>{storedCartItems.length} items</b>
           </h4>
-          <Card className="row d-flex justify-content-between">
-            <div className="col-12 ">
+          <Card className="row d-flex justify-content-between" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}} >
+            <div className="col-12 " >
               {storedCartItems.map((item) => (
                 <Fragment key={item._id}>
                   {/* <hr /> */}
-                  <Card className="mt-3 p-2 mx-auto" style={{ borderRadius: '10px' }}>
-                    <div className="row">
+                  <Card className="mt-3 p-2 mx-auto" style={{ borderRadius: '10px',color: 'black', backgroundColor: 'transparent' }}>
+                    <div className="row" >
                       {/* <div className="col-4  col-lg-3">
           <img
            className="cartImage img-fluid border"
@@ -58,13 +58,13 @@ export default function Cart() {
                       <div className="col-12">
                         <div className="row">
                           <div className="col-4">
-                            <p>{item.name}</p>
+                            <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>{item.name}</p>
                           </div>
                           <div className="col-4">
-                            <p id="card_item_price">Qty: {item.quantity || 1}</p>
+                            <p id="card_item_price"style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Qty: {item.quantity || 1}</p>
                           </div>
                           <div className="col-4 ">
-                            <p id="card_item_price">${item.price * item.quantity}</p>
+                            <p id="card_item_price" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>${item.price * item.quantity}</p>
                           </div>
 
                         </div>
@@ -75,13 +75,13 @@ export default function Cart() {
               ))}
               {/* <hr /> */}
             </div>
-            <Card className="col-11 mx-auto pt-2 my-4">
+            <Card className="col-11 mx-auto pt-2 my-4 " style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               <div id="order_summary">
                 {/* <hr /> */}
 
-                <p>
+                <p style={{ color: 'black', backgroundColor: 'transparent', fontSize: '19px', fontWeight:'500'}}>
                   Items total:{' '}
-                  <span className="order-summary-values">
+                  <span className="order-summary-values" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                     ${Number(cartItemsTotal).toFixed(2)}
                   </span>
                 </p>

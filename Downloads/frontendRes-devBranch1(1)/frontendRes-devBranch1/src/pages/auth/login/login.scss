@@ -1,5 +1,7 @@
 SignUpForm.js 
 
+
+
 .signup-form-container {
   max-width: 768px;
   width: 100%;
@@ -52,4 +54,54 @@ SignUpForm.js
   background-color: #ddd;
   border: none;
   cursor: pointer;
+}
+
+#LoginMainImg{
+  background-image:url('../../../assets/img/Bg2.jpg');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#LoginImg{
+  // background-image:linear-gradient(rgba(0,0,0,0.7), rgba(108, 87, 87, 0.7)), url('../../../assets/img/dark-gradient-background-with-copy-space_53876-99548.avif');;
+  background-color: #c1bca183;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#Btn{
+color:black
+}
+
+#ForgetPMainImg{
+  background-image:url('../../../assets/img/Bg8.jpg');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#ForgetImg{
+  background-color: #766f6f99;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#ProfileMainImg{
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(35, 35, 35, 0.7)), url('../../../assets/img/Bg5.jpg');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#ForgetImg{
+  background-color: #766f6f99;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }

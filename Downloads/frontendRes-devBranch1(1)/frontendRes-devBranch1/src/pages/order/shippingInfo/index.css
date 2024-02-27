@@ -97,6 +97,21 @@
   width: 100%;
 }
 
+#PersonalBGImg{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../../../assets/img/dark-gradient-background-with-copy-space_53876-99548.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+#CardBackIMg{
+  /* background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(230, 45, 45, 0.7)), url('../../assets/img/Gradient-colorBG.webp'); */
+  background-color: #c1bca183;
+  color: white;
+}
+
+
 /* Additional styles for smaller screens */
 @media (max-width: 576px) {
   /* Adjust the width and other styles as needed */

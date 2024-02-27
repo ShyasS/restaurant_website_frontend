@@ -108,6 +108,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import './OrderSuccess.css';
+import { motion, AnimatePresence } from "framer-motion"
 
 const OrderSuccess = () => {
   // const [cartItems, setCartItems] = useState([]);
@@ -202,21 +204,21 @@ const OrderSuccess = () => {
   }, []);
 
   return (
-    <div>
-      <div className="row justify-content-center">
+    <div id='OrderSuccessMainImg'>
+      <div className="row justify-content-center mx-auto">
         <div className="col-12 mt-5 text-center">
           <img
             className="my-5 img-fluid d-block mx-auto"
-            src="https://static.vecteezy.com/system/resources/thumbnails/001/622/545/original/success-check-mark-icon-animation-video.jpg"
+            src={require('../../assets/img/OrderSuccessImg.png')}
             alt="Order Success"
-            width="200"
-            height="200"
+            width="300"
+            height="300"
           />
 
-          <h4>Your Order has been placed successfully.</h4>
+          <h1 className='mb-3' style={{color:'#62fc03'}}>Your Order has been placed successfully.</h1>
           <div>
             <Link to="/">
-              <Button className="my-global-button  mb-5">Go to home</Button>{' '}
+              <Button className="my-global-button  mb-5 mt-3">Go to home</Button>{' '}
             </Link>
           </div>
 

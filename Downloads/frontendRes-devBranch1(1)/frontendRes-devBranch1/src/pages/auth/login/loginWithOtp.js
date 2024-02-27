@@ -56,17 +56,18 @@ const LoginWithOtp = () => {
   };
 
   return (
-    <div className="signup-form-container mx-auto container-fluid col-md-5 my-5">
+    <div id="ForgetPMainImg" className='py-4'>
+    <div className="signup-form-container mx-auto col-md-4 py-4 my-5">
       <form onSubmit={handleLogin}>
-        <div className="row mx-3 custom-table">
+        <div className="row mx-3 custom-table"  id="ForgetImg">
           <div className="col-11 mx-auto">
-            <h3 className="text-center mt-3 font-regular-29">Log in</h3>
-            <div>
+            <h1 className="text-center mt-3 font-regular-29">Log in</h1>
+            <div className='mt-4'  style={{color:'white',backgroundColor:'transparent',fontSize:'18px'}}>
               Do not have an account?
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup" className='ms-2' style={{color:'black',backgroundColor:'transparent'}}>Sign Up</Link>
             </div>
             <div className="mb-3" style={{ display: 'none' }}>
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label" style={{color:'white',backgroundColor:'transparent',fontSize:'18px'}}>
                 Email address{' '}
                 <span className="text-danger">
                   {' '}
@@ -74,6 +75,7 @@ const LoginWithOtp = () => {
                 </span>
               </label>
               <input
+              style={{color:'white',backgroundColor:'transparent'}}
                 value={email}
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -87,7 +89,7 @@ const LoginWithOtp = () => {
           </div>
           <div className="col-11 mx-auto">
             <div className="mb-3">
-              <label htmlFor="otp" className="form-label">
+              <label htmlFor="otp" className="form-label mt-2" style={{color:'white',backgroundColor:'transparent',fontSize:'18px'}}>
                 OTP{' '}
                 <span className="text-danger">
                   {' '}
@@ -95,13 +97,14 @@ const LoginWithOtp = () => {
                 </span>
               </label>
               <input
+              style={{color:'white',backgroundColor:'transparent'}}
                 value={otp}
                 name="otp"
                 onChange={(e) => setOtp(e.target.value)}
                 type="otp"
                 required
                 placeholder="Field is required"
-                className="form-control"
+                className="form-control mt-2"
               />
               {validator.current.message('otp', otp, 'required')}
             </div>
@@ -110,19 +113,22 @@ const LoginWithOtp = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn my-global-button my-3"
+              className="btn  my-3 w-100"
+              style={{backgroundColor:'#bd870b'}}
+
             >
               {loading ? 'Logging in...' : 'Submit'}
             </button>
           </div>
           <div>
-            <Link to="/login">Back to login</Link>
+            <Link to="/login" style={{color:'white',backgroundColor:'transparent',fontSize:'17px'}}>Back to login</Link>
           </div>
           <div className="mb-3">
-            <Link to="/">Continue as Guest</Link>
+            <Link to="/" style={{color:'white',backgroundColor:'transparent',fontSize:'17px'}}>Continue as Guest</Link>
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -680,14 +680,15 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+   <>
       <div className="ProductImg1">
-        <h1 className="text-white text-center" style={{ paddingTop: '140px' }}>
+        <h1 className="text-white text-center" style={{ paddingTop: '100px' }}>
           <span style={{ opacity: '0.5' }}>--</span> MENU LIST{' '}
           <span style={{ opacity: '0.5' }}>--</span>
         </h1>
       </div>
-      <div className="Product2Comp">
+  <Col md={12} lg={12} xs={12} sm={12}>
+      <div className="Product2Comp text-center">
         <h3 className="py-4" id="Product2H3" style={{ color: ' #c6ac83' }}>
           What food do we have in our restaurant?
         </h3>
@@ -702,16 +703,17 @@ const Home = () => {
           Sed ut perspiciatis unde omnis iste natus error voluptate accusantium
         </p>
       </div>
-
-      <div className="Product3Comp">
-        <div style={{}} className="pt-3 float-end px-3">
+      </Col>
+      <div className="Product3Comp ">
+        <div style={{}} className="pt-3 float-end px-3"id="ShoppingCart">
           <Button
             as={Link}
             to="/cart"
-            style={{
+     
+            style={{  
               border: 'none',
               backgroundColor: 'orange',
-              borderRadius: '30px'
+              borderRadius: '30px'  
             }}
           >
             <i className="fa-solid fa-cart-shopping fa-xl " />
@@ -771,7 +773,7 @@ const Home = () => {
               <Button onClick={returnBack}>Okay</Button>
             </div>
           ) : ( */}
-            <Col className="mb-5" xs={12} md={7} lg={12}>
+            <Col className="mb-5" xs={12} md={12} lg={12} sm={1}>
               <MenuList
                 menus={menus}
                 handleViewDetails={handleViewDetails}
@@ -822,7 +824,7 @@ const Home = () => {
           </>
         </Container>
       </div>
-    </>
+      </>
   );
 };
 

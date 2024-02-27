@@ -143,22 +143,21 @@ const UsersList = () => {
   }, [currentPage]);
 
   return (
-    <div className="container">
+    <div className="MenuHeaderMain">
+      <div className='container-fluid'>
       <div className="row">
-        <h5 className="mt-3" style={{ fontWeight: 'bold' }}>
-          USERS - Admin
+        <div className='col-lg-12 col-xs-12 col-sm-12 col-md-12'>
+        <h5 className="mt-3 text-white" style={{ fontWeight: 'bold' }}>
+          <></>USERS - Admin
         </h5>
-        <div
-          className="col mt-4"
-          style={{ display: 'flex', justifyContent: 'space-between' }}
-        >
-          <div className="col-3" style={{ display: 'flex' }}>
-            <label style={{ display: 'flex' }}>Filter by Role: </label>
+        <div className='row'>
+        <div className="col-lg-3 col-md-4 col-xs-12">
+            <label style={{color:'white'}}>Filter by Role:</label>
             <div className="mx-4">
               <select
                 value={selectedRoleFilter}
                 onChange={handleRoleFilterChange}
-                className="form-control"
+                className="form-control mt-3"
               >
                 {/* <option value="">All</option> */}
                 <option value="admin">Admin</option>
@@ -166,30 +165,7 @@ const UsersList = () => {
               </select>
             </div>
           </div>
-          {/* <div style={{ display: 'flex' }}>
-            <div>
-              <input
-                type="text"
-                className={`form-control `}
-                style={{ display: 'flex' }}
-                placeholder="Enter User ID"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <button
-                className="btn mx-1"
-                style={{ display: 'flex', color: 'white' }}
-                type="button"
-                onClick={handleSearch}
-              >
-                Search
-              </button>
-            </div>
-          </div> */}
-          <div>
+    <div className="col-lg-3 col-xs-12 col-md-4 mx-auto">
             <Link
               className="btn my-global-button"
               style={{ background: '#51bc8fb5' }}
@@ -198,7 +174,7 @@ const UsersList = () => {
               View Customers
             </Link>
           </div>
-          <div>
+          <div className="col-lg-3 col-md-4 col-xs-12">
             <button
               className="btn my-global-button"
               style={{ color: 'white' }}
@@ -207,7 +183,7 @@ const UsersList = () => {
               Create Admin
             </button>
           </div>
-        </div>
+    
         <ReusableTable
           headers={headers}
           data={(searchResult.length > 0 ? searchResult : filteredUsers).map(
@@ -216,12 +192,6 @@ const UsersList = () => {
               role: getRoleDisplayName(user.role),
               actions: (
                 <div style={{ display: 'flex' }}>
-                  {/* <Button
-                    className="btn-custom with-border-radius"
-                    onClick={() => handleShowEditModal(user)}
-                  >
-                    <FontAwesomeIcon icon={faEdit} />
-                  </Button>{' '} */}
                   <Button
                     className="my-global-button"
                     onClick={() => handleDelete(user._id)}
@@ -233,7 +203,7 @@ const UsersList = () => {
             })
           )}
         />
-        <div className="pagination-1">
+        <div className="pagination-1 mx-auto">
           <Pagination
             activePage={currentPage}
             itemsCountPerPage={resPerPage}
@@ -298,6 +268,9 @@ const UsersList = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      </div>
+      </div>
+    </div>
     </div>
   );
 };

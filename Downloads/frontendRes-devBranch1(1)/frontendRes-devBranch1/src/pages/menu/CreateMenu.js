@@ -14,6 +14,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import CategoryList from './CategoryList';
 import CategoryList1 from './CategoryList1';
+import './CreateMenu.css';
+
 // import Sidebar from './Sidebar';
 
 export default function CreateMenu() {
@@ -291,9 +293,10 @@ export default function CreateMenu() {
   }, [selectedBranch, restaurantBranch]);
 
   return (
-    <div className="container-fluid col-lg-10">
+    <div className='CreateMenu py-1 text-white' >
+    <div className="container-fluid">
       <>
-        <div className="wrapper my-5">
+        <div className="my-5">
           <form
             onSubmit={submitHandler}
             className="address-container shadow-lg "
@@ -301,7 +304,7 @@ export default function CreateMenu() {
           >
             <h4 className="my-5 mx-5 pt-4">Create Menu Item</h4>
             <div className="row">
-              <div className="col-6">
+              <div className="col-xs-12 col-lg-6 col-md-12">
                 <div className="mb-4 mx-5">
                   <label htmlFor="name_field">
                     Name
@@ -311,6 +314,7 @@ export default function CreateMenu() {
                     </span>
                   </label>
                   <input
+                   style={{backgroundColor:'transparent', color:'white'}}
                     type="text"
                     id="name_field"
                     className="form-control"
@@ -330,6 +334,7 @@ export default function CreateMenu() {
                     </span>
                   </label>
                   <input
+                   style={{backgroundColor:'transparent', color:'white'}}
                     type="text"
                     id="price_field"
                     required
@@ -349,6 +354,7 @@ export default function CreateMenu() {
                     </span>
                   </label>
                   <textarea
+                   style={{backgroundColor:'transparent', color:'white'}}
                     className="form-control"
                     id="description_field"
                     rows="2"
@@ -374,6 +380,7 @@ export default function CreateMenu() {
                     </span>
                   </label>
                   <select
+                   style={{backgroundColor:'transparent', color:'white'}}
                     onChange={(e) => setMealTypeCategory(e.target.value)}
                     className="form-control"
                     id="category_field"
@@ -382,6 +389,7 @@ export default function CreateMenu() {
                     <option value="">Select</option>
                     {mealCategories.map((mealType) => (
                       <option
+                      style={{backgroundColor:'transparent', color:'white'}}
                         key={mealType.mealTypeCategory}
                         value={mealType.mealTypeCategory}
                       >
@@ -406,6 +414,7 @@ export default function CreateMenu() {
                     </span>
                   </label>
                   <select
+                   style={{backgroundColor:'transparent', color:'white'}}
                     onChange={(e) =>
                       setDietaryPreferenceCategory(e.target.value)
                     }
@@ -425,7 +434,7 @@ export default function CreateMenu() {
                   </select>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-xs-12 col-lg-6 col-md-12">
                 <>
                   {role === 'superAdmin' && Array.isArray(restaurantBranch) && (
                     <div className="mb-4 mx-5">
@@ -437,6 +446,7 @@ export default function CreateMenu() {
                         </span>
                       </label>
                       <select
+                       style={{backgroundColor:'transparent', color:'white'}}
                         id="seller_field"
                         className="form-control"
                         value={selectedBranch} // Use a separate state for selected value
@@ -464,6 +474,7 @@ export default function CreateMenu() {
                       </span>
                     </label>
                     <input
+                     style={{backgroundColor:'transparent', color:'white'}}
                       type="text"
                       id="id_field"
                       className="form-control"
@@ -480,6 +491,7 @@ export default function CreateMenu() {
 
                   <div className="custom-file">
                     <input
+                     style={{backgroundColor:'transparent', color:'white'}}
                       type="file"
                       name="product_images"
                       className="form-control"
@@ -510,7 +522,7 @@ export default function CreateMenu() {
                 <div className="mb-4 mx-5">
                   <label
                     htmlFor="vegetarian_checkbox"
-                    style={{ fontSize: '1rem', color: '#333' }}
+                    style={{ fontSize: '1rem',  color:'white' }}
                   >
                     Is Available
                   </label>
@@ -560,7 +572,7 @@ export default function CreateMenu() {
                     id="login_button"
                     type="submit"
                     disabled={loading}
-                    className="my-global-button"
+                    className="my-global-button px-5 mx-5"
                   >
                     CREATE
                   </button>
@@ -711,6 +723,7 @@ export default function CreateMenu() {
           )}
         </div>
       </>
+    </div>
     </div>
   );
 }

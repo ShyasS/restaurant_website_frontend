@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './Payment.css';
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -98,22 +99,24 @@ const Payment = () => {
   }, [error]);
 
   return (
-    <div className="container my-4">
-      <div className="col-11 col-md-5 mx-auto mt-5">
-        <Form onSubmit={submitHandler} className="shadow-lg custom-table">
-          <div className="m-3">
-            <h4 className="mb-4">Card Info</h4>
-            <div className="form-group">
-              <label htmlFor="card_num_field">Card Number</label>
+    <div className="" id="CardPMainImg">
+      <div className="col-11 col-md-4 mx-auto py-5" >
+        <Form onSubmit={submitHandler} className="shadow-lg custom-table" id="CardBackIMg" >
+          <div className="m-3 ">
+            <h4 className="mb-4"  style={{color:'white',backgroundColor:'transparent',fontWeight:'520'}}>Card Info</h4>
+            <div className="form-group" >
+              <label htmlFor="card_num_field"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Card Number</label>
               <CardNumberElement
                 type="text"
+                style={{color:'black',backgroundColor:'transparent'}}
                 id="card_num_field"
-                className="form-control"
+                className="form-control "
+                
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="card_exp_field">Card Expiry</label>
+              <label htmlFor="card_exp_field" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Card Expiry</label>
               <CardExpiryElement
                 type="text"
                 id="card_exp_field"
@@ -122,11 +125,11 @@ const Payment = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="card_cvc_field">Card CVC</label>
+              <label htmlFor="card_cvc_field" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Card CVC</label>
               <CardCvcElement
-                type="text"
+                type="password"
                 id="card_cvc_field"
-                className="form-control"
+                className="form-control "
                 value=""
               />
             </div>
@@ -134,7 +137,7 @@ const Payment = () => {
             <button
               id="pay_btn"
               type="submit"
-              className="btn my-global-button btn-block my-3"
+              className="btn my-global-button btn-block my-3 text-white"
             >
               Pay -{' '}
               {` $${

@@ -14,8 +14,9 @@ import DeliveryAddress from './DeliveryAddress';
 import BillingAddress from './BillingAddress';
 // import '../../checkout/CheckoutForm.css';
 import { toast } from 'react-toastify';
+import './ShippingInfo.css';
 
-const ShippingInfo1 = () => {
+const   ShippingInfo1 = () => {
   const navigate = useNavigate();
   const isLoggedIn = JSON.parse(localStorage.getItem('isloggedIn'));
   const user = JSON.parse(localStorage.getItem('user'));
@@ -613,7 +614,8 @@ const ShippingInfo1 = () => {
   }, [otpVerified, navigate]);
 
   return (
-    <div className="container col-md-5 custom-table my-4">
+    <div id="ShippingInfo" className='py-5'  >
+    <div className="container col-md-5 custom-table my-4" id="CardBackIMg">
       <form className="checkout-form" onSubmit={handleSubmit}>
         {!isLoggedIn && (
           <PersonalDetails
@@ -694,6 +696,7 @@ const ShippingInfo1 = () => {
           Continue
         </button>
       </form>
+    </div>
     </div>
   );
 };

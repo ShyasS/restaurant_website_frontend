@@ -130,6 +130,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
+import './UserOrderList.css';
 // import Sidebar from './Sidebar';
 
 const OrderDetails = () => {
@@ -163,8 +164,8 @@ const OrderDetails = () => {
   }, [id]); // Empty dependency array ensures the effect runs only once
 
   return (
-    <div className="container">
-      <div className="row custom-table mx-auto mt-4 p-2 mb-4">
+    <div className="container-fluid py-5"  id="ProfileMainImg" >
+      <div className="row col-lg-9 custom-table mx-auto" id="CardBackIMg">
         <div className="col">
           <div className="row d-flex justify-content-around">
             <div className="col-12 col-lg-4 order-details">

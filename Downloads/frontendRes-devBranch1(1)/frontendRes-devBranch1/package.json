@@ -20,6 +20,7 @@
     "css": "^3.0.0",
     "date-fns": "^2.30.0",
     "font-awesome": "^4.7.0",
+    "framer-motion": "^11.0.5",
     "js-cookie": "^3.0.5",
     "mdb-react-ui-kit": "^7.0.0",
     "prop-types": "^15.8.1",

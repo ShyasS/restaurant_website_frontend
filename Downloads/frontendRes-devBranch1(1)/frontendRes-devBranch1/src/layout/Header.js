@@ -97,7 +97,7 @@ const Header = () => {
             <Nav.Link as={Link} to="/">
               <img
                 src={require('../assets/img/grandIndiaLogo1.png')}
-                style={{ height: '60px', width: '190px' }}
+                style={{ height: '40px', width: '130px' }}
               />
             </Nav.Link>
           </Navbar.Brand>
@@ -106,10 +106,10 @@ const Header = () => {
             onClick={handleNavbarToggle}
             style={{ border: '2px solid #8D4527' }}
           />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav ">
             <Nav
               style={{ fontSize: '17px', fontWeight: '600', color: '#2a206b' }}
-              className="col-md-7 mx-auto"
+              className="col-md-7 col-lg-8 mx-auto"
             >
               {isloggedIn === 'true' ? (
                 <>
@@ -240,13 +240,13 @@ const Header = () => {
                 <>
                   <Nav.Link as={Link} to="/">
                     {/* <i className="fa-solid fa-house menuIconColor" /> */}
-                    <span>Home</span>
+                    <span className='ms-lg-5'>Home</span>
                   </Nav.Link>
                   <Nav.Link as={Link} to="/select">
                     {/* <i className="fa-solid fa-bell-concierge menuIconColor" /> */}
                     <span> Order</span>
                   </Nav.Link>
-                  <div className="logout-login-buttons ">
+                  <div className="logout-login-buttons">
                     {isLoggedIn ? (
                       <Nav.Link
                         className="my-global-button mx-auto"
@@ -260,6 +260,7 @@ const Header = () => {
                         }}
                         onClick={handleLogout}
                       >
+                       
                         Logout
                       </Nav.Link>
                     ) : (

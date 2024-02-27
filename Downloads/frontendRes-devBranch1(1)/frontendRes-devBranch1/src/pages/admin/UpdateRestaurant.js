@@ -91,10 +91,11 @@ const EditRestaurant = () => {
   };
 
   return (
-    <div className="col-md-5 container">
+    <div className="MenuHeaderMain">
+    <div className="col-md-7 col-lg-5 container" style={{backgroundColor:'transparent',color:'white'}}>
       <h4 className="py-3">Edit Restaurant</h4>
       <form onSubmit={handleSubmit} className="address-container">
-        <Card className="p-3">
+        <Card className="p-3"  style={{backgroundColor:'transparent',color:'white'}}>
           <div className="mb-4">
             <label>
               Restaurant Name:
@@ -333,6 +334,7 @@ const EditRestaurant = () => {
           Update Restaurant
         </button>
       </form>
+    </div>
     </div>
   );
 };

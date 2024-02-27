@@ -128,9 +128,10 @@ const CustomerList = () => {
   }, [currentPage, searchInput]);
 
   return (
-    <div className="container">
+    <div className="MenuHeaderMain">
+      <div className='container-fluid'>
       <div className="row">
-        <h5 className="mt-3" style={{ fontWeight: 'bold' }}>
+        <h5 className="mt-3 text-white" style={{ fontWeight: 'bold' }}>
           USERS - Customer
         </h5>
         <div
@@ -242,6 +243,7 @@ const CustomerList = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 };

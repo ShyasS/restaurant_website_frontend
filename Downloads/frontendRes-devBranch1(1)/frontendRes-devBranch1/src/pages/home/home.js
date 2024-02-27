@@ -63,7 +63,7 @@ const HomePage = () => {
   return (
     <div>
       <ProductModal />
-      <div className="row mb-6">
+      <div className="">
         <RestaurantSelection />
       </div>
     </div>

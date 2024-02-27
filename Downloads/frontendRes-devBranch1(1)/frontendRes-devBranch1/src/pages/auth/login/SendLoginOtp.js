@@ -53,13 +53,14 @@ const SendLoginOtp = () => {
     }
   };
   return (
+    <div id="ForgetPMainImg" className='py-4'>
     <div className="container-fluid mx-auto col-md-5 mt-5 mb-4 signup-form-container ">
       <form onSubmit={handleLogin}>
-        <div className="row  custom-table mx-3 my-5">
+        <div className="row  custom-table mx-3 my-5" id="ForgetImg">
           <div className="col-11 mx-auto">
             <h4 className="text-center mt-3 font-regular-29">Send OTP</h4>
             <div className="mb-3">
-              <label className="form-label">
+              <label className="form-label mt-2" style={{color:'white',backgroundColor:'transparent'}}>
                 Email
                 <span className="text-danger">
                   {' '}
@@ -68,6 +69,7 @@ const SendLoginOtp = () => {
               </label>
               <input
                 value={email}
+                style={{color:'white',backgroundColor:'transparent'}}
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
@@ -81,7 +83,8 @@ const SendLoginOtp = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn my-global-button m-3"
+                className="btn w-100 mb-4 mt-2 "
+                style={{backgroundColor:'#bd870b'}}
               >
                 Submit
               </button>
@@ -89,6 +92,7 @@ const SendLoginOtp = () => {
           </div>
         </div>
       </form>
+    </div>
     </div>
   );
 };

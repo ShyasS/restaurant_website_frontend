@@ -40,10 +40,11 @@ const PersonalDetails = ({
   // };
 
   return (
-    <Card className="my-3 p-3">
-      <h4>Personal Details</h4>
+    <div >
+    <Card className="my-3 p-3" style={{backgroundColor:'transparent'}}>
+      <h4   style={{color:'black', fontWeight:'550'}}>Personal Details</h4>
       <div className="mb-3 address-container">
-        <label htmlFor="userName" className="form-label">
+        <label htmlFor="userName" className="form-label" style={{color:'black', fontWeight:'500'}}>
           First Name{' '}
           <span className="text-danger">
             <b>*</b>
@@ -51,6 +52,7 @@ const PersonalDetails = ({
         </label>
         <input
           type="text"
+          style={{color:'black',backgroundColor:'transparent'}}
           className={`form-control `}
           id="userName"
           value={name}
@@ -61,7 +63,7 @@ const PersonalDetails = ({
         {errors.name && <div className="error">{errors.name}</div>}
       </div>
       <div className="mb-3 address-container">
-        <label htmlFor="lastName" className="form-label">
+        <label htmlFor="lastName" className="form-label" style={{color:'black', fontWeight:'500'}}>
           Last Name{' '}
           <span className="text-danger">
             {' '}
@@ -69,6 +71,7 @@ const PersonalDetails = ({
           </span>
         </label>
         <input
+        style={{color:'black',backgroundColor:'transparent'}}
           type="text"
           className={`form-control `}
           id="lastName"
@@ -79,7 +82,7 @@ const PersonalDetails = ({
         />
       </div>
       <div className="mb-3 address-container">
-        <label htmlFor="emailOrMobile" className="form-label">
+        <label htmlFor="emailOrMobile" className="form-label" style={{color:'black', fontWeight:'500'}}>
           Email / Mobile Number{' '}
           <span className="text-danger">
             {' '}
@@ -88,6 +91,7 @@ const PersonalDetails = ({
         </label>
         <input
           type="text"
+          style={{color:'black',backgroundColor:'transparent'}}
           className="form-control"
           id="emailOrMobile"
           value={emailOrMobile}
@@ -106,7 +110,7 @@ const PersonalDetails = ({
       {isOtpSent && (
         <>
           <div>
-            <label htmlFor="otp" className="form-label mt-4">
+            <label htmlFor="otp" className="form-label mt-4"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               Enter OTP{' '}
               <span className="text-danger">
                 {' '}
@@ -114,6 +118,7 @@ const PersonalDetails = ({
               </span>
             </label>
             <input
+              style={{color:'black',backgroundColor:'transparent'}}
               type="tel"
               className={`form-control `}
               id="otp"
@@ -134,6 +139,7 @@ const PersonalDetails = ({
         </>
       )}
     </Card>
+    </div>
   );
 };
 

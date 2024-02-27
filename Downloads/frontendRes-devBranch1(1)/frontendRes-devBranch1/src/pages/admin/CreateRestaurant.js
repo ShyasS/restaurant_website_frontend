@@ -65,7 +65,8 @@ const CreateRestaurant = () => {
   };
 
   return (
-    <Card className="col-md-5 container my-3 p-3">
+    <div className="MenuHeaderMain">
+    <Card className="col-md-5 container  py-5" style={{backgroundColor:'transparent',color:'white'}}>
       <h4>Create a New Restaurant</h4>
       <form onSubmit={handleSubmit} className="address-container">
         {/* Add input fields for each restaurant property */}
@@ -328,6 +329,7 @@ const CreateRestaurant = () => {
         </button>
       </form>
     </Card>
+    </div>
   );
 };
 

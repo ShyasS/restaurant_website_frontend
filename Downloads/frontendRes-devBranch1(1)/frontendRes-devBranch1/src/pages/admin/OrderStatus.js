@@ -62,8 +62,9 @@ const OrderStatus = () => {
   }, [id]); // Empty dependency array ensures the effect runs only once
 
   return (
+    <div className='CreateMenu py-1 text-white' >
     <div className="container">
-      <div className="row custom-table mx-auto mt-4 mb-4">
+      <div className="row   mx-auto mt-4 mb-4">
         <div className="col">
           <h4 className="my-4">
             <b>Order Info</b>
@@ -72,29 +73,30 @@ const OrderStatus = () => {
             <div className="col-12 col-lg-4 order-details">
               <div style={{ display: 'flex', marginBottom: '1rem' }}>
                 <p className="mx-2">
-                  <b>Order Id:</b>
+                  <b style={{color:'white'}}>Order Id:</b>
                 </p>
                 {orderDetails?._id}
               </div>
 
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Name:</b>
+              <p style={{ display: 'flex', color:'white', marginBottom: '1rem' }}>
+                <b style={{color:'white'}} className="mx-2">Name:</b>
                 {`${orderDetails?.shipping.name} ${
                   orderDetails?.shipping.lastName || ''
                 }`}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Phone:</b>{' '}
+              <p style={{ display: 'flex', color:'white',marginBottom: '1rem' }}>
+                <b style={{color:'white'}} className="mx-2">Phone:</b>{' '}
                 {orderDetails?.shipping.phone || 'not found'}
               </p>
               <p
                 style={{
                   display: 'flex',
+                  color:'white',
                   marginBottom: '1rem',
                   marginLeft: '7px'
                 }}
               >
-                <b className="">Billing Address:</b>{' '}
+                <b style={{color:'white'}} className="">Billing Address:</b>{' '}
                 {orderDetails?.shipping.address.line1},{' '}
                 {orderDetails?.shipping.address.city},{' '}
                 {orderDetails?.shipping.address.state},{' '}
@@ -103,12 +105,13 @@ const OrderStatus = () => {
               {orderDetails?.delivery && (
                 <p
                   style={{
+                    color:'white',
                     display: 'flex',
                     marginBottom: '1rem',
                     marginLeft: '7px'
                   }}
                 >
-                  <b className="">Delivery Address:</b>{' '}
+                  <b style={{color:'white'}} className="">Delivery Address:</b>{' '}
                   {orderDetails.delivery.line1 || ''},{' '}
                   {orderDetails.delivery.city || ''},{' '}
                   {orderDetails.delivery.state || ''},{' '}
@@ -116,34 +119,34 @@ const OrderStatus = () => {
                   {orderDetails.delivery.postalCode || ''}
                 </p>
               )}
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p  style={{ display: 'flex', color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Restaurant:</b>{' '}
                 {orderDetails?.restaurantBranch || 'not found'}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p style={{ display: 'flex', color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Selected time:</b>{' '}
                 {orderDetails?.selectedTimeSlot || 'not found'}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p style={{ display: 'flex',  color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Selected Date:</b>{' '}
                 {orderDetails?.orderDate || 'not found'}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p style={{ display: 'flex',  color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Order Type:</b>{' '}
                 {orderDetails?.orderType || 'not found'}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p style={{ display: 'flex',  color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Total Amount:</b> $
                 {orderDetails?.totalPrice}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p style={{ display: 'flex',  color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Payment:</b> {orderDetails?.paymentStatus}
               </p>
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                <b className="mx-2">Payment Id:</b> {orderDetails?.paymentInfo}
+              <p style={{color:'white'}}>
+                <b className="mx-2">Payment Id: </b>  {orderDetails?.paymentInfo}
               </p>
               <div />
-              <p style={{ display: 'flex', marginBottom: '1rem' }}>
+              <p style={{ display: 'flex',  color:'white', marginBottom: '1rem' }}>
                 <b className="mx-2">Paid at:</b> {orderDetails?.paidAt}
               </p>
               <div />
@@ -153,7 +156,7 @@ const OrderStatus = () => {
               
             </div> */}
             <div className="col-12 col-lg-8 mt-2">
-              <h4 className="my-4">Order Items:</h4>
+              <h4 className="ms-5 px-5" style={{ color:'white'}}>Order Items:</h4>
 
               {orderDetails?.items.length > 0 ? (
                 orderDetails?.items.map((item) => (
@@ -171,16 +174,16 @@ const OrderStatus = () => {
                         />
                       </div>
 
-                      <div className="col-12 col-lg-6">
-                        <Link to={`/menuDetails/${item._id}`}>{item.name}</Link>
+                      <div className="col-xs-12 col-lg-6 ps-5 ">
+                        <Link to={`/menuDetails/${item._id}`} style={{textDecoration:'none', color:'black',fontSize:'18px', fontWeight:'550'}}>{item.name}</Link>
                       </div>
 
                       <div className="col-5 col-lg-2 mt-4 mt-lg-0">
-                        <p>${item.price}</p>
+                        <p  style={{color:'black'}}>${item.price}</p>
                       </div>
 
                       <div className="col-7 col-lg-3 mt-4 mt-lg-0">
-                        <p>Qty-{item.itemQuantity}</p>
+                        <p  style={{color:'black'}}> Qty-{item.itemQuantity}</p>
                       </div>
                     </div>
                   </Card>
@@ -190,15 +193,15 @@ const OrderStatus = () => {
               )}
               <div className="container col-12 col-lg-6 mx-auto">
                 <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                  <b className="mx-2">Order Instruction:</b>{' '}
+                  <b className="mx-2 text-white">Order Instruction:</b>{' '}
                   {orderDetails?.orderInstruction || '-'}
                 </p>
                 <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                  <b className="mx-2">Delivery Instruction :</b>{' '}
+                  <b className="mx-2 text-white" >Delivery Instruction :</b>{' '}
                   {orderDetails?.deliveryInstruction || '-'}
                 </p>
-                <h4 className="my-4">Status</h4>
-                <p className="my-4">
+                <h4 className="my-4 text-white">Status</h4>
+                <p className="my-4 text-white">
                   <b>
                     Order Status:{' '}
                     <span style={{ color: 'green' }}>
@@ -223,7 +226,7 @@ const OrderStatus = () => {
                 <button
                   type="submit"
                   onClick={updateOrderStatus}
-                  className="btn btn-primary btn-block my-4"
+                  className="my-global-button px-5 my-4 "
                 >
                   Update Status
                 </button>
@@ -232,6 +235,7 @@ const OrderStatus = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

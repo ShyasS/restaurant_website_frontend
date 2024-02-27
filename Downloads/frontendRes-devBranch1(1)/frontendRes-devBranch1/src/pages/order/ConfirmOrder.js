@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './ConfirmOrder.css';
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
@@ -107,33 +108,34 @@ const ConfirmOrder = () => {
   }, []);
 
   return (
-    <div>
-      <Card className="row my-3 d-flex justify-content-between col-12 col-md-5 mx-auto">
-        <div className=" order-confirm " style={{ textAlign: 'left' }}>
-          <h4 className="mb-3 my-2">
+    <div className='ConfirmOrderMainImg'>
+      <div className='py-5'>
+      <Card className="row d-flex justify-content-between col-12 col-md-5 mx-auto" id="CardBackIMg" >
+        <div className=" order-confirm " style={{ textAlign: 'left' }} >
+          <h4 className="mb-3 my-2" style={{color:'white',backgroundColor:'transparent',fontWeight:'550'}}>
             <>Shipping Info</>
           </h4>
-          <Card className="p-2 borderUp" style={{ borderRadius: '10px' }}>
-            <p>
+          <Card className="p-2 " style={{ borderRadius: '10px', backgroundColor:'transparent' }}>
+            <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               <b>Name:</b> {localData.name}{' '}
               {/* Replace with actual name data */}
             </p>
             {isLoggedIn && (
               <>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Email:</b> {localData.email}
                 </p>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Phone:</b> {localData.mobileNumber}
                 </p>
               </>
             )}
             {!isLoggedIn && (
               <>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Email / Phone:</b> {emailOrMobile}
                 </p>
-                <p className="mb-4">
+                <p className="mb-4" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Billing Address:</b> {mappedData.streetAddress},{' '}
                   {mappedData.city}, {mappedData.state}, {mappedData.postalCode}
                   , {mappedData.country}
@@ -141,42 +143,42 @@ const ConfirmOrder = () => {
               </>
             )}
             {mappedData.orderType === 'Pickup' ? (
-              <div>
-                <p>
-                  <b>Type:</b> Pickup
+              <div style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}} >
+                  <b >Type:</b> Pickup
                 </p>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Order date:</b> {selectedDate}
                 </p>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Pickup Time:</b> {mappedData.selectedTimeSlot}
                 </p>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Restaurant:</b> {restaurantBranch}
                 </p>
               </div>
             ) : (
               <div>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Type:</b> Delivery
                 </p>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Restaurant:</b> {restaurantBranch}
                 </p>
-                <p>
+                <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <b>Delivery Time:</b>{' '}
                   {mappedData.selectedTimeSlot || Date.now()}
                 </p>
-                <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
-                  <p className="mb-4">
-                    <b>Billing Address:</b> {mappedData.streetAddress},{' '}
+                <Card className="mt-3 p-2" style={{ borderRadius: '10px',color:'black',backgroundColor:'transparent'}}>
+                  <p className="mb-4"style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
+                    <b style={{color:'black'}} >Billing Address:</b> {mappedData.streetAddress},{' '}
                     {mappedData.city}, {mappedData.state},{' '}
                     {mappedData.postalCode}, {mappedData.country}
                   </p>
                 </Card>
-                <Card className="mt-3 p-2" style={{ borderRadius: '10px' }}>
-                  <p className="mb-4">
-                    <b>Delivery Address:</b> {deliveryAddress.streetAddress},{' '}
+                <Card className="mt-3 p-2" style={{ borderRadius: '10px',color:'white',backgroundColor:'transparent'}}>
+                  <p className="mb-4" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
+                    <b style={{color:'black'}}>Delivery Address:</b> {deliveryAddress.streetAddress},{' '}
                     {deliveryAddress.city}, {deliveryAddress.state},{' '}
                     {deliveryAddress.postalCode}, {deliveryAddress.country}
                   </p>
@@ -191,23 +193,24 @@ const ConfirmOrder = () => {
 
         <div className="">
           <Card
-            className="mt-3 p-2 borderUp"
-            style={{ borderRadius: '10px' }}
+          
+            className="mt-3 p-2 "
+            style={{ borderRadius: '10px',color:'black',backgroundColor:'transparent',fontWeight:'500'}}
             id="order_summary"
           >
-            <p>
+            <p  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               Tax: <span className="order-summary-values">${taxPrice}</span>
             </p>
 
             {/* <hr /> */}
-            <p>
+            <p style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               Delivery:{' '}
               <span className="order-summary-values">${shippingPrice}</span>
             </p>
 
             {/* <hr /> */}
 
-            <p>
+            <p  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               Total: <span className="order-summary-values">${totalPrice}</span>
             </p>
             {/* <hr /> */}
@@ -223,6 +226,7 @@ const ConfirmOrder = () => {
           </button>
         </div>
       </Card>
+      </div>
     </div>
   );
 };

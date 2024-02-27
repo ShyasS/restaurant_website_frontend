@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ReusableTable from '../../components/ReusableTable';
-
+import './UserOrderList.css';
 const OrdersTable = () => {
   const navigate = useNavigate();
   const [currentOrders, setCurrentOrders] = useState([]);
@@ -61,18 +61,19 @@ const OrdersTable = () => {
   }
 
   return (
-    <div className="container col-lg-8 mt-2">
+    <div  id="ProfileMainImg">
+    <div className="container col-lg-8">
       <div className="row">
-        <div className="col p-4 my-2">
+        <div className="col p-4 my-2" >
           {!noCurrentOrders && (
-            <>
-              <h3>Current Orders</h3>
+            <div >
+              <h3 style={{color:'white',backgroundColor:'transparent',fontWeight:'550'}}>Current Orders</h3>
               <ReusableTable
                 data={currentOrders}
                 headers={headers}
                 onViewDetails={handleView}
               />
-            </>
+            </div>
           )}
         </div>
       </div>
@@ -91,6 +92,7 @@ const OrdersTable = () => {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };

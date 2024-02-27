@@ -22,12 +22,12 @@ const Footer = () => {
         backgroundColor: 'black',
         color: 'white',
         padding: '20px 0',
-        maxHeight: '600px',
+       
         overflow: 'hidden'
       }}
     >
       <Container>
-        <Row
+        <Row 
           style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -50,7 +50,7 @@ const Footer = () => {
               }}
             />
           </Col>
-          <Col md={3} xs={12}>
+          <Col lg={3} xs={12} md={4}>
             <Image
               src={require('../assets/img/grandIndiaLogo1.png')}
               style={{ height: '70px', width: '190px' }}

@@ -211,6 +211,9 @@ import React, { useEffect, useState } from 'react';
 import { Modal, Button, Form, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { toast } from 'react-toastify';
 import MetaData from 'layout/MetaData';
 import './users.scss';
@@ -289,26 +292,31 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="col-10 mx-auto mt-4 row justify-content-around">
+    <div id="ProfileMainImg" className='py-5 bg'>
+          <div className="col-10 mx-auto mt-4 row justify-content-around" >
       <MetaData title={user.name} />
-      <div>
-        <h4 className="mx-auto">Profile</h4>
-      </div>
+    <Container>
+    <Row>
+    
 
-      <Card className="col-12 col-md-4 borderUp mb-5 mt-3">
-        <figure className="my-4 avatar avatar-profile">
+      <div>
+        <h1 className="mx-auto" style={{color:'white',backgroundColor:'transparent'}}>Profile</h1>
+      </div>
+      <Col lg={{span:5,offset:0}} md={12}>
+      <Card className=" borderUp mb-5 mt-3" id="ForgetImg">
+        <figure className="my-4 avatar avatar-profile" >
           <img
             className="rounded-circle img-fluid"
             src={
               avatar ??
-              'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'
+              require('../../assets/img/ProfilePic.png')
             }
             alt="Profile"
           />
         </figure>
         <div className="row-buttons col-9 mx-auto">
           <div>
-            <button className="btn my-global-button my-2" onClick={handleEdit}>
+            <button className="btn my-global-button my-2" onClick={handleEdit} >
               Edit profile
             </button>
           </div>
@@ -327,24 +335,25 @@ export default function Profile() {
           </button>
         </div>
       </Card>
-
-      <div className="col-12 col-md-6 my-5">
+      </Col>
+    <Col  lg={{span:5,offset:2}} md={{span:6, offset:4}}>
+      <div className="my-5" style={{color:'white',backgroundColor:'transparent',fontSize:'23px'}}>
         <h4>Full Name</h4>
-        <p>
+        <p style={{color:'white',backgroundColor:'transparent'}}>
           {name} {lastName}
         </p>
 
         <h4>Email Address</h4>
-        <p>{email}</p>
+        <p style={{color:'white',backgroundColor:'transparent'}}>{email}</p>
 
         <h4>Phone</h4>
-        <p>{phone}</p>
+        <p style={{color:'white',backgroundColor:'transparent'}}>{phone}</p>
 
-        <Modal show={showEditModal} onHide={handleCloseEditModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Profile</Modal.Title>
+        <Modal style={{backgroundColor:'transparent'}} show={showEditModal} onHide={handleCloseEditModal}>
+          <Modal.Header closeButton  >
+            <Modal.Title >Edit Profile</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{backgroundColor:'transparent'}}  >
             <Form>
               <Form.Group controlId="oldPassword">
                 <Form.Label>Old Password</Form.Label>
@@ -409,6 +418,10 @@ export default function Profile() {
           </Modal.Footer>
         </Modal>
       </div>
+    </Col>
+      </Row>
+  </Container>
+    </div>
     </div>
   );
 }

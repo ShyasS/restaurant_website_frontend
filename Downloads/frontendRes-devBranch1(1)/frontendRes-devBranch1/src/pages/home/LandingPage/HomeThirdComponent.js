@@ -11,7 +11,7 @@ const HomeThirdComponent = () => {
     <div className="HomeThirdComp">
       <Container>
         <Row className="text-white py-md-5">
-          <Col md={{ span: 5, offset: 0 }} xs={11} className="mt-5 ms-3">
+          <Col lg={{ span: 5, offset: 0 }} md={12} sm={12} xs={11} className="mt-5 ms-3">
             <h3
               className="mt-3"
               style={{ color: '#c6ac83', fontFamily: 'serif' }}
@@ -22,7 +22,7 @@ const HomeThirdComponent = () => {
             <h1 className="HomeThirdH1">
               WE ALWAYS WANT OUR CUSTOMERS TO BE SATISFIED
             </h1>
-            <Col md={12} xs={11}>
+            <Col lg={12} sm={12} xs={11} md={12}>
               <p
                 className="mt-3"
                 style={{ fontSize: '16px', color: '#c6ac83' }}
@@ -35,14 +35,14 @@ const HomeThirdComponent = () => {
               </p>
             </Col>
             <Row className="mt-5">
-              <Col md={{ span: 7, offset: 0 }} xs={10}>
+              <Col lg={{ span: 7, offset: 0 }} sm={12} md={6} xs={10}>
                 <ul>
                   <li>MUSIC AND SPACE</li>
                   <br />
                   <li>ATMOSPHERE OF FUN</li>
                 </ul>
               </Col>
-              <Col md={{ span: 5, offset: 0 }} xs={10}>
+              <Col lg={{ span: 5, offset: 0 }} sm={12} md={6} xs={10}>
                 <ul>
                   <li>EXPERIENCE THE COZY SPACE</li>
                   <br />
@@ -52,7 +52,9 @@ const HomeThirdComponent = () => {
             </Row>
           </Col>
           <Col
-            md={{ span: 6, offset: 0 }}
+            lg={{ span: 6, offset: 0 }}
+            md={{span:11}}
+            sm={12}
             xs={12}
             id="HomeThirdImg"
             className="mt-5 ms-md-5"

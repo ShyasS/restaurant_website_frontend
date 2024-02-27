@@ -178,11 +178,12 @@ const DeliveryAddress = ({
   }, [sameAsDelivery, streetAddress, postalCode, city, state, country]);
 
   return (
-    <Card className="my-3 p-3">
+    <Card className="my-3 p-3" id='CardBackIMg'>
       <h4>Delivery Address</h4>
-      <div className="location-options mt-2">
-        <label className="radio-label">
+      <div className="location-options mt-2" >
+        <label className="radio-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
           <input
+           style={{color:'black',backgroundColor:'transparent'}}
             type="radio"
             name="locationOption"
             checked={useCurrentLocation}
@@ -191,10 +192,11 @@ const DeliveryAddress = ({
           <span className="radio-custom" />
           Use current location
         </label>
-        <label className="radio-label">
+        <label className="radio-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
           <input
             type="radio"
             name="locationOption"
+            style={{color:'black',backgroundColor:'transparent'}}
             checked={!useCurrentLocation}
             onChange={handleUseCurrentLocationChange}
           />
@@ -204,7 +206,7 @@ const DeliveryAddress = ({
       </div>
 
       {useCurrentLocation ? (
-        <div>
+        <div >
           <p>Using current location</p>
           {userLocation ? (
             <div>
@@ -226,22 +228,23 @@ const DeliveryAddress = ({
                 <>
                   {distanceResult < 500 ? (
                     <div>
-                      <p>Order available for this location</p>
+                      <p  style={{color:'black',backgroundColor:'transparent'}}>Order available for this location</p>
                     </div>
                   ) : (
                     <div>
-                      <p>Order not available for this location</p>
+                      <p  style={{color:'black',backgroundColor:'transparent'}}>Order not available for this location</p>
                     </div>
                   )}
                 </>
               )}
               <div className="mb-3">
-                <label htmlFor="deliveryInstructions" className="form-label">
+                <label htmlFor="deliveryInstructions" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   Delivery Instruction
                 </label>
               </div>
               <div className="mb-3">
                 <textarea
+                 style={{color:'black',backgroundColor:'transparent'}}
                   type="text"
                   className={`form-control `}
                   name="deliveryInstructions"
@@ -251,8 +254,9 @@ const DeliveryAddress = ({
                 />
               </div>
               <div className="address-options mt-2">
-                <label className="radio-label">
-                  <input
+                <label className="radio-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
+                  <input 
+                   style={{color:'black',backgroundColor:'transparent'}}
                     type="radio"
                     name="sameAsDeliveryOption"
                     checked={sameAsDelivery}
@@ -261,8 +265,9 @@ const DeliveryAddress = ({
                   <span className="radio-custom" />
                   Use Delivery address
                 </label>
-                <label className="radio-label">
+                <label className="radio-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                   <input
+                   style={{color:'black',backgroundColor:'transparent'}}
                     type="radio"
                     name="sameAsDeliveryOption"
                     checked={!sameAsDelivery}
@@ -303,7 +308,7 @@ const DeliveryAddress = ({
       ) : (
         <div className="address-container">
           <div className="mb-3">
-            <label htmlFor="streetAddress" className="form-label">
+            <label htmlFor="streetAddress" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}} >
               Street Address{' '}
               <span className="text-danger">
                 {' '}
@@ -311,6 +316,7 @@ const DeliveryAddress = ({
               </span>
             </label>
             <input
+            style={{color:'black',backgroundColor:'transparent'}}
               type="text"
               className={`form-control `}
               id="streetAddress"
@@ -321,7 +327,7 @@ const DeliveryAddress = ({
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="zipCode" className="form-label">
+            <label htmlFor="zipCode" className="form-label" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               ZIP Code{' '}
               <span className="text-danger">
                 {' '}
@@ -329,6 +335,7 @@ const DeliveryAddress = ({
               </span>
             </label>
             <input
+            style={{color:'black',backgroundColor:'transparent'}}
               type="text"
               className={`form-control `}
               id="zipCode"
@@ -339,7 +346,7 @@ const DeliveryAddress = ({
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="city" className="form-label">
+            <label htmlFor="city" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               City{' '}
               <span className="text-danger">
                 {' '}
@@ -347,6 +354,7 @@ const DeliveryAddress = ({
               </span>
             </label>
             <input
+            style={{color:'black',backgroundColor:'transparent'}}
               type="text"
               className={`form-control `}
               id="city"
@@ -357,7 +365,7 @@ const DeliveryAddress = ({
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="state" className="form-label">
+            <label htmlFor="state" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               State{' '}
               <span className="text-danger">
                 {' '}
@@ -365,6 +373,7 @@ const DeliveryAddress = ({
               </span>
             </label>
             <input
+            style={{color:'black',backgroundColor:'transparent'}}
               type="text"
               className={`form-control `}
               id="state"
@@ -375,7 +384,7 @@ const DeliveryAddress = ({
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="country" className="form-label">
+            <label htmlFor="country" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}> 
               Country{' '}
               <span className="text-danger">
                 {' '}
@@ -383,13 +392,14 @@ const DeliveryAddress = ({
               </span>
             </label>
             <input
+            style={{color:'black',backgroundColor:'transparent'}}
               type="text"
               className={`form-control `}
               id="country"
               value={country}
               onChange={handleCountryChange}
               required
-              disabled
+              // disabled
               placeholder="Field is required"
             />
           </div>
@@ -405,20 +415,21 @@ const DeliveryAddress = ({
             <>
               {distanceResult < 500 ? (
                 <div>
-                  <p>Order available for this location</p>
+                  <p  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Order available for this location</p>
                 </div>
               ) : (
                 <div>
-                  <p>Order not available for this location</p>
+                  <p  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Order not available for this location</p>
                 </div>
               )}
             </>
           )}
-          <label htmlFor="deliveryInstructions" className="form-label">
+          <label htmlFor="deliveryInstructions" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
             Delivery Instruction
           </label>
           <div className="mb-3">
             <textarea
+            style={{color:'black',backgroundColor:'transparent'}}
               type="text"
               className={`form-control `}
               name="deliveryInstructions"
@@ -428,7 +439,7 @@ const DeliveryAddress = ({
             />
           </div>
           <div className="address-options mt-2">
-            <label className="radio-label">
+            <label className="radio-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}} >
               <input
                 type="radio"
                 name="sameAsDeliveryOption"
@@ -438,7 +449,7 @@ const DeliveryAddress = ({
               <span className="radio-custom" />
               Use Delivery address
             </label>
-            <label className="radio-label">
+            <label className="radio-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
               <input
                 type="radio"
                 name="sameAsDeliveryOption"

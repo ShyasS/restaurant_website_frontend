@@ -32,10 +32,10 @@ const BillingAddress = ({
   }, [streetAddress, postalCode, city, state, country]);
 
   return (
-    <Card className="my-3 p-3">
-      <h4>Billing Address</h4>
+    <Card className="my-3 p-3" id="CardBackIMg" >
+      <h4  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>Billing Address</h4>
       <div className="mb-3 address-container">
-        <label htmlFor="streetAddress" className="form-label">
+        <label htmlFor="streetAddress" className="form-label" style={{color:'black',backgroundColor:'transparent'}}>
           Street Address{' '}
           <span className="text-danger">
             {' '}
@@ -43,6 +43,7 @@ const BillingAddress = ({
           </span>
         </label>
         <input
+        style={{color:'black',backgroundColor:'transparent'}}
           type="text"
           className={`form-control `}
           id="streetAddress"
@@ -53,7 +54,7 @@ const BillingAddress = ({
         />
       </div>
       <div className="mb-3 address-container">
-        <label htmlFor="zipCode" className="form-label">
+        <label htmlFor="zipCode" className="form-label" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
           ZIP Code{' '}
           <span className="text-danger">
             {' '}
@@ -61,6 +62,7 @@ const BillingAddress = ({
           </span>
         </label>
         <input
+        style={{color:'black',backgroundColor:'transparent'}}
           type="text"
           className={`form-control `}
           id="zipCode"
@@ -71,7 +73,7 @@ const BillingAddress = ({
         />
       </div>
       <div className="mb-3 address-container">
-        <label htmlFor="city" className="form-label">
+        <label htmlFor="city" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
           City{' '}
           <span className="text-danger">
             {' '}
@@ -79,6 +81,7 @@ const BillingAddress = ({
           </span>
         </label>
         <input
+        style={{color:'black',backgroundColor:'transparent'}}
           type="text"
           className={`form-control `}
           id="city"
@@ -89,7 +92,7 @@ const BillingAddress = ({
         />
       </div>
       <div className="mb-3 address-container">
-        <label htmlFor="state" className="form-label">
+        <label htmlFor="state" className="form-label" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
           State{' '}
           <span className="text-danger">
             {' '}
@@ -97,6 +100,7 @@ const BillingAddress = ({
           </span>
         </label>
         <input
+        style={{color:'black',backgroundColor:'transparent'}}
           type="text"
           className={`form-control `}
           id="state"
@@ -107,7 +111,7 @@ const BillingAddress = ({
         />
       </div>
       <div className="mb-3 address-container">
-        <label htmlFor="state" className="form-label">
+        <label htmlFor="state" className="form-label"  style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
           Country{' '}
           <span className="text-danger">
             {' '}
@@ -115,6 +119,7 @@ const BillingAddress = ({
           </span>
         </label>
         <input
+        style={{color:'black',backgroundColor:'transparent'}}
           type="text"
           className={`form-control `}
           id="country"

@@ -8,7 +8,7 @@ const HomeFirstComp = () => {
     <div className="HomeMainFirst">
       <Container>
         <Row>
-          <Col xs={12} md={{ span: 8, offset: 2 }}>
+          <Col xs={12} sm={12} lg={{ span: 8, offset: 2 }} md={{span: 9, offset: 2 }}>
             <h1 className="text-center text-white " id="HomeH1Tag">
               Welcome to Grand India Restaurants
             </h1>
@@ -29,7 +29,7 @@ const HomeFirstComp = () => {
         </Row>
       </Container>
 
-      <Col md={2} xs={2}>
+      <Col md={2} sm={12} xs={2}>
         <Image
           src={require('../../../assets/img/left.png')}
           className="HomeImg2"

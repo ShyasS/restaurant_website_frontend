@@ -21,27 +21,46 @@
   
   .pagination li {
     display: inline-block;
-    margin: 0 4px;
+    margin: 0 0px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     padding: 8px;
     border-radius: 4px;
-    background-color: #b96c7b;
+    /* background-color: #b96c7b; */
     color: white;
     text-decoration: none !important;
   }
 
   .pagination li a{
-    color: #9be3ed;
+    color: #afafaf;
+    font-size:18px;
   }
   
   .pagination li.active {
-    background-color: #b96c7b;
-    color: #fff;
+    /* background-color: #b96c7b; */
+    color: #3c3b3b;
   }
   
   .pagination li:hover {
-    background-color: #b96c7b;
+    background-color: #151414;
     text-decoration: none !important;
   }
   
+  #CardBackIMg{
+    background-color: #908e8583;
+    color: white;
+  }
+
+  .ActiveOrders{
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('../../assets/img/Bg5.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.MenuHeaderMain{
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('../../assets/img/Bg5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+

@@ -75,11 +75,12 @@ const RestaurantTable = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <h4 className=" mt-3" style={{ fontWeight: 'bold' }}>
+    <div className="MenuHeaderMain">
+      <div className='container-fluid'>
+      <div className="row text-white">
+        <h1 className=" mt-3" style={{ fontWeight: 'bold' }}>
           Restaurants
-        </h4>
+        </h1>
         <div className="col">
           {loading ? (
             <p>Loading...</p>
@@ -99,6 +100,7 @@ const RestaurantTable = () => {
           onDelete={onDelete}
         />
       </div>
+    </div>
     </div>
   );
 };
